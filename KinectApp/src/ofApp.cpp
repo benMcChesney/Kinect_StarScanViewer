@@ -29,11 +29,11 @@ void ofApp::setup()
 
 	gui.add( imageCompareView.leftView.delayIncrement.set( "LEFT DELAY INC" , 0.1f , 0.0f , 1.0f ) ) ; 
 	gui.add( imageCompareView.leftView.transitionDuration.set( "LEFT TRANSITION DURATION" , 0.1f , 0.0f , 1.0f ) ) ; 
-	gui.add( imageCompareView.leftView.transitionSlideY.set( "LEFT TRANSITION SLIDE Y" , 0.1f , 0.0f , 1.0f ) ) ; 
+	gui.add( imageCompareView.leftView.transitionSlideY.set( "LEFT TRANSITION SLIDE Y" , -20.0f , -40.0f , 40.0f ) ) ; 
 
 	gui.add( imageCompareView.rightView.delayIncrement.set( "LEFT DELAY INC" , 0.1f , 0.0f , 1.0f ) ) ; 
 	gui.add( imageCompareView.rightView.transitionDuration.set( "LEFT TRANSITION DURATION" , 0.1f , 0.0f , 1.0f ) ) ; 
-	gui.add( imageCompareView.rightView.transitionSlideY.set( "LEFT TRANSITION SLIDE Y" , 0.1f , 0.0f , 1.0f ) ) ; 
+	gui.add( imageCompareView.rightView.transitionSlideY.set( "LEFT TRANSITION SLIDE Y" , -20.f , -40.0f , 40.0f ) ) ; 
 
 	imageCompareView.rightView.transitionOut() ; 
 	imageCompareView.leftView.transitionOut() ; 
