@@ -1,3 +1,10 @@
+/*
+	Written by Ben McChesney 1/10/2015
+
+	A class for storing data associated with a spectrum object cached from the NASA website
+
+*/
+
 #pragma once
 
 #include "ofMain.h"
