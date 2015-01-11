@@ -15,6 +15,10 @@ void ofApp::setup()
 		ofLogError( "spectrumData.json did not load !" ) ; 
 	}
 
+	imageCompareView.setup() ; 
+	dataSyncManager.loadingManager.addToThreadedImageQueue( imageCompareView.leftView.detailImage->image , dataSyncManager.atmosphericImageData[0]->url , true ) ; 
+	dataSyncManager.loadingManager.addToThreadedImageQueue( imageCompareView.rightView.detailImage->image , dataSyncManager.atmosphericImageData[1]->url , true ) ; 
+	
 	ofSetVerticalSync( true ) ; 
 	ofBackground( 0 ) ; 
 
@@ -25,13 +29,16 @@ void ofApp::update()
 {
 	Tweenzor::update( ofGetElapsedTimeMillis() ) ; 
 	dataSyncManager.update( ) ; 
+
+	//imageCompareView.alphaStackUpdate( imageCompareView.alpha ) ; 
+	imageCompareView.update( ) ; 
 }
 
 //--------------------------------------------------------------
 void ofApp::draw()
 {
 	//dataSyncManager.draw( ) ; 
-
+	/*
 	ofPushMatrix() ; 
 		ofScale( 0.2 , 0.2 ) ; 
 		int increment = 0; 
@@ -42,7 +49,9 @@ void ofApp::draw()
 			(*data)->image.y = 250 ; 
 			increment++ ; 
 		}
-	ofPopMatrix() ; 
+	ofPopMatrix() ; */
+
+	imageCompareView.draw() ; 
 }
 
 //--------------------------------------------------------------

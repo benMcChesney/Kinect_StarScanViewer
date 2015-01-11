@@ -93,6 +93,8 @@
     <ClCompile Include="..\..\..\addons\ofxJSON\libs\jsoncpp\src\jsoncpp.cpp" />
     <ClCompile Include="..\..\..\addons\ofxJSON\src\ofxJSONElement.cpp" />
     <ClCompile Include="src\DataSyncManager.cpp" />
+    <ClCompile Include="src\ImageCompareView.cpp" />
+    <ClCompile Include="src\ImageDetailView.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\ofApp.cpp" />
     <ClCompile Include="..\..\..\addons\ofxGui\src\ofxBaseGui.cpp" />
@@ -177,6 +179,8 @@
     <ClInclude Include="..\..\..\addons\ofxJSON\src\ofxJSONElement.h" />
     <ClInclude Include="src\AtomosphericImageData.h" />
     <ClInclude Include="src\DataSyncManager.h" />
+    <ClInclude Include="src\ImageCompareView.h" />
+    <ClInclude Include="src\ImageDetailView.h" />
     <ClInclude Include="src\ofApp.h" />
     <ClInclude Include="..\..\..\addons\ofxGui\src\ofxBaseGui.h" />
     <ClInclude Include="..\..\..\addons\ofxGui\src\ofxButton.h" />

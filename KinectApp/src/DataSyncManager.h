@@ -1,3 +1,9 @@
+/*
+	Written by Ben McChesney 1/10/2015
+
+	parses JSON and caches remote resources to disk using LoadingManager
+
+*/
 #pragma once
 
 #include "ofMain.h"

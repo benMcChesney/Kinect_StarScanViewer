@@ -25,7 +25,7 @@ public :
 	ImageDetailView leftView ; 
 	ImageDetailView rightView ; 
 	ofxSimpleMask mask ; 
-
+	float normalizedAmount ; 
 
 	 
 };

@@ -4,6 +4,7 @@
 #include "ofxJSONElement.h"
 #include "DataSyncManager.h"
 #include "Tweenzor.h"
+#include "ImageCompareView.h"
 
 class ofApp : public ofBaseApp{
 
@@ -24,4 +25,5 @@ class ofApp : public ofBaseApp{
 
 		ofxJSONElement spectrumJson ; 
 		DataSyncManager dataSyncManager ; 
+		ImageCompareView imageCompareView ; 
 };

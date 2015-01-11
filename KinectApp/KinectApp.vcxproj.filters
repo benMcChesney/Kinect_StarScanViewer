@@ -238,6 +238,12 @@
     <ClCompile Include="src\DataSyncManager.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="src\ImageCompareView.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ImageDetailView.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -888,6 +894,12 @@
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="src\AtomosphericImageData.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ImageCompareView.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ImageDetailView.h">
       <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>

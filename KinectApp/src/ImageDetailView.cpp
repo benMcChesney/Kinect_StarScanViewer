@@ -14,7 +14,13 @@ void ImageDetailView::setup ( )
 	
 	title.setup( "type/OpenSans-Bold.ttf" , 1.2 , "TEST TITLE" , 32 , 50 , ofGetHeight() * .4 , ofColor::white ) ;
 	description.setup( "type/OpenSans-Regular.ttf" , 1.2 , "here is some test, this is a test thi sis the best test that we could have." , 32 , 50 , ofGetHeight() * .4 , ofColor::white ) ;
+	maskFbo.allocate( 1024 , 1024 ) ;
+
+	maskFbo.begin() ; 
+	ofClear( 1 , 1 , 1 , 0 ) ; 
+	maskFbo.end() ; 
 }
+
 void ImageDetailView::update( ) 
 {
 	detailImage->alphaStackUpdate( alpha ) ; 
@@ -26,6 +32,7 @@ void ImageDetailView::draw( )
 {
 	title.draw( ) ; 
 	description.draw( ) ;
+
 }
 
 void ImageDetailView::drawDebug( ) 
