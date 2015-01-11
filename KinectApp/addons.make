@@ -1,0 +1,12 @@
+ofxGui
+ofxThreadedImageLoader
+ofxVectorGraphics
+ofxFontStash
+ofxHeliosLibs
+ofxJSON
+ofxKinectNui
+ofxSimpleMask
+ofxSimpleTimer
+ofxTweenzor
+ofxUnicode
+ofxWMFVideoPlayer

@@ -1,0 +1,339 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{7FD42DF7-442E-479A-BA76-D0022F99702A}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>KinectApp</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v110</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v110</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\..\libs\openFrameworksCompiled\project\vs\openFrameworksRelease.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\..\libs\openFrameworksCompiled\project\vs\openFrameworksDebug.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>bin\</OutDir>
+    <IntDir>obj\$(Configuration)\</IntDir>
+    <TargetName>$(ProjectName)_debug</TargetName>
+    <LinkIncremental>true</LinkIncremental>
+    <GenerateManifest>true</GenerateManifest>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>bin\</OutDir>
+    <IntDir>obj\$(Configuration)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxGui\libs;..\..\..\addons\ofxGui\src;..\..\..\addons\ofxThreadedImageLoader\libs;..\..\..\addons\ofxThreadedImageLoader\src;..\..\..\addons\ofxVectorGraphics\libs;..\..\..\addons\ofxVectorGraphics\src;..\..\..\addons\ofxFontStash\libs;..\..\..\addons\ofxFontStash\src;..\..\..\addons\ofxFontStash\libs\fontstash;..\..\..\addons\ofxFontStash\libs\fontstash\src;..\..\..\addons\ofxHeliosLibs\libs;..\..\..\addons\ofxHeliosLibs\src;..\..\..\addons\ofxHeliosLibs\src\content;..\..\..\addons\ofxHeliosLibs\src\gesture;..\..\..\addons\ofxHeliosLibs\src\interactive;..\..\..\addons\ofxHeliosLibs\src\loading;..\..\..\addons\ofxHeliosLibs\src\mediaBanks;..\..\..\addons\ofxHeliosLibs\src\multitouch;..\..\..\addons\ofxHeliosLibs\src\ofxAlphaStack;..\..\..\addons\ofxHeliosLibs\src\ofxAtomicLog;..\..\..\addons\ofxHeliosLibs\src\ofxAtomicLog\src;..\..\..\addons\ofxHeliosLibs\src\ofxPrizing;..\..\..\addons\ofxHeliosLibs\src\ofxSync;..\..\..\addons\ofxHeliosLibs\src\ofxSync\src;..\..\..\addons\ofxHeliosLibs\src\pages;..\..\..\addons\ofxHeliosLibs\src\text;..\..\..\addons\ofxHeliosLibs\src\text\ofxTextSuite;..\..\..\addons\ofxHeliosLibs\src\threaded_utils;..\..\..\addons\ofxHeliosLibs\src\utils;..\..\..\addons\ofxHeliosLibs\src\visual;..\..\..\addons\ofxJSON\libs;..\..\..\addons\ofxJSON\src;..\..\..\addons\ofxKinectNui\libs;..\..\..\addons\ofxKinectNui\src;..\..\..\addons\ofxKinectNui\src\kinect;..\..\..\addons\ofxKinectNui\src\kinect\nui;..\..\..\addons\ofxKinectNui\src\win32;..\..\..\addons\ofxSimpleMask\libs;..\..\..\addons\ofxSimpleMask\src;..\..\..\addons\ofxSimpleTimer\libs;..\..\..\addons\ofxSimpleTimer\src;..\..\..\addons\ofxTweenzor\libs;..\..\..\addons\ofxTweenzor\src;..\..\..\addons\ofxUnicode\libs;..\..\..\addons\ofxUnicode\src;..\..\..\addons\ofxUnicode\libs\utf8cpp;..\..\..\addons\ofxUnicode\libs\utf8cpp\include;..\..\..\addons\ofxUnicode\libs\utf8cpp\include\utf8;..\..\..\addons\ofxUnicode\libs\utf8cpp\src;..\..\..\addons\ofxUnicode\libs\utf8cpp\src\utf8_v2_3_1;..\..\..\addons\ofxUnicode\libs\utf8cpp\src\utf8_v2_3_1\doc;..\..\..\addons\ofxUnicode\libs\utf8cpp\src\utf8_v2_3_1\source;..\..\..\addons\ofxUnicode\libs\utf8cpp\src\utf8_v2_3_1\source\utf8;..\..\..\addons\ofxWMFVideoPlayer\libs;..\..\..\addons\ofxWMFVideoPlayer\src;..\..\..\addons\ofxWMFVideoPlayer\src\presenter;..\..\..\addons\ofxWMFVideoPlayer\src\presenter\common;$(KINECTSDK10_DIR)\inc;..\..\..\addons\ofxJSON\libs\jsoncpp;..\..\..\addons\ofxJSON\libs\jsoncpp\src;..\..\..\addons\ofxJSON\libs\jsoncpp\include;..\..\..\addons\ofxJSON\libs\jsoncpp\include\json</AdditionalIncludeDirectories>
+      <CompileAs>CompileAsCpp</CompileAs>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <AdditionalDependencies>Kinect10.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(KINECTSDK10_DIR)\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxGui\libs;..\..\..\addons\ofxGui\src;..\..\..\addons\ofxThreadedImageLoader\libs;..\..\..\addons\ofxThreadedImageLoader\src;..\..\..\addons\ofxVectorGraphics\libs;..\..\..\addons\ofxVectorGraphics\src;..\..\..\addons\ofxFontStash\libs;..\..\..\addons\ofxFontStash\src;..\..\..\addons\ofxFontStash\libs\fontstash;..\..\..\addons\ofxFontStash\libs\fontstash\src;..\..\..\addons\ofxHeliosLibs\libs;..\..\..\addons\ofxHeliosLibs\src;..\..\..\addons\ofxHeliosLibs\src\content;..\..\..\addons\ofxHeliosLibs\src\gesture;..\..\..\addons\ofxHeliosLibs\src\interactive;..\..\..\addons\ofxHeliosLibs\src\loading;..\..\..\addons\ofxHeliosLibs\src\mediaBanks;..\..\..\addons\ofxHeliosLibs\src\multitouch;..\..\..\addons\ofxHeliosLibs\src\ofxAlphaStack;..\..\..\addons\ofxHeliosLibs\src\ofxAtomicLog;..\..\..\addons\ofxHeliosLibs\src\ofxAtomicLog\src;..\..\..\addons\ofxHeliosLibs\src\ofxPrizing;..\..\..\addons\ofxHeliosLibs\src\ofxSync;..\..\..\addons\ofxHeliosLibs\src\ofxSync\src;..\..\..\addons\ofxHeliosLibs\src\pages;..\..\..\addons\ofxHeliosLibs\src\text;..\..\..\addons\ofxHeliosLibs\src\text\ofxTextSuite;..\..\..\addons\ofxHeliosLibs\src\threaded_utils;..\..\..\addons\ofxHeliosLibs\src\utils;..\..\..\addons\ofxHeliosLibs\src\visual;..\..\..\addons\ofxJSON\libs;..\..\..\addons\ofxJSON\src;..\..\..\addons\ofxKinectNui\libs;..\..\..\addons\ofxKinectNui\src;..\..\..\addons\ofxKinectNui\src\kinect;..\..\..\addons\ofxKinectNui\src\kinect\nui;..\..\..\addons\ofxKinectNui\src\win32;..\..\..\addons\ofxSimpleMask\libs;..\..\..\addons\ofxSimpleMask\src;..\..\..\addons\ofxSimpleTimer\libs;..\..\..\addons\ofxSimpleTimer\src;..\..\..\addons\ofxTweenzor\libs;..\..\..\addons\ofxTweenzor\src;..\..\..\addons\ofxUnicode\libs;..\..\..\addons\ofxUnicode\src;..\..\..\addons\ofxUnicode\libs\utf8cpp;..\..\..\addons\ofxUnicode\libs\utf8cpp\include;..\..\..\addons\ofxUnicode\libs\utf8cpp\include\utf8;..\..\..\addons\ofxUnicode\libs\utf8cpp\src;..\..\..\addons\ofxUnicode\libs\utf8cpp\src\utf8_v2_3_1;..\..\..\addons\ofxUnicode\libs\utf8cpp\src\utf8_v2_3_1\doc;..\..\..\addons\ofxUnicode\libs\utf8cpp\src\utf8_v2_3_1\source;..\..\..\addons\ofxUnicode\libs\utf8cpp\src\utf8_v2_3_1\source\utf8;..\..\..\addons\ofxWMFVideoPlayer\libs;..\..\..\addons\ofxWMFVideoPlayer\src;..\..\..\addons\ofxWMFVideoPlayer\src\presenter;..\..\..\addons\ofxWMFVideoPlayer\src\presenter\common;$(KINECTSDK10_DIR)\inc;..\..\..\addons\ofxJSON\libs\jsoncpp;..\..\..\addons\ofxJSON\libs\jsoncpp\src;..\..\..\addons\ofxJSON\libs\jsoncpp\include;..\..\..\addons\ofxJSON\libs\jsoncpp\include\json</AdditionalIncludeDirectories>
+      <CompileAs>CompileAsCpp</CompileAs>
+    </ClCompile>
+    <Link>
+      <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <AdditionalDependencies>Kinect10.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(KINECTSDK10_DIR)\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\addons\ofxJSON\libs\jsoncpp\src\jsoncpp.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxJSON\src\ofxJSONElement.cpp" />
+    <ClCompile Include="src\DataSyncManager.cpp" />
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\ofApp.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxGui\src\ofxBaseGui.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxGui\src\ofxButton.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxGui\src\ofxGuiGroup.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxGui\src\ofxLabel.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxGui\src\ofxPanel.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxGui\src\ofxSlider.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxGui\src\ofxSliderGroup.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxGui\src\ofxToggle.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxThreadedImageLoader\src\ofxThreadedImageLoader.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxVectorGraphics\src\ofxVectorGraphics.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxVectorGraphics\libs\CreEPS.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxFontStash\src\ofxFontStash.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxFontStash\libs\fontstash\src\fontstash.c" />
+    <ClCompile Include="..\..\..\addons\ofxFontStash\libs\fontstash\src\stb_truetype.c" />
+    <ClCompile Include="..\..\..\addons\ofxHeliosLibs\src\content\ImageContent.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxHeliosLibs\src\content\ImageGalleryContent.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxHeliosLibs\src\content\ImageThumbnailGallery.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxHeliosLibs\src\content\TextImageContent.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxHeliosLibs\src\content\VideoContent.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxHeliosLibs\src\content\VideoContentReveal.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxHeliosLibs\src\gesture\GestureCursor.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxHeliosLibs\src\gesture\GestureHub.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxHeliosLibs\src\interactive\DragScroller.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxHeliosLibs\src\interactive\EasyMask.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxHeliosLibs\src\interactive\ofxImageButton.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxHeliosLibs\src\interactive\ofxMatrixTransformImage.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxHeliosLibs\src\interactive\ofxMatrixTransformImageRef.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxHeliosLibs\src\interactive\ofxMatrixTransformObject.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxHeliosLibs\src\interactive\ofxMatrixTransformTextureRef.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxHeliosLibs\src\interactive\ofxSimpleImageButton.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxHeliosLibs\src\interactive\ofxTransitionItem.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxHeliosLibs\src\interactive\VideoPlayer.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxHeliosLibs\src\loading\ofxAsyncLoadingData.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxHeliosLibs\src\loading\ofxLoadingManager.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxHeliosLibs\src\mediaBanks\VideoBank.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxHeliosLibs\src\multitouch\MultiTouchActions.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxHeliosLibs\src\multitouch\MultiTouchCursor.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxHeliosLibs\src\multitouch\MultiTouchObject.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxHeliosLibs\src\ofxAlphaStack\ofxAlphaStackItem.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxHeliosLibs\src\ofxAtomicLog\src\ofxAtomicLog.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxHeliosLibs\src\pages\BasePage.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxHeliosLibs\src\text\ofxFontStashManager.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxHeliosLibs\src\text\ofxFontStashTextBlock.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxHeliosLibs\src\text\ofxTextSuite\ofxTextBlock.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxHeliosLibs\src\threaded_utils\ofxThreadedFileSaver.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxHeliosLibs\src\utils\IdleInputManager.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxHeliosLibs\src\visual\ColorPalette.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxHeliosLibs\src\visual\RoundedGradientPanel.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxKinectNui\src\kinect\nui\AudioStream.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxKinectNui\src\kinect\nui\ImageFrame.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxKinectNui\src\kinect\nui\ImageStream.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxKinectNui\src\kinect\nui\Kinect.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxKinectNui\src\kinect\nui\KinectContext.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxKinectNui\src\kinect\nui\SkeletonEngine.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxKinectNui\src\kinect\nui\SkeletonFrame.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxKinectNui\src\ofxKinectNui.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxKinectNui\src\ofxKinectNuiDraw.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxKinectNui\src\ofxKinectNuiPlayer.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxKinectNui\src\ofxKinectNuiRecorder.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxKinectNui\src\ofxKinectNuiSoundRecorder.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxKinectNui\src\win32\Event.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxSimpleMask\src\ofxSimpleMask.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxSimpleTimer\src\ofxSimpleTimer.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxTweenzor\src\Tween.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxTweenzor\src\Tweenzor.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxUnicode\src\ofTextConverter.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxUnicode\src\ofUnicode.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxUnicode\src\ofUTF8.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxWMFVideoPlayer\src\ofxWMFVideoPlayer.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxWMFVideoPlayer\src\ofxWMFVideoPlayerUtils.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxWMFVideoPlayer\src\presenter\Helpers.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxWMFVideoPlayer\src\presenter\PresentEngine.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxWMFVideoPlayer\src\presenter\Presenter.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxWMFVideoPlayer\src\presenter\scheduler.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\addons\ofxJSON\libs\jsoncpp\include\json\json-forwards.h" />
+    <ClInclude Include="..\..\..\addons\ofxJSON\libs\jsoncpp\include\json\json.h" />
+    <ClInclude Include="..\..\..\addons\ofxJSON\src\ofxJSON.h" />
+    <ClInclude Include="..\..\..\addons\ofxJSON\src\ofxJSONElement.h" />
+    <ClInclude Include="src\AtomosphericImageData.h" />
+    <ClInclude Include="src\DataSyncManager.h" />
+    <ClInclude Include="src\ofApp.h" />
+    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxBaseGui.h" />
+    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxButton.h" />
+    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxGui.h" />
+    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxGuiGroup.h" />
+    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxLabel.h" />
+    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxPanel.h" />
+    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxSlider.h" />
+    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxSliderGroup.h" />
+    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxToggle.h" />
+    <ClInclude Include="..\..\..\addons\ofxThreadedImageLoader\src\ofxThreadedImageLoader.h" />
+    <ClInclude Include="..\..\..\addons\ofxVectorGraphics\src\ofxVectorGraphics.h" />
+    <ClInclude Include="..\..\..\addons\ofxVectorGraphics\libs\CreEPS.hpp" />
+    <ClInclude Include="..\..\..\addons\ofxVectorGraphics\libs\CreEPS_Types.hpp" />
+    <ClInclude Include="..\..\..\addons\ofxFontStash\src\ofxFontStash.h" />
+    <ClInclude Include="..\..\..\addons\ofxFontStash\libs\fontstash\src\fontstash.h" />
+    <ClInclude Include="..\..\..\addons\ofxFontStash\libs\fontstash\src\stb_truetype.h" />
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\content\BaseContent.h" />
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\content\ContentTypes.h" />
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\content\ImageContent.h" />
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\content\ImageGalleryContent.h" />
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\content\ImagePlus.h" />
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\content\ImageThumbnailGallery.h" />
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\content\TextImageContent.h" />
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\content\TimelineIcon.h" />
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\content\TimelineMarker.h" />
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\content\VideoContent.h" />
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\content\VideoContentReveal.h" />
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\gesture\GestureCursor.h" />
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\gesture\GestureEvents.h" />
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\gesture\GestureHub.h" />
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\interactive\AngleCursorPivot.h" />
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\interactive\DragScroller.h" />
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\interactive\EasyMask.h" />
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\interactive\HalfRoundedRect.h" />
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\interactive\HitRectangle.h" />
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\interactive\KeyboardInputPanel.h" />
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\interactive\ofxImageButton.h" />
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\interactive\ofxMatrixTransformImage.h" />
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\interactive\ofxMatrixTransformImageRef.h" />
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\interactive\ofxMatrixTransformObject.h" />
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\interactive\ofxMatrixTransformTextureRef.h" />
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\interactive\ofxSimpleImageButton.h" />
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\interactive\ofxTransitionItem.h" />
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\interactive\VideoPlayer.h" />
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\loading\LoadingEvents.h" />
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\loading\ofxAsyncLoadingData.h" />
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\loading\ofxLoadingManager.h" />
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\mediaBanks\SoundBank.h" />
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\mediaBanks\VideoBank.h" />
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\multitouch\BaseMultitouchObject.h" />
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\multitouch\MultiTouchActions.h" />
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\multitouch\MultiTouchCursor.h" />
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\multitouch\MultiTouchObject.h" />
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\ofxAlphaStack\ofxAlphaStackItem.h" />
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\ofxAtomicLog\src\ofxAtomicLog.h" />
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\ofxAtomicLog\src\ofxScopeMutex.h" />
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\pages\BasePage.h" />
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\pages\PageEvent.h" />
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\pages\PageEventData.h" />
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\text\ConsoleTextBlock.h" />
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\text\FontList.h" />
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\text\FontManager.h" />
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\text\FontObject.h" />
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\text\ofxFontStashManager.h" />
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\text\ofxFontStashTextBlock.h" />
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\text\ofxTextSuite\ofxTextBlock.h" />
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\text\ofxTextSuite\ofxTextSuite.h" />
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\text\TextEncodingPairing.h" />
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\text\TextEncodingUtility.h" />
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\text\TextFBO.h" />
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\text\TextField.h" />
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\text\TextUtils.h" />
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\threaded_utils\ofxThreadedFileSaver.h" />
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\threaded_utils\ofxThreadedLoader.h" />
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\utils\IdleInputManager.h" />
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\utils\ofxCalendar.h" />
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\utils\ofxHeliosUtils.h" />
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\visual\ColorPalette.h" />
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\visual\GradientQuad.h" />
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\visual\PositionedSequence.h" />
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\visual\Quad.h" />
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\visual\RoundedGradientPanel.h" />
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\visual\SlidingDoorRect.h" />
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\visual\SolidColorShape.h" />
+    <ClInclude Include="..\..\..\addons\ofxKinectNui\src\kinect\nui\AudioStream.h" />
+    <ClInclude Include="..\..\..\addons\ofxKinectNui\src\kinect\nui\ImageFrame.h" />
+    <ClInclude Include="..\..\..\addons\ofxKinectNui\src\kinect\nui\ImageStream.h" />
+    <ClInclude Include="..\..\..\addons\ofxKinectNui\src\kinect\nui\Kinect.h" />
+    <ClInclude Include="..\..\..\addons\ofxKinectNui\src\kinect\nui\KinectContext.h" />
+    <ClInclude Include="..\..\..\addons\ofxKinectNui\src\kinect\nui\KinectListener.h" />
+    <ClInclude Include="..\..\..\addons\ofxKinectNui\src\kinect\nui\SkeletonEngine.h" />
+    <ClInclude Include="..\..\..\addons\ofxKinectNui\src\kinect\nui\SkeletonFrame.h" />
+    <ClInclude Include="..\..\..\addons\ofxKinectNui\src\kinect\nui\StaticMediaBuffer.h" />
+    <ClInclude Include="..\..\..\addons\ofxKinectNui\src\kinect\nui\WaveFileWriter.h" />
+    <ClInclude Include="..\..\..\addons\ofxKinectNui\src\kinect\nui\WaveOutput.h" />
+    <ClInclude Include="..\..\..\addons\ofxKinectNui\src\ofxBase3DVideo.h" />
+    <ClInclude Include="..\..\..\addons\ofxKinectNui\src\ofxKinectNui.h" />
+    <ClInclude Include="..\..\..\addons\ofxKinectNui\src\ofxKinectNuiDraw.h" />
+    <ClInclude Include="..\..\..\addons\ofxKinectNui\src\ofxKinectNuiDrawInterface.h" />
+    <ClInclude Include="..\..\..\addons\ofxKinectNui\src\ofxKinectNuiPlayer.h" />
+    <ClInclude Include="..\..\..\addons\ofxKinectNui\src\ofxKinectNuiRecorder.h" />
+    <ClInclude Include="..\..\..\addons\ofxKinectNui\src\ofxKinectNuiSoundRecorder.h" />
+    <ClInclude Include="..\..\..\addons\ofxKinectNui\src\win32\Event.h" />
+    <ClInclude Include="..\..\..\addons\ofxKinectNui\src\win32\SpinLock.h" />
+    <ClInclude Include="..\..\..\addons\ofxSimpleMask\src\ofxSimpleMask.h" />
+    <ClInclude Include="..\..\..\addons\ofxSimpleTimer\src\ofxSimpleTimer.h" />
+    <ClInclude Include="..\..\..\addons\ofxTweenzor\src\ofxTweenzor.h" />
+    <ClInclude Include="..\..\..\addons\ofxTweenzor\src\Tween.h" />
+    <ClInclude Include="..\..\..\addons\ofxTweenzor\src\TweenEvent.h" />
+    <ClInclude Include="..\..\..\addons\ofxTweenzor\src\TweenFunctions.h" />
+    <ClInclude Include="..\..\..\addons\ofxTweenzor\src\TweenSelector.h" />
+    <ClInclude Include="..\..\..\addons\ofxTweenzor\src\Tweenzor.h" />
+    <ClInclude Include="..\..\..\addons\ofxUnicode\src\ofTextConverter.h" />
+    <ClInclude Include="..\..\..\addons\ofxUnicode\src\ofUnicode.h" />
+    <ClInclude Include="..\..\..\addons\ofxUnicode\src\ofUTF8.h" />
+    <ClInclude Include="..\..\..\addons\ofxUnicode\libs\utf8cpp\include\utf8\checked.h" />
+    <ClInclude Include="..\..\..\addons\ofxUnicode\libs\utf8cpp\include\utf8\core.h" />
+    <ClInclude Include="..\..\..\addons\ofxUnicode\libs\utf8cpp\include\utf8\unchecked.h" />
+    <ClInclude Include="..\..\..\addons\ofxUnicode\libs\utf8cpp\include\utf8.h" />
+    <ClInclude Include="..\..\..\addons\ofxUnicode\libs\utf8cpp\src\utf8_v2_3_1\source\utf8\checked.h" />
+    <ClInclude Include="..\..\..\addons\ofxUnicode\libs\utf8cpp\src\utf8_v2_3_1\source\utf8\core.h" />
+    <ClInclude Include="..\..\..\addons\ofxUnicode\libs\utf8cpp\src\utf8_v2_3_1\source\utf8\unchecked.h" />
+    <ClInclude Include="..\..\..\addons\ofxUnicode\libs\utf8cpp\src\utf8_v2_3_1\source\utf8.h" />
+    <ClInclude Include="..\..\..\addons\ofxWMFVideoPlayer\src\ofxWMFVideoPlayer.h" />
+    <ClInclude Include="..\..\..\addons\ofxWMFVideoPlayer\src\ofxWMFVideoPlayerUtils.h" />
+    <ClInclude Include="..\..\..\addons\ofxWMFVideoPlayer\src\presenter\common\AsyncCB.h" />
+    <ClInclude Include="..\..\..\addons\ofxWMFVideoPlayer\src\presenter\common\BufferLock.h" />
+    <ClInclude Include="..\..\..\addons\ofxWMFVideoPlayer\src\presenter\common\ClassFactory.h" />
+    <ClInclude Include="..\..\..\addons\ofxWMFVideoPlayer\src\presenter\common\common.h" />
+    <ClInclude Include="..\..\..\addons\ofxWMFVideoPlayer\src\presenter\common\critsec.h" />
+    <ClInclude Include="..\..\..\addons\ofxWMFVideoPlayer\src\presenter\common\GrowArray.h" />
+    <ClInclude Include="..\..\..\addons\ofxWMFVideoPlayer\src\presenter\common\linklist.h" />
+    <ClInclude Include="..\..\..\addons\ofxWMFVideoPlayer\src\presenter\common\logging.h" />
+    <ClInclude Include="..\..\..\addons\ofxWMFVideoPlayer\src\presenter\common\logmediatype.h" />
+    <ClInclude Include="..\..\..\addons\ofxWMFVideoPlayer\src\presenter\common\mediatype.h" />
+    <ClInclude Include="..\..\..\addons\ofxWMFVideoPlayer\src\presenter\common\mfutils.h" />
+    <ClInclude Include="..\..\..\addons\ofxWMFVideoPlayer\src\presenter\common\PropVar.h" />
+    <ClInclude Include="..\..\..\addons\ofxWMFVideoPlayer\src\presenter\common\registry.h" />
+    <ClInclude Include="..\..\..\addons\ofxWMFVideoPlayer\src\presenter\common\TinyMap.h" />
+    <ClInclude Include="..\..\..\addons\ofxWMFVideoPlayer\src\presenter\common\trace.h" />
+    <ClInclude Include="..\..\..\addons\ofxWMFVideoPlayer\src\presenter\EVRPresenter.h" />
+    <ClInclude Include="..\..\..\addons\ofxWMFVideoPlayer\src\presenter\EVRPresenterUuid.h" />
+    <ClInclude Include="..\..\..\addons\ofxWMFVideoPlayer\src\presenter\Helpers.h" />
+    <ClInclude Include="..\..\..\addons\ofxWMFVideoPlayer\src\presenter\PresentEngine.h" />
+    <ClInclude Include="..\..\..\addons\ofxWMFVideoPlayer\src\presenter\Presenter.h" />
+    <ClInclude Include="..\..\..\addons\ofxWMFVideoPlayer\src\presenter\scheduler.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\libs\openFrameworksCompiled\project\vs\openframeworksLib.vcxproj">
+      <Project>{5837595d-aca9-485c-8e76-729040ce4b0b}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="icon.rc">
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">/D_DEBUG %(AdditionalOptions)</AdditionalOptions>
+    </ResourceCompile>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+</Project>

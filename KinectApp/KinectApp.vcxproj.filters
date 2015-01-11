@@ -1,0 +1,897 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="src\ofApp.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\main.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxGui\src\ofxBaseGui.cpp">
+      <Filter>addons\ofxGui\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxGui\src\ofxButton.cpp">
+      <Filter>addons\ofxGui\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxGui\src\ofxGuiGroup.cpp">
+      <Filter>addons\ofxGui\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxGui\src\ofxLabel.cpp">
+      <Filter>addons\ofxGui\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxGui\src\ofxPanel.cpp">
+      <Filter>addons\ofxGui\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxGui\src\ofxSlider.cpp">
+      <Filter>addons\ofxGui\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxGui\src\ofxSliderGroup.cpp">
+      <Filter>addons\ofxGui\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxGui\src\ofxToggle.cpp">
+      <Filter>addons\ofxGui\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxThreadedImageLoader\src\ofxThreadedImageLoader.cpp">
+      <Filter>addons\ofxThreadedImageLoader\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxVectorGraphics\src\ofxVectorGraphics.cpp">
+      <Filter>addons\ofxVectorGraphics\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxVectorGraphics\libs\CreEPS.cpp">
+      <Filter>addons\ofxVectorGraphics\libs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxFontStash\src\ofxFontStash.cpp">
+      <Filter>addons\ofxFontStash\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxFontStash\libs\fontstash\src\fontstash.c">
+      <Filter>addons\ofxFontStash\libs\fontstash\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxFontStash\libs\fontstash\src\stb_truetype.c">
+      <Filter>addons\ofxFontStash\libs\fontstash\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxHeliosLibs\src\content\ImageContent.cpp">
+      <Filter>addons\ofxHeliosLibs\src\content</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxHeliosLibs\src\content\ImageGalleryContent.cpp">
+      <Filter>addons\ofxHeliosLibs\src\content</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxHeliosLibs\src\content\ImageThumbnailGallery.cpp">
+      <Filter>addons\ofxHeliosLibs\src\content</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxHeliosLibs\src\content\TextImageContent.cpp">
+      <Filter>addons\ofxHeliosLibs\src\content</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxHeliosLibs\src\content\VideoContent.cpp">
+      <Filter>addons\ofxHeliosLibs\src\content</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxHeliosLibs\src\content\VideoContentReveal.cpp">
+      <Filter>addons\ofxHeliosLibs\src\content</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxHeliosLibs\src\gesture\GestureCursor.cpp">
+      <Filter>addons\ofxHeliosLibs\src\gesture</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxHeliosLibs\src\gesture\GestureHub.cpp">
+      <Filter>addons\ofxHeliosLibs\src\gesture</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxHeliosLibs\src\interactive\DragScroller.cpp">
+      <Filter>addons\ofxHeliosLibs\src\interactive</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxHeliosLibs\src\interactive\EasyMask.cpp">
+      <Filter>addons\ofxHeliosLibs\src\interactive</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxHeliosLibs\src\interactive\ofxImageButton.cpp">
+      <Filter>addons\ofxHeliosLibs\src\interactive</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxHeliosLibs\src\interactive\ofxMatrixTransformImage.cpp">
+      <Filter>addons\ofxHeliosLibs\src\interactive</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxHeliosLibs\src\interactive\ofxMatrixTransformImageRef.cpp">
+      <Filter>addons\ofxHeliosLibs\src\interactive</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxHeliosLibs\src\interactive\ofxMatrixTransformObject.cpp">
+      <Filter>addons\ofxHeliosLibs\src\interactive</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxHeliosLibs\src\interactive\ofxMatrixTransformTextureRef.cpp">
+      <Filter>addons\ofxHeliosLibs\src\interactive</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxHeliosLibs\src\interactive\ofxSimpleImageButton.cpp">
+      <Filter>addons\ofxHeliosLibs\src\interactive</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxHeliosLibs\src\interactive\ofxTransitionItem.cpp">
+      <Filter>addons\ofxHeliosLibs\src\interactive</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxHeliosLibs\src\interactive\VideoPlayer.cpp">
+      <Filter>addons\ofxHeliosLibs\src\interactive</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxHeliosLibs\src\loading\ofxAsyncLoadingData.cpp">
+      <Filter>addons\ofxHeliosLibs\src\loading</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxHeliosLibs\src\loading\ofxLoadingManager.cpp">
+      <Filter>addons\ofxHeliosLibs\src\loading</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxHeliosLibs\src\mediaBanks\VideoBank.cpp">
+      <Filter>addons\ofxHeliosLibs\src\mediaBanks</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxHeliosLibs\src\multitouch\MultiTouchActions.cpp">
+      <Filter>addons\ofxHeliosLibs\src\multitouch</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxHeliosLibs\src\multitouch\MultiTouchCursor.cpp">
+      <Filter>addons\ofxHeliosLibs\src\multitouch</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxHeliosLibs\src\multitouch\MultiTouchObject.cpp">
+      <Filter>addons\ofxHeliosLibs\src\multitouch</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxHeliosLibs\src\ofxAlphaStack\ofxAlphaStackItem.cpp">
+      <Filter>addons\ofxHeliosLibs\src\ofxAlphaStack</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxHeliosLibs\src\ofxAtomicLog\src\ofxAtomicLog.cpp">
+      <Filter>addons\ofxHeliosLibs\src\ofxAtomicLog\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxHeliosLibs\src\pages\BasePage.cpp">
+      <Filter>addons\ofxHeliosLibs\src\pages</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxHeliosLibs\src\text\ofxFontStashManager.cpp">
+      <Filter>addons\ofxHeliosLibs\src\text</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxHeliosLibs\src\text\ofxFontStashTextBlock.cpp">
+      <Filter>addons\ofxHeliosLibs\src\text</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxHeliosLibs\src\text\ofxTextSuite\ofxTextBlock.cpp">
+      <Filter>addons\ofxHeliosLibs\src\text\ofxTextSuite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxHeliosLibs\src\threaded_utils\ofxThreadedFileSaver.cpp">
+      <Filter>addons\ofxHeliosLibs\src\threaded_utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxHeliosLibs\src\utils\IdleInputManager.cpp">
+      <Filter>addons\ofxHeliosLibs\src\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxHeliosLibs\src\visual\ColorPalette.cpp">
+      <Filter>addons\ofxHeliosLibs\src\visual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxHeliosLibs\src\visual\RoundedGradientPanel.cpp">
+      <Filter>addons\ofxHeliosLibs\src\visual</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxKinectNui\src\kinect\nui\AudioStream.cpp">
+      <Filter>addons\ofxKinectNui\src\kinect\nui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxKinectNui\src\kinect\nui\ImageFrame.cpp">
+      <Filter>addons\ofxKinectNui\src\kinect\nui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxKinectNui\src\kinect\nui\ImageStream.cpp">
+      <Filter>addons\ofxKinectNui\src\kinect\nui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxKinectNui\src\kinect\nui\Kinect.cpp">
+      <Filter>addons\ofxKinectNui\src\kinect\nui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxKinectNui\src\kinect\nui\KinectContext.cpp">
+      <Filter>addons\ofxKinectNui\src\kinect\nui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxKinectNui\src\kinect\nui\SkeletonEngine.cpp">
+      <Filter>addons\ofxKinectNui\src\kinect\nui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxKinectNui\src\kinect\nui\SkeletonFrame.cpp">
+      <Filter>addons\ofxKinectNui\src\kinect\nui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxKinectNui\src\ofxKinectNui.cpp">
+      <Filter>addons\ofxKinectNui\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxKinectNui\src\ofxKinectNuiDraw.cpp">
+      <Filter>addons\ofxKinectNui\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxKinectNui\src\ofxKinectNuiPlayer.cpp">
+      <Filter>addons\ofxKinectNui\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxKinectNui\src\ofxKinectNuiRecorder.cpp">
+      <Filter>addons\ofxKinectNui\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxKinectNui\src\ofxKinectNuiSoundRecorder.cpp">
+      <Filter>addons\ofxKinectNui\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxKinectNui\src\win32\Event.cpp">
+      <Filter>addons\ofxKinectNui\src\win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxSimpleMask\src\ofxSimpleMask.cpp">
+      <Filter>addons\ofxSimpleMask\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxSimpleTimer\src\ofxSimpleTimer.cpp">
+      <Filter>addons\ofxSimpleTimer\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxTweenzor\src\Tween.cpp">
+      <Filter>addons\ofxTweenzor\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxTweenzor\src\Tweenzor.cpp">
+      <Filter>addons\ofxTweenzor\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxUnicode\src\ofTextConverter.cpp">
+      <Filter>addons\ofxUnicode\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxUnicode\src\ofUnicode.cpp">
+      <Filter>addons\ofxUnicode\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxUnicode\src\ofUTF8.cpp">
+      <Filter>addons\ofxUnicode\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxWMFVideoPlayer\src\ofxWMFVideoPlayer.cpp">
+      <Filter>addons\ofxWMFVideoPlayer\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxWMFVideoPlayer\src\ofxWMFVideoPlayerUtils.cpp">
+      <Filter>addons\ofxWMFVideoPlayer\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxWMFVideoPlayer\src\presenter\Helpers.cpp">
+      <Filter>addons\ofxWMFVideoPlayer\src\presenter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxWMFVideoPlayer\src\presenter\PresentEngine.cpp">
+      <Filter>addons\ofxWMFVideoPlayer\src\presenter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxWMFVideoPlayer\src\presenter\Presenter.cpp">
+      <Filter>addons\ofxWMFVideoPlayer\src\presenter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxWMFVideoPlayer\src\presenter\scheduler.cpp">
+      <Filter>addons\ofxWMFVideoPlayer\src\presenter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxJSON\src\ofxJSONElement.cpp">
+      <Filter>addons\ofxJSON\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxJSON\libs\jsoncpp\src\jsoncpp.cpp">
+      <Filter>addons\ofxJSON\libs\jsoncpp\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DataSyncManager.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="src">
+      <UniqueIdentifier>{d8376475-7454-4a24-b08a-aac121d3ad6f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons">
+      <UniqueIdentifier>{71834F65-F3A9-211E-73B8-DC85}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxGui">
+      <UniqueIdentifier>{4F2A59AF-5F4E-704B-D067-EC13}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxGui\src">
+      <UniqueIdentifier>{645E9533-4DCD-6179-1CDF-CB65}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxThreadedImageLoader">
+      <UniqueIdentifier>{4FCFBE74-4716-4092-C67F-91AE}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxThreadedImageLoader\src">
+      <UniqueIdentifier>{96E590A4-6AB6-FE3D-02EC-8D08}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxVectorGraphics">
+      <UniqueIdentifier>{5A7F3658-B06B-DB97-F4E1-DD19}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxVectorGraphics\src">
+      <UniqueIdentifier>{F615F000-D48C-B1D6-F1C2-6EDD}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxVectorGraphics\libs">
+      <UniqueIdentifier>{B341F552-35C4-7EB6-B3C9-9D96}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxFontStash">
+      <UniqueIdentifier>{52833EC4-B632-6FCA-91CC-4AE6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxFontStash\src">
+      <UniqueIdentifier>{49A40DDC-6572-4E0A-048E-2D04}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxFontStash\libs">
+      <UniqueIdentifier>{A8F1AC44-FC7C-BBBD-E0C9-B6EE}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxFontStash\libs\fontstash">
+      <UniqueIdentifier>{FE13F720-8FE1-4B82-AE17-C9C7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxFontStash\libs\fontstash\src">
+      <UniqueIdentifier>{74A9B8C3-6ADF-F872-4DE5-3A6C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxHeliosLibs">
+      <UniqueIdentifier>{9242C2C7-5A8A-77BD-7E09-BABE}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxHeliosLibs\src">
+      <UniqueIdentifier>{EA348405-DA09-A5A6-2EAE-C1F2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxHeliosLibs\src\content">
+      <UniqueIdentifier>{F1C537CC-4181-635A-F89F-CEA9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxHeliosLibs\src\gesture">
+      <UniqueIdentifier>{2330AF3A-D42E-0EA3-20CD-1D48}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxHeliosLibs\src\interactive">
+      <UniqueIdentifier>{F0662EB6-E852-2B39-ADAF-78C9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxHeliosLibs\src\loading">
+      <UniqueIdentifier>{7D43AD89-0F38-FD4A-1027-8128}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxHeliosLibs\src\mediaBanks">
+      <UniqueIdentifier>{D25186BF-360C-0086-9A4C-22D5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxHeliosLibs\src\multitouch">
+      <UniqueIdentifier>{10E61F8E-C011-F2C5-7EF4-78D1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxHeliosLibs\src\ofxAlphaStack">
+      <UniqueIdentifier>{6D3E51C1-D4AA-0158-CAFE-58AF}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxHeliosLibs\src\ofxAtomicLog">
+      <UniqueIdentifier>{509B004C-76F4-8D72-9246-0D3C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxHeliosLibs\src\ofxAtomicLog\src">
+      <UniqueIdentifier>{815CA774-79E1-E08B-2577-4B0A}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxHeliosLibs\src\pages">
+      <UniqueIdentifier>{1B7AB2ED-53AC-2232-514E-A1C8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxHeliosLibs\src\text">
+      <UniqueIdentifier>{2F90B1EE-8482-2EA9-7893-280A}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxHeliosLibs\src\text\ofxTextSuite">
+      <UniqueIdentifier>{E55D125A-8596-8673-45DB-F6EE}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxHeliosLibs\src\threaded_utils">
+      <UniqueIdentifier>{85A0653A-1CDA-E16F-885E-CDA9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxHeliosLibs\src\utils">
+      <UniqueIdentifier>{2ED4563F-0784-935E-44B0-74A6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxHeliosLibs\src\visual">
+      <UniqueIdentifier>{E204EB25-20B1-F890-6CE5-EE7D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxKinectNui">
+      <UniqueIdentifier>{34F24753-3B66-A83C-8577-1CC0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxKinectNui\src">
+      <UniqueIdentifier>{BE05A897-E6B4-5BE9-7984-F944}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxKinectNui\src\kinect">
+      <UniqueIdentifier>{29FA98CA-2316-A548-87F8-7D8B}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxKinectNui\src\kinect\nui">
+      <UniqueIdentifier>{CED4AC24-FC0A-1CB7-D732-5D4D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxKinectNui\src\win32">
+      <UniqueIdentifier>{E28E7850-8C70-726E-7479-6C48}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxSimpleMask">
+      <UniqueIdentifier>{2010F96F-76D4-AEE6-07D5-36FE}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxSimpleMask\src">
+      <UniqueIdentifier>{FA9D5909-0C13-FB2D-1777-6ABB}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxSimpleTimer">
+      <UniqueIdentifier>{67B1FAFA-33D3-D829-7FCB-AD6C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxSimpleTimer\src">
+      <UniqueIdentifier>{7C1F1220-3AE3-9AAB-9425-CE90}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxTweenzor">
+      <UniqueIdentifier>{01C39FF4-5B53-3070-C89A-1750}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxTweenzor\src">
+      <UniqueIdentifier>{5D58D81D-C685-E91E-0E62-80F4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxUnicode">
+      <UniqueIdentifier>{CB2491AC-3023-43DF-9741-48D7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxUnicode\src">
+      <UniqueIdentifier>{C9A66D79-A4BA-A028-D6FA-6312}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxUnicode\libs">
+      <UniqueIdentifier>{A667F7E1-576E-BA14-2997-A4B4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxUnicode\libs\utf8cpp">
+      <UniqueIdentifier>{502796D4-0698-6C4F-C3E8-BE7E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxUnicode\libs\utf8cpp\include">
+      <UniqueIdentifier>{26699A66-C7A5-E962-A0BC-1307}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxUnicode\libs\utf8cpp\include\utf8">
+      <UniqueIdentifier>{66BE9A71-EB65-4D93-5B88-D353}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxUnicode\libs\utf8cpp\src">
+      <UniqueIdentifier>{9B2E43E3-B584-B0BC-E349-4308}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxUnicode\libs\utf8cpp\src\utf8_v2_3_1">
+      <UniqueIdentifier>{2C0E3FE5-84D9-5142-4A3B-7B23}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxUnicode\libs\utf8cpp\src\utf8_v2_3_1\source">
+      <UniqueIdentifier>{08F75FB2-55F3-79E5-445B-EDFC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxUnicode\libs\utf8cpp\src\utf8_v2_3_1\source\utf8">
+      <UniqueIdentifier>{FF32AC70-6CE9-79DC-96F2-AE32}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxWMFVideoPlayer">
+      <UniqueIdentifier>{0D998C22-15FA-2D4D-B14F-3097}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxWMFVideoPlayer\src">
+      <UniqueIdentifier>{F82D83B9-0D21-7132-BD40-6A3F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxWMFVideoPlayer\src\presenter">
+      <UniqueIdentifier>{BE3E8290-7E8D-C507-ABFC-7796}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxWMFVideoPlayer\src\presenter\common">
+      <UniqueIdentifier>{7C551AFE-871E-B43E-36A9-EE73}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxJSON">
+      <UniqueIdentifier>{faf93df4-2627-43a3-85da-35aacdf589c0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxJSON\src">
+      <UniqueIdentifier>{32e9ebbf-fb71-4aa3-b7b0-34173b6bdde0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxJSON\libs">
+      <UniqueIdentifier>{76e865c4-b534-4f06-9e38-69f286761657}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxJSON\libs\jsoncpp">
+      <UniqueIdentifier>{10e076bc-b409-4da7-8418-fff353213b31}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxJSON\libs\jsoncpp\src">
+      <UniqueIdentifier>{7fba00ab-2855-46bb-b22c-bd36cb2d3ec5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxJSON\libs\jsoncpp\include">
+      <UniqueIdentifier>{df09a862-f461-4070-ac54-44ce3e582336}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxJSON\libs\jsoncpp\include\json">
+      <UniqueIdentifier>{46bd246b-a4d1-4659-b53a-dcababd59140}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\ofApp.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxBaseGui.h">
+      <Filter>addons\ofxGui\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxButton.h">
+      <Filter>addons\ofxGui\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxGui.h">
+      <Filter>addons\ofxGui\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxGuiGroup.h">
+      <Filter>addons\ofxGui\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxLabel.h">
+      <Filter>addons\ofxGui\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxPanel.h">
+      <Filter>addons\ofxGui\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxSlider.h">
+      <Filter>addons\ofxGui\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxSliderGroup.h">
+      <Filter>addons\ofxGui\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxToggle.h">
+      <Filter>addons\ofxGui\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxThreadedImageLoader\src\ofxThreadedImageLoader.h">
+      <Filter>addons\ofxThreadedImageLoader\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxVectorGraphics\src\ofxVectorGraphics.h">
+      <Filter>addons\ofxVectorGraphics\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxVectorGraphics\libs\CreEPS.hpp">
+      <Filter>addons\ofxVectorGraphics\libs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxVectorGraphics\libs\CreEPS_Types.hpp">
+      <Filter>addons\ofxVectorGraphics\libs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFontStash\src\ofxFontStash.h">
+      <Filter>addons\ofxFontStash\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFontStash\libs\fontstash\src\fontstash.h">
+      <Filter>addons\ofxFontStash\libs\fontstash\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFontStash\libs\fontstash\src\stb_truetype.h">
+      <Filter>addons\ofxFontStash\libs\fontstash\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\content\BaseContent.h">
+      <Filter>addons\ofxHeliosLibs\src\content</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\content\ContentTypes.h">
+      <Filter>addons\ofxHeliosLibs\src\content</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\content\ImageContent.h">
+      <Filter>addons\ofxHeliosLibs\src\content</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\content\ImageGalleryContent.h">
+      <Filter>addons\ofxHeliosLibs\src\content</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\content\ImagePlus.h">
+      <Filter>addons\ofxHeliosLibs\src\content</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\content\ImageThumbnailGallery.h">
+      <Filter>addons\ofxHeliosLibs\src\content</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\content\TextImageContent.h">
+      <Filter>addons\ofxHeliosLibs\src\content</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\content\TimelineIcon.h">
+      <Filter>addons\ofxHeliosLibs\src\content</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\content\TimelineMarker.h">
+      <Filter>addons\ofxHeliosLibs\src\content</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\content\VideoContent.h">
+      <Filter>addons\ofxHeliosLibs\src\content</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\content\VideoContentReveal.h">
+      <Filter>addons\ofxHeliosLibs\src\content</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\gesture\GestureCursor.h">
+      <Filter>addons\ofxHeliosLibs\src\gesture</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\gesture\GestureEvents.h">
+      <Filter>addons\ofxHeliosLibs\src\gesture</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\gesture\GestureHub.h">
+      <Filter>addons\ofxHeliosLibs\src\gesture</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\interactive\AngleCursorPivot.h">
+      <Filter>addons\ofxHeliosLibs\src\interactive</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\interactive\DragScroller.h">
+      <Filter>addons\ofxHeliosLibs\src\interactive</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\interactive\EasyMask.h">
+      <Filter>addons\ofxHeliosLibs\src\interactive</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\interactive\HalfRoundedRect.h">
+      <Filter>addons\ofxHeliosLibs\src\interactive</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\interactive\HitRectangle.h">
+      <Filter>addons\ofxHeliosLibs\src\interactive</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\interactive\KeyboardInputPanel.h">
+      <Filter>addons\ofxHeliosLibs\src\interactive</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\interactive\ofxImageButton.h">
+      <Filter>addons\ofxHeliosLibs\src\interactive</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\interactive\ofxMatrixTransformImage.h">
+      <Filter>addons\ofxHeliosLibs\src\interactive</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\interactive\ofxMatrixTransformImageRef.h">
+      <Filter>addons\ofxHeliosLibs\src\interactive</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\interactive\ofxMatrixTransformObject.h">
+      <Filter>addons\ofxHeliosLibs\src\interactive</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\interactive\ofxMatrixTransformTextureRef.h">
+      <Filter>addons\ofxHeliosLibs\src\interactive</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\interactive\ofxSimpleImageButton.h">
+      <Filter>addons\ofxHeliosLibs\src\interactive</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\interactive\ofxTransitionItem.h">
+      <Filter>addons\ofxHeliosLibs\src\interactive</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\interactive\VideoPlayer.h">
+      <Filter>addons\ofxHeliosLibs\src\interactive</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\loading\LoadingEvents.h">
+      <Filter>addons\ofxHeliosLibs\src\loading</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\loading\ofxAsyncLoadingData.h">
+      <Filter>addons\ofxHeliosLibs\src\loading</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\loading\ofxLoadingManager.h">
+      <Filter>addons\ofxHeliosLibs\src\loading</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\mediaBanks\SoundBank.h">
+      <Filter>addons\ofxHeliosLibs\src\mediaBanks</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\mediaBanks\VideoBank.h">
+      <Filter>addons\ofxHeliosLibs\src\mediaBanks</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\multitouch\BaseMultitouchObject.h">
+      <Filter>addons\ofxHeliosLibs\src\multitouch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\multitouch\MultiTouchActions.h">
+      <Filter>addons\ofxHeliosLibs\src\multitouch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\multitouch\MultiTouchCursor.h">
+      <Filter>addons\ofxHeliosLibs\src\multitouch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\multitouch\MultiTouchObject.h">
+      <Filter>addons\ofxHeliosLibs\src\multitouch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\ofxAlphaStack\ofxAlphaStackItem.h">
+      <Filter>addons\ofxHeliosLibs\src\ofxAlphaStack</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\ofxAtomicLog\src\ofxAtomicLog.h">
+      <Filter>addons\ofxHeliosLibs\src\ofxAtomicLog\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\ofxAtomicLog\src\ofxScopeMutex.h">
+      <Filter>addons\ofxHeliosLibs\src\ofxAtomicLog\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\pages\BasePage.h">
+      <Filter>addons\ofxHeliosLibs\src\pages</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\pages\PageEvent.h">
+      <Filter>addons\ofxHeliosLibs\src\pages</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\pages\PageEventData.h">
+      <Filter>addons\ofxHeliosLibs\src\pages</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\text\ConsoleTextBlock.h">
+      <Filter>addons\ofxHeliosLibs\src\text</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\text\FontList.h">
+      <Filter>addons\ofxHeliosLibs\src\text</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\text\FontManager.h">
+      <Filter>addons\ofxHeliosLibs\src\text</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\text\FontObject.h">
+      <Filter>addons\ofxHeliosLibs\src\text</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\text\ofxFontStashManager.h">
+      <Filter>addons\ofxHeliosLibs\src\text</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\text\ofxFontStashTextBlock.h">
+      <Filter>addons\ofxHeliosLibs\src\text</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\text\ofxTextSuite\ofxTextBlock.h">
+      <Filter>addons\ofxHeliosLibs\src\text\ofxTextSuite</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\text\ofxTextSuite\ofxTextSuite.h">
+      <Filter>addons\ofxHeliosLibs\src\text\ofxTextSuite</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\text\TextEncodingPairing.h">
+      <Filter>addons\ofxHeliosLibs\src\text</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\text\TextEncodingUtility.h">
+      <Filter>addons\ofxHeliosLibs\src\text</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\text\TextFBO.h">
+      <Filter>addons\ofxHeliosLibs\src\text</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\text\TextField.h">
+      <Filter>addons\ofxHeliosLibs\src\text</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\text\TextUtils.h">
+      <Filter>addons\ofxHeliosLibs\src\text</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\threaded_utils\ofxThreadedFileSaver.h">
+      <Filter>addons\ofxHeliosLibs\src\threaded_utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\threaded_utils\ofxThreadedLoader.h">
+      <Filter>addons\ofxHeliosLibs\src\threaded_utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\utils\IdleInputManager.h">
+      <Filter>addons\ofxHeliosLibs\src\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\utils\ofxCalendar.h">
+      <Filter>addons\ofxHeliosLibs\src\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\utils\ofxHeliosUtils.h">
+      <Filter>addons\ofxHeliosLibs\src\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\visual\ColorPalette.h">
+      <Filter>addons\ofxHeliosLibs\src\visual</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\visual\GradientQuad.h">
+      <Filter>addons\ofxHeliosLibs\src\visual</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\visual\PositionedSequence.h">
+      <Filter>addons\ofxHeliosLibs\src\visual</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\visual\Quad.h">
+      <Filter>addons\ofxHeliosLibs\src\visual</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\visual\RoundedGradientPanel.h">
+      <Filter>addons\ofxHeliosLibs\src\visual</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\visual\SlidingDoorRect.h">
+      <Filter>addons\ofxHeliosLibs\src\visual</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxHeliosLibs\src\visual\SolidColorShape.h">
+      <Filter>addons\ofxHeliosLibs\src\visual</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxKinectNui\src\kinect\nui\AudioStream.h">
+      <Filter>addons\ofxKinectNui\src\kinect\nui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxKinectNui\src\kinect\nui\ImageFrame.h">
+      <Filter>addons\ofxKinectNui\src\kinect\nui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxKinectNui\src\kinect\nui\ImageStream.h">
+      <Filter>addons\ofxKinectNui\src\kinect\nui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxKinectNui\src\kinect\nui\Kinect.h">
+      <Filter>addons\ofxKinectNui\src\kinect\nui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxKinectNui\src\kinect\nui\KinectContext.h">
+      <Filter>addons\ofxKinectNui\src\kinect\nui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxKinectNui\src\kinect\nui\KinectListener.h">
+      <Filter>addons\ofxKinectNui\src\kinect\nui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxKinectNui\src\kinect\nui\SkeletonEngine.h">
+      <Filter>addons\ofxKinectNui\src\kinect\nui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxKinectNui\src\kinect\nui\SkeletonFrame.h">
+      <Filter>addons\ofxKinectNui\src\kinect\nui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxKinectNui\src\kinect\nui\StaticMediaBuffer.h">
+      <Filter>addons\ofxKinectNui\src\kinect\nui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxKinectNui\src\kinect\nui\WaveFileWriter.h">
+      <Filter>addons\ofxKinectNui\src\kinect\nui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxKinectNui\src\kinect\nui\WaveOutput.h">
+      <Filter>addons\ofxKinectNui\src\kinect\nui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxKinectNui\src\ofxBase3DVideo.h">
+      <Filter>addons\ofxKinectNui\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxKinectNui\src\ofxKinectNui.h">
+      <Filter>addons\ofxKinectNui\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxKinectNui\src\ofxKinectNuiDraw.h">
+      <Filter>addons\ofxKinectNui\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxKinectNui\src\ofxKinectNuiDrawInterface.h">
+      <Filter>addons\ofxKinectNui\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxKinectNui\src\ofxKinectNuiPlayer.h">
+      <Filter>addons\ofxKinectNui\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxKinectNui\src\ofxKinectNuiRecorder.h">
+      <Filter>addons\ofxKinectNui\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxKinectNui\src\ofxKinectNuiSoundRecorder.h">
+      <Filter>addons\ofxKinectNui\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxKinectNui\src\win32\Event.h">
+      <Filter>addons\ofxKinectNui\src\win32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxKinectNui\src\win32\SpinLock.h">
+      <Filter>addons\ofxKinectNui\src\win32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxSimpleMask\src\ofxSimpleMask.h">
+      <Filter>addons\ofxSimpleMask\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxSimpleTimer\src\ofxSimpleTimer.h">
+      <Filter>addons\ofxSimpleTimer\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxTweenzor\src\ofxTweenzor.h">
+      <Filter>addons\ofxTweenzor\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxTweenzor\src\Tween.h">
+      <Filter>addons\ofxTweenzor\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxTweenzor\src\TweenEvent.h">
+      <Filter>addons\ofxTweenzor\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxTweenzor\src\TweenFunctions.h">
+      <Filter>addons\ofxTweenzor\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxTweenzor\src\TweenSelector.h">
+      <Filter>addons\ofxTweenzor\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxTweenzor\src\Tweenzor.h">
+      <Filter>addons\ofxTweenzor\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxUnicode\src\ofTextConverter.h">
+      <Filter>addons\ofxUnicode\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxUnicode\src\ofUnicode.h">
+      <Filter>addons\ofxUnicode\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxUnicode\src\ofUTF8.h">
+      <Filter>addons\ofxUnicode\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxUnicode\libs\utf8cpp\include\utf8\checked.h">
+      <Filter>addons\ofxUnicode\libs\utf8cpp\include\utf8</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxUnicode\libs\utf8cpp\include\utf8\core.h">
+      <Filter>addons\ofxUnicode\libs\utf8cpp\include\utf8</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxUnicode\libs\utf8cpp\include\utf8\unchecked.h">
+      <Filter>addons\ofxUnicode\libs\utf8cpp\include\utf8</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxUnicode\libs\utf8cpp\include\utf8.h">
+      <Filter>addons\ofxUnicode\libs\utf8cpp\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxUnicode\libs\utf8cpp\src\utf8_v2_3_1\source\utf8\checked.h">
+      <Filter>addons\ofxUnicode\libs\utf8cpp\src\utf8_v2_3_1\source\utf8</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxUnicode\libs\utf8cpp\src\utf8_v2_3_1\source\utf8\core.h">
+      <Filter>addons\ofxUnicode\libs\utf8cpp\src\utf8_v2_3_1\source\utf8</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxUnicode\libs\utf8cpp\src\utf8_v2_3_1\source\utf8\unchecked.h">
+      <Filter>addons\ofxUnicode\libs\utf8cpp\src\utf8_v2_3_1\source\utf8</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxUnicode\libs\utf8cpp\src\utf8_v2_3_1\source\utf8.h">
+      <Filter>addons\ofxUnicode\libs\utf8cpp\src\utf8_v2_3_1\source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxWMFVideoPlayer\src\ofxWMFVideoPlayer.h">
+      <Filter>addons\ofxWMFVideoPlayer\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxWMFVideoPlayer\src\ofxWMFVideoPlayerUtils.h">
+      <Filter>addons\ofxWMFVideoPlayer\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxWMFVideoPlayer\src\presenter\common\AsyncCB.h">
+      <Filter>addons\ofxWMFVideoPlayer\src\presenter\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxWMFVideoPlayer\src\presenter\common\BufferLock.h">
+      <Filter>addons\ofxWMFVideoPlayer\src\presenter\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxWMFVideoPlayer\src\presenter\common\ClassFactory.h">
+      <Filter>addons\ofxWMFVideoPlayer\src\presenter\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxWMFVideoPlayer\src\presenter\common\common.h">
+      <Filter>addons\ofxWMFVideoPlayer\src\presenter\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxWMFVideoPlayer\src\presenter\common\critsec.h">
+      <Filter>addons\ofxWMFVideoPlayer\src\presenter\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxWMFVideoPlayer\src\presenter\common\GrowArray.h">
+      <Filter>addons\ofxWMFVideoPlayer\src\presenter\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxWMFVideoPlayer\src\presenter\common\linklist.h">
+      <Filter>addons\ofxWMFVideoPlayer\src\presenter\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxWMFVideoPlayer\src\presenter\common\logging.h">
+      <Filter>addons\ofxWMFVideoPlayer\src\presenter\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxWMFVideoPlayer\src\presenter\common\logmediatype.h">
+      <Filter>addons\ofxWMFVideoPlayer\src\presenter\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxWMFVideoPlayer\src\presenter\common\mediatype.h">
+      <Filter>addons\ofxWMFVideoPlayer\src\presenter\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxWMFVideoPlayer\src\presenter\common\mfutils.h">
+      <Filter>addons\ofxWMFVideoPlayer\src\presenter\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxWMFVideoPlayer\src\presenter\common\PropVar.h">
+      <Filter>addons\ofxWMFVideoPlayer\src\presenter\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxWMFVideoPlayer\src\presenter\common\registry.h">
+      <Filter>addons\ofxWMFVideoPlayer\src\presenter\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxWMFVideoPlayer\src\presenter\common\TinyMap.h">
+      <Filter>addons\ofxWMFVideoPlayer\src\presenter\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxWMFVideoPlayer\src\presenter\common\trace.h">
+      <Filter>addons\ofxWMFVideoPlayer\src\presenter\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxWMFVideoPlayer\src\presenter\EVRPresenter.h">
+      <Filter>addons\ofxWMFVideoPlayer\src\presenter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxWMFVideoPlayer\src\presenter\EVRPresenterUuid.h">
+      <Filter>addons\ofxWMFVideoPlayer\src\presenter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxWMFVideoPlayer\src\presenter\Helpers.h">
+      <Filter>addons\ofxWMFVideoPlayer\src\presenter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxWMFVideoPlayer\src\presenter\PresentEngine.h">
+      <Filter>addons\ofxWMFVideoPlayer\src\presenter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxWMFVideoPlayer\src\presenter\Presenter.h">
+      <Filter>addons\ofxWMFVideoPlayer\src\presenter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxWMFVideoPlayer\src\presenter\scheduler.h">
+      <Filter>addons\ofxWMFVideoPlayer\src\presenter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxJSON\src\ofxJSON.h">
+      <Filter>addons\ofxJSON\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxJSON\src\ofxJSONElement.h">
+      <Filter>addons\ofxJSON\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxJSON\libs\jsoncpp\include\json\json.h">
+      <Filter>addons\ofxJSON\libs\jsoncpp\include\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxJSON\libs\jsoncpp\include\json\json-forwards.h">
+      <Filter>addons\ofxJSON\libs\jsoncpp\include\json</Filter>
+    </ClInclude>
+    <ClInclude Include="src\DataSyncManager.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\AtomosphericImageData.h">
+      <Filter>src</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="icon.rc" />
+  </ItemGroup>
+</Project>

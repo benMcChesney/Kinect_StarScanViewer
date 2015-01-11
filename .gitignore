@@ -26,3 +26,9 @@
 *.exe
 *.out
 *.app
+KinectApp/obj/
+*.sdf
+*.opensdf
+*.pdb
+*.ilk
+*.exp

@@ -1,0 +1,56 @@
+{
+  "spectrums":
+  [
+    {
+      "label": "AIA 094",
+      "id" : 94,
+      "description":"This detector ( as well as AIA 131 is optimized to study solar flares. It has the capability to take images every 2 seonds ( instead of 10 ) in a reduced vield of view in order to look at specific flares in more detail."
+    },
+    {
+      "label": "AIA 0193",
+      "id" : 193,
+      "description":"This detector ( as well as AIA 131 is optimized to study solar flares. It has the capability to take images every 2 seonds ( instead of 10 ) in a reduced vield of view in order to look at specific flares in more detail."
+    },
+     {
+      "label": "AIA 0211",
+      "id" : 211,
+      "description":"This detector ( as well as AIA 131 is optimized to study solar flares. It has the capability to take images every 2 seonds ( instead of 10 ) in a reduced vield of view in order to look at specific flares in more detail."
+    },
+     {
+      "label": "AIA 0171",
+      "id" : 171,
+      "description":"This detector ( as well as AIA 131 is optimized to study solar flares. It has the capability to take images every 2 seonds ( instead of 10 ) in a reduced vield of view in order to look at specific flares in more detail."
+    },
+     {
+      "label": "AIA 0131",
+      "id" : 131,
+      "description":"This detector ( as well as AIA 131 is optimized to study solar flares. It has the capability to take images every 2 seonds ( instead of 10 ) in a reduced vield of view in order to look at specific flares in more detail."
+    },
+     {
+      "label": "AIA 0304",
+      "id" : 304,
+      "description":"This detector ( as well as AIA 131 is optimized to study solar flares. It has the capability to take images every 2 seonds ( instead of 10 ) in a reduced vield of view in order to look at specific flares in more detail."
+    },
+     {
+      "label": "AIA 0335",
+      "id" : 335,
+      "description":"This detector ( as well as AIA 131 is optimized to study solar flares. It has the capability to take images every 2 seonds ( instead of 10 ) in a reduced vield of view in order to look at specific flares in more detail."
+    },
+     {
+      "label": "AIA 1600",
+      "id" : 1600,
+      "description":"This detector ( as well as AIA 131 is optimized to study solar flares. It has the capability to take images every 2 seonds ( instead of 10 ) in a reduced vield of view in order to look at specific flares in more detail."
+    },
+     {
+      "label": "AIA 1700",
+      "id" : 1700,
+      "description":"This detector ( as well as AIA 131 is optimized to study solar flares. It has the capability to take images every 2 seonds ( instead of 10 ) in a reduced vield of view in order to look at specific flares in more detail."
+    },
+     {
+      "label": "AIA 4500",
+      "id" : 4500,
+      "description":"This detector ( as well as AIA 131 is optimized to study solar flares. It has the capability to take images every 2 seonds ( instead of 10 ) in a reduced vield of view in order to look at specific flares in more detail."
+    }
+  ]
+  
+}
