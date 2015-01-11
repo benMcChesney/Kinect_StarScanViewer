@@ -17,29 +17,25 @@ void DataSyncManager::loadFromJsonRef( ofxJSONElement data )
 	ofLogNotice() << "loadFromJsonRef - # spectrums " << numSpectrums << endl ; 
 	
 	string resolution = "1024" ; 
-	string baseUrl = "http://sdo.gsfc.nasa.gov/assets/img/latest/latest_" + resolution + "_" ; 
-
 	
 	for ( int i = 0 ; i < numSpectrums ; i++ ) 
 	{
+		//Parse each field
 		string label = data[ "spectrums" ][i]["label"].asString(); 
-		int aia_id = data[ "spectrums" ][i]["id"].asInt() ; 
 		string description = data[ "spectrums" ][i]["description"].asString() ; 
-		
-		string imagePath = ofToString( aia_id ) + ".jpg" ; 
-		if ( aia_id < 1000 ) 
-			imagePath = "0" + ofToString( aia_id ) +".jpg" ; 
-		if ( aia_id < 100 ) 
-			imagePath = "00" + ofToString( aia_id ) +".jpg" ; 
+		string location = data[ "spectrums" ][i]["location"].asString() ;
+		string wavelength = data[ "spectrums" ][i]["primaryIons"].asString() ; 
+		string temperatureKelvin = data[ "spectrums" ][i]["temperatureKelvin"].asString() ; 
+		string temperatureFahrenheight = data[ "spectrums" ][i]["temperatureFahrenheight"].asString() ; 
+		string assetUrl = data[ "spectrums" ][i]["assetUrl"].asString(); 
 
-		string url = baseUrl + imagePath ; 
 		ofLogNotice() << "#" << i << " " << label ; 
 
-		atmosphericImageData.push_back( new AtmosphericImageData(	label , aia_id , description , url ) ) ; 
-		atmosphericImageData[i]->image.setImageProperties( loadingManager.remoteUrlToLocal( url ) , 0 , 0 , ofPoint ( 0.5 , 0.5 ) , 1.0f ) ; 
+		atmosphericImageData.push_back( new AtmosphericImageData(	label , description , location , wavelength , temperatureKelvin, temperatureFahrenheight , assetUrl  ) ) ; 
+		atmosphericImageData[i]->image.setImageProperties( loadingManager.remoteUrlToLocal( assetUrl ) , 0 , 0 , ofPoint ( 0.5 , 0.5 ) , 1.0f ) ; 
 
-		loadingManager.loadURL( url ) ; 
-		loadingManager.addToThreadedImageQueue( atmosphericImageData[i]->image.image , atmosphericImageData[i]->url , true , false ) ; 
+		loadingManager.loadURL( assetUrl ) ; 
+		loadingManager.addToThreadedImageQueue( atmosphericImageData[i]->image.image , atmosphericImageData[i]->assetUrl , true , false ) ; 
 	}
 	
 }

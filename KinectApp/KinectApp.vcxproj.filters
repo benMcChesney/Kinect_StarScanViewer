@@ -244,6 +244,9 @@
     <ClCompile Include="src\ImageDetailWidget.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="src\ThumbnailWidget.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -893,13 +896,16 @@
     <ClInclude Include="src\DataSyncManager.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="src\AtomosphericImageData.h">
-      <Filter>src</Filter>
-    </ClInclude>
     <ClInclude Include="src\ImageCompareView.h">
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="src\ImageDetailWidget.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ThumbnailWidget.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\AtmosphericImageData.h">
       <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>

@@ -14,18 +14,27 @@ class AtmosphericImageData
 {
 public : 
 	AtmosphericImageData( ) { }
-	AtmosphericImageData( string _label , int _aia_id , string _description , string _url ) 
+	AtmosphericImageData(	string _label , string _description , string _location , string _primaryIons ,
+							string _temperatureFahrenheight , string _temperatureKelvin , string _assetUrl ) 
 	{
 		label = _label ; 
-		aia_id = _aia_id ; 
-		description = _description ;
-		url = _url ; 
+		description = _description ; 
+		location = _location ; 
+		primaryIons = _primaryIons  ; 
+		temperatureFahrenheight = _temperatureFahrenheight ; 
+		temperatureKelvin = _temperatureKelvin ; 
+		assetUrl = _assetUrl ; 
 	}
 	
 	string label ; 
-	int aia_id ; 
-	string url ; 
 	string description ; 
+	string location ; 
+	string wavelength ; 
+	string primaryIons ; 
+	string temperatureKelvin ;
+	string temperatureFahrenheight ; 
+	string assetUrl ; 
+
 	ofxMatrixTransformImage image ; 
 
 	void reloadTextureFromDisk() ; 
