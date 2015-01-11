@@ -14,12 +14,13 @@ class AtmosphericImageData
 {
 public : 
 	AtmosphericImageData( ) { }
-	AtmosphericImageData(	string _label , string _description , string _location , string _primaryIons ,
+	AtmosphericImageData(	string _label , string _description , string _location , string _wavelength , string _primaryIons ,
 							string _temperatureFahrenheight , string _temperatureKelvin , string _assetUrl ) 
 	{
 		label = _label ; 
 		description = _description ; 
 		location = _location ; 
+		wavelength = _wavelength ;
 		primaryIons = _primaryIons  ; 
 		temperatureFahrenheight = _temperatureFahrenheight ; 
 		temperatureKelvin = _temperatureKelvin ; 

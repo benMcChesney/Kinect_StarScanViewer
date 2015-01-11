@@ -23,6 +23,12 @@ public :
 	ofxMatrixTransformImage * detailImage ; 
 	ofxFontStashTextBlock title ; 
 	ofxFontStashTextBlock description ; 
+	ofxFontStashTextBlock location ; 
+	ofxFontStashTextBlock wavelength ; 
+	ofxFontStashTextBlock primaryIons ; 
+	ofxFontStashTextBlock temperatureKelvin ; 
+	ofxFontStashTextBlock temperatureFahrenheight ; 
+ 
 	ofFbo maskFbo ; 
 
 	void setup ( ) ; 
@@ -35,4 +41,9 @@ public :
 	void transitionIn() ; 
 	void transitionOut() ; 
 
+	ofParameter<float> delayIncrement ; 
+	ofParameter<float> transitionDuration ; 
+	ofParameter<float> transitionSlideY ; 
+
+	float maskAlpha ; 
 };

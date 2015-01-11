@@ -27,6 +27,27 @@ void ofApp::setup()
 	gui.setup() ; 
 	gui.add( bDrawDebug.set( "DRAW DEBUG" , false ) ) ; 
 
+	gui.add( imageCompareView.leftView.delayIncrement.set( "LEFT DELAY INC" , 0.1f , 0.0f , 1.0f ) ) ; 
+	gui.add( imageCompareView.leftView.transitionDuration.set( "LEFT TRANSITION DURATION" , 0.1f , 0.0f , 1.0f ) ) ; 
+	gui.add( imageCompareView.leftView.transitionSlideY.set( "LEFT TRANSITION SLIDE Y" , 0.1f , 0.0f , 1.0f ) ) ; 
+
+	gui.add( imageCompareView.rightView.delayIncrement.set( "LEFT DELAY INC" , 0.1f , 0.0f , 1.0f ) ) ; 
+	gui.add( imageCompareView.rightView.transitionDuration.set( "LEFT TRANSITION DURATION" , 0.1f , 0.0f , 1.0f ) ) ; 
+	gui.add( imageCompareView.rightView.transitionSlideY.set( "LEFT TRANSITION SLIDE Y" , 0.1f , 0.0f , 1.0f ) ) ; 
+
+	imageCompareView.rightView.transitionOut() ; 
+	imageCompareView.leftView.transitionOut() ; 
+
+	//reset all transitions
+	initialTweenDelay = 0 ;
+	Tweenzor::add( &initialTweenDelay , 0.0f , 1.0f , 0.0f , 2.0f ) ; 
+	Tweenzor::addCompleteListener( Tweenzor::getTween( &initialTweenDelay ) , this , &ofApp::initialTweenDelayComplete ) ; 
+}
+
+void ofApp::initialTweenDelayComplete ( float * args ) 
+{
+	imageCompareView.leftView.transitionIn() ; 
+	imageCompareView.rightView.transitionIn() ; 
 }
 
 //--------------------------------------------------------------

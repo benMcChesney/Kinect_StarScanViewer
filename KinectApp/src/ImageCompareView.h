@@ -21,11 +21,15 @@ public :
 	void update( ) ; 
 	void draw( ) ; 
 	void drawDebug( ) ; 
+	void transitionIn( ) ; 
+	void transitionOut( ) ; 
 
 	ImageDetailWidget leftView ; 
 	ImageDetailWidget rightView ; 
 	ofxSimpleMask mask ; 
 	float normalizedAmount ; 
+
+
 
 	 
 };

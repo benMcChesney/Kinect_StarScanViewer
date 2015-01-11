@@ -33,5 +33,9 @@ class ofApp : public ofBaseApp{
 
 		//Gui things
 		ofxPanel gui;
+
+		float initialTweenDelay ; 
+		void initialTweenDelayComplete ( float * args ) ; 
+
 		
 };

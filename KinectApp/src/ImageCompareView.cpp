@@ -45,11 +45,11 @@ void ImageCompareView::draw( )
 
 		//Prevent spamming error messages
 		if ( rightView.detailImage->image.bAllocated() ) 
-			mask.drawMask( rightView.detailImage->image.getTextureReference() , rightView.maskFbo.getTextureReference() , 0 , 0 , 1.0f ) ; 
+			mask.drawMask( rightView.detailImage->image.getTextureReference() , rightView.maskFbo.getTextureReference() , 0 , 0 , rightView.maskAlpha ) ; 
 
 		//Prevent spamming error messages
 		if ( leftView.detailImage->image.bAllocated() ) 
-			mask.drawMask( leftView.detailImage->image.getTextureReference() , leftView.maskFbo.getTextureReference() , 0 , 0 , 1.0f ) ; 
+			mask.drawMask( leftView.detailImage->image.getTextureReference() , leftView.maskFbo.getTextureReference() , 0 , 0 , leftView.maskAlpha ) ; 
 
 		//rightView.maskFbo.draw( 0 , 0 ) ; 
 	ofPopMatrix() ; 
@@ -71,5 +71,17 @@ void ImageCompareView::drawDebug( )
 
 	leftView.drawDebug() ; 
 	rightView.drawDebug() ; 
+}
+
+void ImageCompareView::transitionIn( ) 
+{
+	leftView.transitionIn() ; 
+	rightView.transitionIn() ; 
+}
+
+void ImageCompareView::transitionOut( ) 
+{
+	leftView.transitionOut() ; 
+	rightView.transitionOut() ; 
 }
 
