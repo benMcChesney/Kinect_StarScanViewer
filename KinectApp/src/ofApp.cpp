@@ -38,6 +38,9 @@ void ofApp::setup()
 	imageCompareView.rightView.transitionOut() ; 
 	imageCompareView.leftView.transitionOut() ; 
 
+	kinectManager.setup() ; 
+	kinectManager.setupGui( &gui ) ; 
+
 	//reset all transitions
 	initialTweenDelay = 0 ;
 	Tweenzor::add( &initialTweenDelay , 0.0f , 1.0f , 0.0f , 2.0f ) ; 
@@ -57,13 +60,16 @@ void ofApp::update()
 	dataSyncManager.update( ) ; 
 
 	//imageCompareView.alphaStackUpdate( imageCompareView.alpha ) ; 
-	imageCompareView.update( ) ; 
+	imageCompareView.update( ) ;
+
+	kinectManager.update( ) ; 
 }
 
 //--------------------------------------------------------------
 void ofApp::draw()
 {
-	imageCompareView.draw() ; 
+	imageCompareView.draw( ) ; 
+	kinectManager.draw( ) ; 
 
 	if ( bDrawDebug ) 
 	{
@@ -74,6 +80,8 @@ void ofApp::draw()
 	{
 		gui.draw( ) ; 
 	}
+
+
 
 }
 
