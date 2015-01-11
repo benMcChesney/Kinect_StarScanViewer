@@ -241,7 +241,7 @@
     <ClCompile Include="src\ImageCompareView.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\ImageDetailView.cpp">
+    <ClCompile Include="src\ImageDetailWidget.cpp">
       <Filter>src</Filter>
     </ClCompile>
   </ItemGroup>
@@ -899,7 +899,7 @@
     <ClInclude Include="src\ImageCompareView.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="src\ImageDetailView.h">
+    <ClInclude Include="src\ImageDetailWidget.h">
       <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>

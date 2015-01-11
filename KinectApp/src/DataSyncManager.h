@@ -9,7 +9,7 @@
 #include "ofMain.h"
 #include "ofxLoadingManager.h"
 #include "ofxJSONElement.h"
-#include "AtomosphericImageData.h"
+#include "AtmosphericImageData.h"
 
 class DataSyncManager
 {

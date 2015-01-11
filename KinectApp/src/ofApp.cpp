@@ -16,11 +16,16 @@ void ofApp::setup()
 	}
 
 	imageCompareView.setup() ; 
-	dataSyncManager.loadingManager.addToThreadedImageQueue( imageCompareView.leftView.detailImage->image , dataSyncManager.atmosphericImageData[0]->url , true ) ; 
-	dataSyncManager.loadingManager.addToThreadedImageQueue( imageCompareView.rightView.detailImage->image , dataSyncManager.atmosphericImageData[1]->url , true ) ; 
-	
+	//dataSyncManager.loadingManager.addToThreadedImageQueue( imageCompareView.leftView.detailImage->image , dataSyncManager.atmosphericImageData[0]->url , true ) ; 
+	//dataSyncManager.loadingManager.addToThreadedImageQueue( imageCompareView.rightView.detailImage->image , dataSyncManager.atmosphericImageData[1]->url , true ) ; 
+	imageCompareView.leftView.populateFromData( *dataSyncManager.atmosphericImageData[0] ) ; 
+	imageCompareView.rightView.populateFromData( *dataSyncManager.atmosphericImageData[1] ) ; 
+
 	ofSetVerticalSync( true ) ; 
 	ofBackground( 0 ) ; 
+
+	gui.setup() ; 
+	gui.add( bDrawDebug.set( "DRAW DEBUG" , false ) ) ; 
 
 }
 
@@ -37,26 +42,29 @@ void ofApp::update()
 //--------------------------------------------------------------
 void ofApp::draw()
 {
-	//dataSyncManager.draw( ) ; 
-	/*
-	ofPushMatrix() ; 
-		ofScale( 0.2 , 0.2 ) ; 
-		int increment = 0; 
-		for ( auto data = dataSyncManager.atmosphericImageData.begin() ; data != dataSyncManager.atmosphericImageData.end() ; data++ ) 
-		{
-			(*data)->image.draw() ; 
-			(*data)->image.x = increment * (*data)->image.getWidth() * 0.2 ; 
-			(*data)->image.y = 250 ; 
-			increment++ ; 
-		}
-	ofPopMatrix() ; */
-
 	imageCompareView.draw() ; 
+
+	if ( bDrawDebug ) 
+	{
+		imageCompareView.drawDebug() ; 
+	}
+
+	if ( bShowGui == true ) 
+	{
+		gui.draw( ) ; 
+	}
+
 }
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
-
+	switch ( key ) 
+	{
+		case 's':
+		case 'S':
+			bShowGui = !bShowGui ; 
+			break ; 
+	}
 }
 
 //--------------------------------------------------------------

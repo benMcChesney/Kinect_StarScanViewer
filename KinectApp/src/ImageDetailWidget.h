@@ -13,22 +13,26 @@
 #include "ofxFontStashTextBlock.h"
 #include "ofxAlphaStackItem.h"
 #include "Tweenzor.h"
+#include "AtmosphericImageData.h"
 
-class ImageDetailView : public ofxMatrixTransformObject, public ofxAlphaStackItem
+class ImageDetailWidget : public ofxMatrixTransformObject, public ofxAlphaStackItem
 {
 public :
-	ImageDetailView( ) { }
+	ImageDetailWidget( ) { }
 
 	ofxMatrixTransformImage * detailImage ; 
 	ofxFontStashTextBlock title ; 
 	ofxFontStashTextBlock description ; 
 	ofFbo maskFbo ; 
 
-	
-
 	void setup ( ) ; 
 	void update( ) ; 
 	void draw( ) ; 
 	void drawDebug( ) ; 
+
+	void populateFromData( AtmosphericImageData data ) ; 
+
+	void transitionIn() ; 
+	void transitionOut() ; 
 
 };

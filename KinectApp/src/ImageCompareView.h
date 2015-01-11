@@ -10,7 +10,7 @@
 #include "ofxSimpleMask.h"
 #include "ofxMatrixTransformImage.h"
 #include "ofxFontStashTextBlock.h"
-#include "ImageDetailView.h"
+#include "ImageDetailWidget.h"
 
 class ImageCompareView
 {
@@ -22,8 +22,8 @@ public :
 	void draw( ) ; 
 	void drawDebug( ) ; 
 
-	ImageDetailView leftView ; 
-	ImageDetailView rightView ; 
+	ImageDetailWidget leftView ; 
+	ImageDetailWidget rightView ; 
 	ofxSimpleMask mask ; 
 	float normalizedAmount ; 
 
