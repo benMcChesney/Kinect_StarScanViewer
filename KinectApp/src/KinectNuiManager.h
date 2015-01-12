@@ -13,7 +13,10 @@ this class is a holder for all kinect related functions including drawing the de
 #include "ofxKinectNui.h"
 #include "ofxKinectNuiPlayer.h"
 #include "ofxKinectNuiRecorder.h"
-
+#include "ofxSimpleTimer.h"
+#include "UserCalibrationData.h"
+#include "Tweenzor.h"
+#include "KinectCalibrationWidget.h"
 
 class ofxKinectNuiDrawTexture;
 class ofxKinectNuiDrawSkeleton;
@@ -26,7 +29,8 @@ public :
 	void setup( ) ;
 	void setupGui( ofxPanel * gui ) ; 
 	void update( ) ; 
-	void draw( ) ; 
+	void draw( ) ;
+	void drawDebug( float x , float y ) ; 
 
 	//Gui Parameters
 
@@ -36,7 +40,7 @@ public :
 	ofParameter< ofPoint > offset ; 
 
 	void nearClipingHandler( int & nearClip ) ; 
-	void farClipingHandler( int & farClip ) ; 
+	void farClippingHandler( int & farClip ) ; 
 	void angleHandler( int & angle) ; 
 	void offsetHandler( ofPoint & position ) ; 
 
@@ -56,6 +60,29 @@ public :
 
 	//void drawCalibratedTexture();
 	void exit( ) ; 
+
+	static enum CALLIBRATION_STATE
+	{
+		NO_USER = 0 , 
+		SEARCHING_NO_HERO = 1 , 
+		HERO_CALIBRATED = 2 , 
+		HERO_LOST = 3
+	};
+
+	CALLIBRATION_STATE calibrationState ;
+	int getNumActiveUsers ( ) ; 
+	void changeState ( CALLIBRATION_STATE state ) ; 
+	vector < UserCalibrationData * > userDataPool ; 
+
+	UserCalibrationData * hero ; 
+	string debugStream ; 
+
+	KinectCalibrationWidget calibrationWidget ; 
+	void checkForCalibration() ;
+
+	//Cursor detection
+	float centerX ; 
+
 
 
 };

@@ -250,6 +250,15 @@
     <ClCompile Include="src\KinectNuiManager.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="src\UserCalibrationData.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\KinectCalibrationWidget.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\KinectCursor.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -912,6 +921,15 @@
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="src\KinectNuiManager.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\UserCalibrationData.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\KinectCalibrationWidget.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\KinectCursor.h">
       <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>

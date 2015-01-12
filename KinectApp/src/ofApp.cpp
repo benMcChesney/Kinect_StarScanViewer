@@ -41,6 +41,8 @@ void ofApp::setup()
 	kinectManager.setup() ; 
 	kinectManager.setupGui( &gui ) ; 
 
+	gui.loadFromFile( "settings.xml" ) ; 
+
 	//reset all transitions
 	initialTweenDelay = 0 ;
 	Tweenzor::add( &initialTweenDelay , 0.0f , 1.0f , 0.0f , 2.0f ) ; 
@@ -74,6 +76,7 @@ void ofApp::draw()
 	if ( bDrawDebug ) 
 	{
 		imageCompareView.drawDebug() ; 
+		kinectManager.drawDebug(200 , 50 ) ; 
 	}
 
 	if ( bShowGui == true ) 
