@@ -17,6 +17,7 @@ this class is a holder for all kinect related functions including drawing the de
 #include "UserCalibrationData.h"
 #include "Tweenzor.h"
 #include "KinectCalibrationWidget.h"
+#include "KinectCursor.h"
 
 class ofxKinectNuiDrawTexture;
 class ofxKinectNuiDrawSkeleton;
@@ -81,8 +82,14 @@ public :
 	void checkForCalibration() ;
 
 	//Cursor detection
-	float centerX ; 
+	ofPoint cursorRegionOrigin ; 
+	ofParameter< ofPoint > cursorRegionDims ; 
+	void calibrateCursorRegion ( UserCalibrationData * data ) ; 
 
+	//Utils
+	string getStringFromCalibrationState ( CALLIBRATION_STATE state ) ;
 
+	KinectCursor kinectCursor ; 
+	ofParameter< float > interpolateTime ; 
 
 };

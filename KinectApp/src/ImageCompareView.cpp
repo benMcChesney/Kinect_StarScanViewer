@@ -67,7 +67,7 @@ void ImageCompareView::drawDebug( )
 	ss << "rightView alpha : " << rightView.getOFAlpha() << endl ;
 	ss << "right view text alpha : " << rightView.title.getOFAlpha() << endl ; 
 
-	ofDrawBitmapStringHighlight ( ss.str() , 50 , 50 ) ; 
+	//ofDrawBitmapStringHighlight ( ss.str() , 50 , 50 ) ; 
 
 	leftView.drawDebug() ; 
 	rightView.drawDebug() ; 

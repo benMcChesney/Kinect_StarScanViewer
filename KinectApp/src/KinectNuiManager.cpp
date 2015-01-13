@@ -56,6 +56,8 @@ void KinectNuiManager::setup( )
 	calibrationWidget.setup() ; 
 	calibrationWidget.kinect = &kinect ; 
 	hero = NULL ;  
+
+	kinectCursor.setup() ;
 }
 
 void KinectNuiManager::setupGui( ofxPanel * gui ) 
@@ -65,6 +67,8 @@ void KinectNuiManager::setupGui( ofxPanel * gui )
 	gui->add( angle.set( "ANGLE" , 1 , -30 , 30 ) ) ; 
 	gui->add( offset.set( "OFFSET" , ofPoint( 500 , 500 ) , ofPoint( 1 , 1 ) , ofPoint ( ofGetWidth() , ofGetHeight() ) ) ); 
 
+	gui->add( cursorRegionDims.set( "CURSOR REGION SIZE" , ofPoint( 50 ) , ofPoint( 0 ) , ofPoint ( 200 ) ) ) ; 
+	gui->add( interpolateTime.set( "INTERPOLATE TIME" , 0.2f , 0.01 , .5f ) ) ; 
 	//nearClipping.addListener( this , &KinectNuiManager::nearClipingHandler ) ; 
 	//farClipping.addListener( this , &KinectNuiManager::farClippingHandler ) ; 
 	angle.addListener( this , &KinectNuiManager::angleHandler ) ; 
@@ -94,21 +98,27 @@ void KinectNuiManager::offsetHandler( ofPoint & position )
 void KinectNuiManager::update( ) 
 {
 	//kinect.update() ; 
+	
 	calibrationWidget.update() ; 
 	kinectSource->update();
 	int id = 0 ; 
+	int numCalibrated = 0 ; 
 
 	stringstream debug ; 
 	for ( auto userData = userDataPool.begin() ;  userData != userDataPool.end() ; userData++ ) 
 	{
 		debug << " id # " << id << " - isActive" << kinect.isTrackedSkeleton( id ) << endl ; 
-		bool bTrackedStatus = (*userData)->bSkeletonActive ; 
-		bool bNewStatus = kinect.isTrackedSkeleton( id ) ; 
-		if ( bNewStatus != bTrackedStatus ) 
+		bool bActiveStatus = (*userData)->bSkeletonActive ; 
+		bool bNewActiveStatus = kinect.isTrackedSkeleton( id ) ; 
+
+		if ( (*userData)->bCalibrated == true ) 
+			numCalibrated++ ; 
+
+		if ( bNewActiveStatus != bActiveStatus ) 
 		{
 			ofLogNotice() << " id # " << id << " status is differnet " ; 
-			(*userData)->bSkeletonActive = bNewStatus ; 
-			if ( bNewStatus == true ) 
+			(*userData)->bSkeletonActive = bNewActiveStatus ; 
+			if ( bNewActiveStatus == true ) 
 			{
 				ofLogNotice() << "new user found @ id #" << id ; 
 				switch ( calibrationState ) 
@@ -127,27 +137,49 @@ void KinectNuiManager::update( )
 		}
 		else
 		{
-			(*userData)->bSkeletonActive = bNewStatus ; 
-			switch ( calibrationState ) 
+			(*userData)->bSkeletonActive = bNewActiveStatus ; 
+			if ( (*userData)->bSkeletonActive == true  ) 
 			{
-				case NO_USER : 
-					//nothing
-					break ; 
+				switch ( calibrationState ) 
+				{
+					case NO_USER : 
+						//nothing
+						break ; 
 
-				case SEARCHING_NO_HERO : 
-					checkForCalibration( ) ; 
-					break ; 
+					case SEARCHING_NO_HERO : 
+						checkForCalibration( ) ; 
+						break ; 
 
-				//Update calibrated point ( current cursor ) 
-				case HERO_CALIBRATED:
-					cout << " calib ID : " << userDataPool[ id ]->calibratedJointIndex << endl ; 
-					cout << " id: " << id << endl ;
-					cout << " - " << userDataPool[ id ]->calibrationPoint << endl ; 
+					//Update calibrated point ( current cursor ) 
+					case HERO_CALIBRATED:
+						userDataPool[ id ]->calibrationPoint = kinect.skeletonPoints[ id ][ userDataPool[ id ]->calibratedJointIndex ] ; 
+						break ; 
 
-					userDataPool[ id ]->calibrationPoint = kinect.skeletonPoints[ id ][ userDataPool[ id ]->calibratedJointIndex ] ; 
-					break ; 
+					//case NO_ISER
+				}
+			}
+			else
+			{
+				switch ( calibrationState ) 
+				{
+					case NO_USER : 
+						//nothing
+						break ; 
 
-				//case NO_ISER
+					case SEARCHING_NO_HERO : 
+						checkForCalibration( ) ; 
+						break ; 
+
+					//Update calibrated point ( current cursor ) 
+					case HERO_CALIBRATED:
+						//cout << " calib ID : " << userDataPool[ id ]->calibratedJointIndex << endl ; 
+						//cout << " id: " << id << endl ;
+						//cout << " - " << userDataPool[ id ]->calibrationPoint << endl ; 
+						userDataPool[ id ]->calibrationPoint = kinect.skeletonPoints[ id ][ userDataPool[ id ]->calibratedJointIndex ] ; 
+						break ; 
+
+					//case NO_ISER
+				}
 			}
 		}
 		
@@ -155,16 +187,47 @@ void KinectNuiManager::update( )
 		id++ ; 
 	}
 
-	//debugStream = debug.str() ; 
+	if ( calibrationState == SEARCHING_NO_HERO ) 
+	{
+		if ( numCalibrated > 0 ) 
+		{
+			changeState( HERO_CALIBRATED ) ; 
+		}
+	}
+
+	if ( hero != NULL ) 
+	{
+		kinectCursor.normalizedScreenPosition = ofPoint ( ofMap(  hero->calibrationPoint.x , cursorRegionOrigin.x - cursorRegionDims.get().x/2 , cursorRegionOrigin.x + cursorRegionDims.get().x/2 , 0.0f , 1.0f , true ) ,
+												   ofMap( hero->calibrationPoint.y , cursorRegionOrigin.y - cursorRegionDims.get().y/2 , cursorRegionOrigin.y + cursorRegionDims.get().y/2 , 0.0f , 1.0f , true ) ) ; 			
+
+		kinectCursor.worldPosition = hero->calibrationPoint ; 
+		
+		float screenX = ofMap( hero->calibrationPoint.x , cursorRegionOrigin.x - cursorRegionDims.get().x/2 , cursorRegionOrigin.x + cursorRegionDims.get().x/2 , 0 , ofGetWidth() , true  ) ; 
+		float screenY = ofMap( hero->calibrationPoint.y , cursorRegionOrigin.y - cursorRegionDims.get().y/2 , cursorRegionOrigin.y + cursorRegionDims.get().y/2 , 0 , ofGetHeight() , true  ) ; 
+		Tweenzor::add( &kinectCursor.screenPosition.x , kinectCursor.screenPosition.x , screenX, 0.0f, interpolateTime , EASE_OUT_QUAD ) ; 
+		Tweenzor::add( &kinectCursor.screenPosition.y , kinectCursor.screenPosition.y , screenY, 0.0f, interpolateTime , EASE_OUT_QUAD ) ; 
+	}
+	
 }
 
-/*
-NUI_SKELETON_POSITION_HEAD
-NUI_SKELETON_POSITION_SHOULDER_CENTER
-NUI_SKELETON_POSITION_WRIST_LEFT
-NUI_SKELETON_POSITION_WAIST
-*/
+void KinectNuiManager::calibrateCursorRegion ( UserCalibrationData * data )
+{
+	if ( hero == NULL ) 
+	{
+		ofLogNotice() << "calibrateCursorRegion - somehow HERO is null. aborting!" ; 
+		return ; 
+	}
 
+	ofPoint * pts = kinect.skeletonPoints[ data->userId ] ; 
+	
+	ofPoint leftCursor = pts[ NUI_SKELETON_POSITION_HAND_LEFT ] ; 
+	ofPoint rightCursor = pts[ NUI_SKELETON_POSITION_HAND_RIGHT ] ; 
+	ofPoint chest = pts[ NUI_SKELETON_POSITION_SPINE ] ;
+
+	cursorRegionOrigin = ofPoint ( hero->calibrationPoint.x , chest.y ) ; 
+
+	ofLogNotice() << "cursor region origin calibrated @ " << cursorRegionOrigin ; 
+}
 
 void KinectNuiManager::checkForCalibration( ) 
 {
@@ -186,13 +249,16 @@ void KinectNuiManager::checkForCalibration( )
 			{
 				targetPoint = leftCursor ; 
 				userDataPool[ i ]->calibratedJointIndex = NUI_SKELETON_POSITION_HAND_LEFT ; 
+				userDataPool[ i ]->calibrationPoint = kinect.skeletonPoints[ i ][ userDataPool[ i ]->calibratedJointIndex ] ; 
 				bCalibrating = true ;
 				
 			}
 			if ( rightCursor.y < targetPoint.y ) 
 			{
 				targetPoint = rightCursor ; 
+
 				userDataPool[ i ]->calibratedJointIndex = NUI_SKELETON_POSITION_HAND_RIGHT ; 
+				userDataPool[ i ]->calibrationPoint = kinect.skeletonPoints[ i ][ userDataPool[ i ]->calibratedJointIndex ] ; 
 				bCalibrating = true ; 
 			}
 
@@ -217,16 +283,12 @@ void KinectNuiManager::checkForCalibration( )
 			}
 
 			debugStream = ss.str() ; 
-		
-			/*for ( int k = 0 ; k < NUI_SKELETON_POSITION_COUNT ; k++ ) 
-			{
-				//NUI_SKELETON_POSITION_SHOULDER_CENTER
-			}*/
 		}
 		else
 		{
 			hero = userDataPool[ i ] ; 
-			
+
+			calibrateCursorRegion( hero ) ; 
 			changeState( HERO_CALIBRATED ) ; 
 		}
 	}
@@ -301,8 +363,10 @@ void KinectNuiManager::draw( )
 		ofTranslate( offset ) ; 
 		ofSetColor( 255 ) ; 
 		ofEnableAlphaBlending() ; 
-		int w = 240 ; 
-		int h = 180 ; 
+
+		float scale = 3.0; 
+		int w = 640 / scale ; 
+		int h = 480 / scale ; 
 		//kinect.drawVideo( 0, 0, w, h );
 		
 		kinect.drawDepth( 0, 0, w, h );
@@ -310,21 +374,48 @@ void KinectNuiManager::draw( )
 		kinect.drawLabel( 0, 0, w, h );
 		ofSetColor( 255 ) ; 
 		kinect.drawSkeleton(0 ,0, w, h);
+
+
+		if ( calibrationState == HERO_CALIBRATED ) 
+		{
+			float iScale = 1.0f / scale ; 
+			ofPushMatrix() ; 
+				//ofScale( 1/scale , 1/scale ) ; 
+				ofTranslate( (cursorRegionOrigin.x - cursorRegionDims.get().x/2) * iScale , 
+							 (cursorRegionOrigin.y - cursorRegionDims.get().y/2) * iScale  ) ; 
+				ofPushStyle() ; 
+					ofNoFill() ; 
+					ofSetLineWidth( 3 ) ; 
+					ofSetColor( ofColor::cyan ) ; 
+
+					ofRect(	0 , 0 , cursorRegionDims.get().x * iScale, cursorRegionDims.get().y * iScale ) ; 
+					ofFill() ; 
+					ofSetColor( ofColor::yellow ) ; 
+					ofCircle( kinectCursor.worldPosition.x * iScale , kinectCursor.worldPosition.y * iScale , 14 ); 
+
+				ofPopStyle() ; 
+			ofPopMatrix() ; 
+		}
+
 	ofPopMatrix() ; 
 
 
-	if ( calibrationState == HERO_CALIBRATED && hero != NULL ) 
+	if ( hero != NULL ) 
 	{
+		//float _x = ofMap( hero->calibrationPoint.x , 0 , 640 , 0 , calibrationWidget.drawSize.width , true ) ; 
+		//float _y = ofMap( hero->calibrationPoint.y , 0 , 480 , 0 , calibrationWidget.drawSize.height , true ) ; 
+		
+		kinectCursor.draw() ; 
 
-		//userDataPool[ i ]->calibrationPoint = 
-		float _x = ofMap( hero->calibrationPoint.x , 0 , 640 , 0 , calibrationWidget.drawSize.width , true ) ; 
-		float _y = ofMap( hero->calibrationPoint.y , 0 , 480 , 0 , calibrationWidget.drawSize.height , true ) ; 
-
-		float screenX = ofMap( _x , 320 , 640 , 0 , ofGetWidth() , true  ) ; 
-		float screenY = ofMap( _y , 0 , 480 , 0 , ofGetHeight() , true  ) ; 
-
-		ofSetColor ( ofColor::yellow ) ; 
-		ofCircle( screenX , screenY , 40 ) ;
+				/*
+		for ( auto data = userDataPool.begin() ; data != userDataPool.end() ; data++ ) 
+		{
+			if ( (*data)->bCalibrated == true ) 
+			{
+				
+			}
+		}*/
+		
 	}
 }
 
@@ -337,6 +428,17 @@ void KinectNuiManager::drawDebug( float x , float y)
 		ss << "user[ " << i << " ] - bSkeletonActive ? " << userDataPool[ i ]->bSkeletonActive << " - bCalibrating ?" << userDataPool[ i ]->bCalibrated << endl ; 
 	}
 
+	ss << "CALIBRATION STATE " << getStringFromCalibrationState( calibrationState ) << endl ; 
+
+	string heroString = "HERO IS NULL" ; 
+
+	if ( hero != NULL ) 
+	{
+		heroString = "HERO active!" ; 
+		ss << "TARGETPOINT : " << hero->calibrationPoint << endl ;
+	}
+	ss << heroString << endl; 
+	
 	ofDrawBitmapStringHighlight( ss.str() , x , y ) ; 
 
 	ofDrawBitmapStringHighlight( debugStream , x + 600 , y ) ; 
@@ -372,3 +474,37 @@ void KinectNuiManager::exit( )
 	kinect.close();
 	kinect.removeKinectListener(this);
 }
+
+string KinectNuiManager::getStringFromCalibrationState ( CALLIBRATION_STATE state ) 
+{
+	switch ( state ) 
+	{
+		case NO_USER : 
+			return "NO_USER" ;
+			break ; 
+
+		case SEARCHING_NO_HERO :
+			return "SEARCHING NO HERO" ; 
+			break ; 
+
+		case HERO_CALIBRATED : 
+			return "HERO CALIBRATED" ; 
+			break ; 
+
+		case HERO_LOST : 
+			return "HERO LOST" ; 
+			break ; 
+
+		default : 
+			return "DEFAULT" ; 
+			break ;
+	}
+}
+
+		/*
+		NO_USER = 0 , 
+		SEARCHING_NO_HERO = 1 , 
+		HERO_CALIBRATED = 2 , 
+		HERO_LOST = 3
+		*/
+	

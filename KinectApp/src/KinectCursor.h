@@ -7,11 +7,11 @@ class KinectCursor
 public : 
 	KinectCursor( ) { } 
 
-
 	void setup( ) ; 
 	void draw( ) ; 
 
-	ofPoint normalizedScreen ; 
+	ofPoint worldPosition ; 
+	ofPoint normalizedScreenPosition ; 
 	ofPoint screenPosition ;
 
 };
