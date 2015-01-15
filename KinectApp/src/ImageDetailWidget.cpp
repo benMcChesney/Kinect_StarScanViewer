@@ -15,11 +15,11 @@ void ImageDetailWidget::setup ( )
 	title.draw() ; 
 
 	description.setup( "type/OpenSans-Light.ttf" , 1.1 ,  "n/a"  , 24 , 15  , 0 , ofColor::white  ) ;
-	location.setup( "type/OpenSans-Regular.ttf" , 1.1 ,  "n/a"  , 32 , 15  , 0 , ofColor::white ) ;
-	wavelength.setup( "type/OpenSans-Regular.ttf" , 1.1 , "n/a" , 32 , 15  , 0 , ofColor::white )  ;
-	primaryIons.setup( "type/OpenSans-Regular.ttf" , 1.1 ,  "n/a"  , 32 , 15  , 0 , ofColor::white ) ;
-	temperatureKelvin.setup( "type/OpenSans-Regular.ttf" , 1.1 ,  "n/a"  , 32 , 15  , 0   , ofColor::white ) ;
-	temperatureFahrenheight.setup( "type/OpenSans-Regular.ttf" , 1.1 ,  "n/a"  , 32 , 15  , 0   , ofColor::white ) ;
+	location.setup( "type/OpenSans-Regular.ttf" , 1.1 ,  "n/a"  , 28 , 15  , 0 , ofColor::white ) ;
+	wavelength.setup( "type/OpenSans-Regular.ttf" , 1.1 , "n/a" , 28 , 15  , 0 , ofColor::white )  ;
+	primaryIons.setup( "type/OpenSans-Regular.ttf" , 1.1 ,  "n/a"  , 28 , 15  , 0 , ofColor::white ) ;
+	temperatureKelvin.setup( "type/OpenSans-Regular.ttf" , 1.1 ,  "n/a"  , 28 , 15  , 0   , ofColor::white ) ;
+	temperatureFahrenheight.setup( "type/OpenSans-Regular.ttf" , 1.1 ,  "n/a"  , 28 , 15  , 0   , ofColor::white ) ;
 
 	//Setup mask
 	maskFbo.allocate( 1024 , 1024 ) ;

@@ -11,6 +11,9 @@
 #include "ofxMatrixTransformImage.h"
 #include "ofxFontStashTextBlock.h"
 #include "ImageDetailWidget.h"
+#include "ThumbnailWidget.h"
+#include "ofxJSONElement.h"
+#include "DataSyncManager.h"
 
 class ImageCompareView
 {
@@ -23,6 +26,7 @@ public :
 	void drawDebug( ) ; 
 	void transitionIn( ) ; 
 	void transitionOut( ) ; 
+	void populateThumbnailsFromDataSync() ; 
 
 	ImageDetailWidget leftView ; 
 	ImageDetailWidget rightView ; 
@@ -30,6 +34,7 @@ public :
 	float normalizedAmount ; 
 
 
+	vector< ThumbnailWidget * > thumbnails ;
+	DataSyncManager * dataSyncManager ; 
 
-	 
 };

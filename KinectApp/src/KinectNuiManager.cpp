@@ -375,10 +375,18 @@ void KinectNuiManager::draw( )
 		ofSetColor( 255 ) ; 
 		kinect.drawSkeleton(0 ,0, w, h);
 
-
+		float iScale = 1.0f / scale ; 
 		if ( calibrationState == HERO_CALIBRATED ) 
 		{
-			float iScale = 1.0f / scale ; 
+			
+			ofPushMatrix() ; 
+				ofSetColor( ofColor::yellow ) ; 
+				ofCircle( kinectCursor.worldPosition.x * iScale , kinectCursor.worldPosition.y * iScale , 14 ); 
+			ofPopMatrix( ) ; 
+		}
+
+		if ( hero != NULL ) 
+		{
 			ofPushMatrix() ; 
 				//ofScale( 1/scale , 1/scale ) ; 
 				ofTranslate( (cursorRegionOrigin.x - cursorRegionDims.get().x/2) * iScale , 
@@ -390,32 +398,17 @@ void KinectNuiManager::draw( )
 
 					ofRect(	0 , 0 , cursorRegionDims.get().x * iScale, cursorRegionDims.get().y * iScale ) ; 
 					ofFill() ; 
-					ofSetColor( ofColor::yellow ) ; 
-					ofCircle( kinectCursor.worldPosition.x * iScale , kinectCursor.worldPosition.y * iScale , 14 ); 
-
+					
 				ofPopStyle() ; 
 			ofPopMatrix() ; 
-		}
+		}	
 
 	ofPopMatrix() ; 
 
 
 	if ( hero != NULL ) 
 	{
-		//float _x = ofMap( hero->calibrationPoint.x , 0 , 640 , 0 , calibrationWidget.drawSize.width , true ) ; 
-		//float _y = ofMap( hero->calibrationPoint.y , 0 , 480 , 0 , calibrationWidget.drawSize.height , true ) ; 
-		
-		kinectCursor.draw() ; 
-
-				/*
-		for ( auto data = userDataPool.begin() ; data != userDataPool.end() ; data++ ) 
-		{
-			if ( (*data)->bCalibrated == true ) 
-			{
-				
-			}
-		}*/
-		
+		kinectCursor.draw() ;
 	}
 }
 
@@ -500,11 +493,4 @@ string KinectNuiManager::getStringFromCalibrationState ( CALLIBRATION_STATE stat
 			break ;
 	}
 }
-
-		/*
-		NO_USER = 0 , 
-		SEARCHING_NO_HERO = 1 , 
-		HERO_CALIBRATED = 2 , 
-		HERO_LOST = 3
-		*/
 	

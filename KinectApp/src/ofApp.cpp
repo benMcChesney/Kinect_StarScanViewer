@@ -37,12 +37,14 @@ void ofApp::setup()
 
 	imageCompareView.rightView.transitionOut() ; 
 	imageCompareView.leftView.transitionOut() ; 
+	imageCompareView.dataSyncManager = &dataSyncManager ; 
+	imageCompareView.populateThumbnailsFromDataSync() ;
 
 	kinectManager.setup() ; 
 	kinectManager.setupGui( &gui ) ; 
 
 	gui.loadFromFile( "settings.xml" ) ; 
-
+	
 	//reset all transitions
 	initialTweenDelay = 0 ;
 	Tweenzor::add( &initialTweenDelay , 0.0f , 1.0f , 0.0f , 2.0f ) ; 
@@ -51,8 +53,7 @@ void ofApp::setup()
 
 void ofApp::initialTweenDelayComplete ( float * args ) 
 {
-	imageCompareView.leftView.transitionIn() ; 
-	imageCompareView.rightView.transitionIn() ; 
+	imageCompareView.transitionIn() ; 
 }
 
 //--------------------------------------------------------------
@@ -65,6 +66,22 @@ void ofApp::update()
 	imageCompareView.update( ) ;
 
 	kinectManager.update( ) ; 
+
+
+	if ( kinectManager.hero != NULL ) 
+	{
+		for ( auto t = imageCompareView.thumbnails.begin() ; t != imageCompareView.thumbnails.end() ; t++ ) 
+		{
+			if ( (*t)->isHit( kinectManager.kinectCursor.screenPosition ) == true ) 
+			{
+				//cout << " THERE IS A HIT ON : " << (*t)->data->label << endl ; 
+			}
+			else
+			{
+				(*t)->onOff( ) ; 
+			}
+		}
+	}
 }
 
 //--------------------------------------------------------------

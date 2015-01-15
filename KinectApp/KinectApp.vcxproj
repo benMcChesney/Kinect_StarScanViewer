@@ -95,6 +95,7 @@
     <ClCompile Include="src\DataSyncManager.cpp" />
     <ClCompile Include="src\ImageCompareView.cpp" />
     <ClCompile Include="src\ImageDetailWidget.cpp" />
+    <ClCompile Include="src\KinectButtonObject.cpp" />
     <ClCompile Include="src\KinectCalibrationWidget.cpp" />
     <ClCompile Include="src\KinectCursor.cpp" />
     <ClCompile Include="src\KinectNuiManager.cpp" />
@@ -186,6 +187,7 @@
     <ClInclude Include="src\DataSyncManager.h" />
     <ClInclude Include="src\ImageCompareView.h" />
     <ClInclude Include="src\ImageDetailWidget.h" />
+    <ClInclude Include="src\KinectButtonObject.h" />
     <ClInclude Include="src\KinectCalibrationWidget.h" />
     <ClInclude Include="src\KinectCursor.h" />
     <ClInclude Include="src\KinectNuiManager.h" />

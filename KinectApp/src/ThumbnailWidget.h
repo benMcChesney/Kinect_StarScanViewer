@@ -11,11 +11,27 @@ this class allows the guest to select which two layers to show inside ImageCompa
 #include "ofMain.h"
 #include "Tweenzor.h"
 #include "ofxFontStashTextBlock.h"
+#include "KinectButtonObject.h"
+#include "AtmosphericImageData.h"
 
-class ThumbnailWidget
+class ThumbnailWidget : public KinectButtonObject
 {
 public :
-	ThumbnailWidget( ) { } 
+	ThumbnailWidget( ) ; 
+
+	void setup( ) ; 
+	void update( ) ; 
+	void draw( ) ; 
+
+	void transitionIn ( ) ; 
+	void transitionOut( ) ; 
+
+	ofxFontStashTextBlock labelBlock ;
+
+	AtmosphericImageData * data ; 
+	int thumbWidth ; 
+
+	void hoverTimerComplete ( int &args ) ; 
 
 };
 

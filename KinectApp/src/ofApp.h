@@ -7,6 +7,7 @@
 #include "ImageCompareView.h"
 #include "ofxGui.h"
 #include "KinectNuiManager.h"
+#include "ThumbnailWidget.h"
 
 class ofApp : public ofBaseApp{
 

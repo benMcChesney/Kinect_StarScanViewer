@@ -8,6 +8,8 @@ void ImageCompareView::setup ( )
 
 	float marginWidth = ( ofGetWidth() - 1024 ) / 2 ; 
 	rightView.x = ofGetWidth() - marginWidth ; 
+
+
 }
 	
 void ImageCompareView::update( ) 
@@ -17,6 +19,12 @@ void ImageCompareView::update( )
 	leftView.alphaStackUpdate( 1.0f ) ; 
 	rightView.update( ) ;
 	rightView.alphaStackUpdate( 1.0f ) ; 
+
+	for ( auto thumbnail = thumbnails.begin() ; thumbnail != thumbnails.end() ; thumbnail++ ) 
+	{
+		(*thumbnail)->update() ; 
+		(*thumbnail)->alphaStackUpdate( 1.0f ) ; 
+	}
 }
 	
 void ImageCompareView::draw( ) 
@@ -42,6 +50,7 @@ void ImageCompareView::draw( )
 	ofPushMatrix() ; 
 		float offsetX = marginWidth ;
 		ofTranslate( offsetX , 0  ) ; 
+		ofScale( 0.93, 0.93 ) ; 
 
 		//Prevent spamming error messages
 		if ( rightView.detailImage->image.bAllocated() ) 
@@ -57,26 +66,81 @@ void ImageCompareView::draw( )
 	leftView.draw( ) ; 
 
 	rightView.x = ofGetWidth() - marginWidth ; 
-	rightView.draw( ) ; 
+	rightView.draw( ) ;
+
+	ofSetColor( 0 , 255 ) ; 
+	float h = 180 ; 
+	ofRect( 0 , ofGetHeight() - h , ofGetWidth() , h ) ; 
+
+	int i = 0 ; 
+
+
+	for ( auto thumbnail = thumbnails.begin() ; thumbnail != thumbnails.end() ; thumbnail++ ) 
+	{
+		//cout << "drawing thumbnail! " << i << " - " << (*thumbnail)->scale << endl ; 
+
+		(*thumbnail)->draw() ; 
+		i++ ; 
+	}
 
 }
 	
+void ImageCompareView::populateThumbnailsFromDataSync( )
+{
+	float padding = 20 ; 
+
+	float thumbSpacing = 50 ; 
+	int thumbWidth = ( ofGetWidth() - ( ( padding + thumbSpacing ) * 2 )) / (dataSyncManager->atmosphericImageData.size()  + 2 ) ; 
+	for ( int i = 0 ; i < dataSyncManager->atmosphericImageData.size() ; i++ )
+	{
+		thumbnails.push_back( new ThumbnailWidget() ) ; 
+		thumbnails[ i ]->data = dataSyncManager->atmosphericImageData[ i ] ; 
+		thumbnails[ i ]->setup( ) ;  
+		thumbnails[ i ]->thumbWidth = thumbWidth ; 
+		thumbnails[ i ]->x = padding + ( i + 0.5 ) * ( thumbWidth  + thumbSpacing ) ; 
+		thumbnails[ i ]->y = ofGetHeight() - 90 ; 
+
+		float hoverPadding = 10 ; 
+		thumbnails[ i ]->hitArea = ofRectangle( thumbnails[ i ]->x -thumbWidth/2 - hoverPadding ,
+												thumbnails[ i ]->y -thumbWidth/2 - hoverPadding , 
+												thumbWidth + hoverPadding * 2 ,
+												thumbWidth + hoverPadding * 2 ) ; 
+		
+	}
+	
+	ofLogNotice() << thumbnails.size() << " thumbnails created ! " ; 
+}
+
 void ImageCompareView::drawDebug( ) 
 {
 	stringstream ss ; 
 	ss << "rightView alpha : " << rightView.getOFAlpha() << endl ;
 	ss << "right view text alpha : " << rightView.title.getOFAlpha() << endl ; 
 
-	//ofDrawBitmapStringHighlight ( ss.str() , 50 , 50 ) ; 
+	for ( int i = 0 ; i < thumbnails.size() ; i++ )
+	{
+		thumbnails[ i ]->hoverTimer.draw( 500 , 100 + i * 50 ) ; 
+	}
+
+	ofDrawBitmapStringHighlight ( ss.str() , 50 , 50 ) ; 
+
+	
 
 	leftView.drawDebug() ; 
 	rightView.drawDebug() ; 
+
+
 }
 
 void ImageCompareView::transitionIn( ) 
 {
 	leftView.transitionIn() ; 
 	rightView.transitionIn() ; 
+
+	for ( int i = 0 ; i < thumbnails.size() ; i++ )
+	{
+		Tweenzor::add ( &thumbnails[ i ]->alpha , 0.0f , 1.0f , 0.0f , 0.5f , EASE_OUT_QUAD ); 
+	}
 }
 
 void ImageCompareView::transitionOut( ) 
