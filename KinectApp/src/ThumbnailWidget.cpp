@@ -60,6 +60,7 @@ void ThumbnailWidget::hoverTimerComplete ( int &args )
 {
 	cout << " hover timer complete on : " << data->label << endl ; 
 	bHoverSelected = true ; 
+	ofNotifyEvent( StarScanViewerEvents::getInstance().THUMBNAIL_SELECTED , data->label ) ; 
 }
 
 void ThumbnailWidget::transitionIn ( ) 

@@ -14,6 +14,7 @@
 #include "ThumbnailWidget.h"
 #include "ofxJSONElement.h"
 #include "DataSyncManager.h"
+#include "StarScanViewerEvents.h"
 
 class ImageCompareView
 {
@@ -36,5 +37,7 @@ public :
 
 	vector< ThumbnailWidget * > thumbnails ;
 	DataSyncManager * dataSyncManager ; 
+
+	void thumbnailSelectionEvent( string &args ) ; 
 
 };

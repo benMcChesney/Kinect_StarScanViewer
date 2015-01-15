@@ -938,6 +938,9 @@
     <ClInclude Include="src\KinectButtonObject.h">
       <Filter>src</Filter>
     </ClInclude>
+    <ClInclude Include="src\StarScanViewerEvents.h">
+      <Filter>src</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />

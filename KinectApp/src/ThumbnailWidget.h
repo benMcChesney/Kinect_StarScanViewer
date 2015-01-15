@@ -13,6 +13,7 @@ this class allows the guest to select which two layers to show inside ImageCompa
 #include "ofxFontStashTextBlock.h"
 #include "KinectButtonObject.h"
 #include "AtmosphericImageData.h"
+#include "StarScanViewerEvents.h"
 
 class ThumbnailWidget : public KinectButtonObject
 {

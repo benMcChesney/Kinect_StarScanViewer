@@ -9,7 +9,7 @@ void ImageCompareView::setup ( )
 	float marginWidth = ( ofGetWidth() - 1024 ) / 2 ; 
 	rightView.x = ofGetWidth() - marginWidth ; 
 
-
+	ofAddListener( StarScanViewerEvents::getInstance().THUMBNAIL_SELECTED , this , &ImageCompareView::thumbnailSelectionEvent ) ; 
 }
 	
 void ImageCompareView::update( ) 
@@ -109,6 +109,22 @@ void ImageCompareView::populateThumbnailsFromDataSync( )
 	}
 	
 	ofLogNotice() << thumbnails.size() << " thumbnails created ! " ; 
+}
+
+void ImageCompareView::thumbnailSelectionEvent( string &args ) 
+{
+	for ( int i = 0 ; i < thumbnails.size() ; i++ )
+	{
+		if ( thumbnails[ i ]->data->label.compare( args ) == 0 ) 
+		{
+			int evenOrOdd = ((int)ofRandom ( 0 , 100 ) )% 2 ; 
+			if ( evenOrOdd == 0 ) 
+				rightView.populateFromData( (*thumbnails[ i ]->data) ) ; 
+			else
+				leftView.populateFromData( (*thumbnails[ i ]->data) ) ; 
+			break ; 
+		}
+	}
 }
 
 void ImageCompareView::drawDebug( ) 

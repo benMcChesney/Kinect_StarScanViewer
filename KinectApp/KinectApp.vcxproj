@@ -338,6 +338,7 @@
     <ClInclude Include="..\..\..\addons\ofxWMFVideoPlayer\src\presenter\PresentEngine.h" />
     <ClInclude Include="..\..\..\addons\ofxWMFVideoPlayer\src\presenter\Presenter.h" />
     <ClInclude Include="..\..\..\addons\ofxWMFVideoPlayer\src\presenter\scheduler.h" />
+    <ClInclude Include="src\StarScanViewerEvents.h" />
     <ClInclude Include="src\ThumbnailWidget.h" />
     <ClInclude Include="src\UserCalibrationData.h" />
   </ItemGroup>
