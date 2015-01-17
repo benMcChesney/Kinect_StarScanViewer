@@ -108,7 +108,7 @@ void ImageDetailWidget::populateFromData( AtmosphericImageData data )
 
 void ImageDetailWidget::transitionIn() 
 {
-	float startY =  ofGetHeight() * .3 ; 
+	float startY =  ofGetHeight() * .2 ; 
 	float ySpacing = 20 ; 
 
 	title.y = startY  - 50 ; 

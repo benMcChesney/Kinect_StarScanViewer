@@ -70,17 +70,27 @@ void ofApp::update()
 
 	if ( kinectManager.hero != NULL ) 
 	{
+		ofPoint screenPos =  kinectManager.kinectCursor.screenPosition ; 
 		for ( auto t = imageCompareView.thumbnails.begin() ; t != imageCompareView.thumbnails.end() ; t++ ) 
 		{
-			if ( (*t)->isHit( kinectManager.kinectCursor.screenPosition ) == true ) 
-			{
-				//cout << " THERE IS A HIT ON : " << (*t)->data->label << endl ; 
-			}
-			else
-			{
-				(*t)->onOff( ) ; 
-			}
+			checkKinectInput( (*t) , screenPos ) ; 
 		}
+
+		checkKinectInput( &imageCompareView.rightDropZone , screenPos ) ; 
+		checkKinectInput( &imageCompareView.leftDropZone , screenPos ) ; 
+		checkKinectInput( &imageCompareView.cancelDropZone , screenPos ) ; 
+	}
+}
+
+void ofApp::checkKinectInput( ThumbnailWidget * thumbnail , ofPoint screenPos ) 
+{
+	if ( thumbnail->isHit( screenPos ) == true ) 
+	{
+		//cout << " THERE IS A HIT ON : " << (*t)->data->label << endl ; 
+	}
+	else
+	{
+		thumbnail->onOff( ) ; 
 	}
 }
 
@@ -94,6 +104,15 @@ void ofApp::draw()
 	{
 		imageCompareView.drawDebug() ; 
 		kinectManager.drawDebug(200 , 50 ) ; 
+
+
+		imageCompareView.rightDropZone.drawDebug() ; 
+		imageCompareView.leftDropZone.drawDebug() ; 
+		imageCompareView.cancelDropZone.drawDebug() ; 
+
+		imageCompareView.rightDropZone.hoverTimer.draw( 600 , 10 ) ;
+		imageCompareView.rightDropZone.hoverTimer.draw( 600 , 60 ) ;
+		imageCompareView.rightDropZone.hoverTimer.draw( 600 , 110 ) ;
 	}
 
 	if ( bShowGui == true ) 

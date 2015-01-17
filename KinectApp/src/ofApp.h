@@ -40,5 +40,7 @@ class ofApp : public ofBaseApp{
 		void initialTweenDelayComplete ( float * args ) ; 
 		
 		KinectNuiManager kinectManager ;
+
+		void checkKinectInput( ThumbnailWidget * thumbnail , ofPoint screenPos ) ; 
 		
 };

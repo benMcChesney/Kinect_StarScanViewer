@@ -30,13 +30,13 @@ void ThumbnailWidget::draw( )
 {
 	KinectButtonObject::draw( ) ; 
 
+
 	pushMatrix() ; 
 		float _scale =   ( thumbWidth / data->image.getWidth() ) ;  
 		ofPushMatrix(); 
 			ofScale( _scale, _scale ) ; 
 			ofSetColor( ofColor::white , getOFAlpha() ) ;
-			//data->image.setImageProperties( "" , 0 , 0 , ofPoint( 0.5 , 0.5 ) , 1.0f ); 
-			data->image.x = 0 ; 
+
 			data->image.draw() ; 
 		ofPopMatrix(); 
 
@@ -46,19 +46,24 @@ void ThumbnailWidget::draw( )
 	popMatrix() ; 
 
 
+	//if ( !bHoverSelected ) 
+	//{
 	ofPushStyle() ; 
 		ofNoFill() ; 
 		ofSetColor( 255 , hoverTimer.getNormalizedProgress() * 0.5f * 255.0f ) ; 
 		if ( bHoverSelected ) 
 			ofSetColor( 255 , 128.0f ) ; 
+
 		ofSetLineWidth( 2 ) ; 
 		ofRect( hitArea ) ; 
 	ofPopStyle() ; 
+	//}
 }
 
 void ThumbnailWidget::hoverTimerComplete ( int &args )
 {
-	cout << " hover timer complete on : " << data->label << endl ; 
+	ofLogNotice() << " hover timer complete on : " << data->label << endl ; 
+	hoverTimer.reset() ;
 	bHoverSelected = true ; 
 	ofNotifyEvent( StarScanViewerEvents::getInstance().THUMBNAIL_SELECTED , data->label ) ; 
 }

@@ -16,15 +16,24 @@ public :
 	void setup( ) ; 
 	void update( ) ; 
 	void draw( ) ; 
+	void drawDebug( ) ; 
 	void reset( ) ; 
+
 	bool isHit( ofPoint p ) ; 
+	void setHitAreaFromImage( ofxMatrixTransformImage * image ) ; 
+
 	void onOver( ) ; 
 	void onOff( ) ; 
 
 	ofRectangle hitArea ; 
 	ofxSimpleTimer hoverTimer ;
 
+	bool bInteractive ; 
 	bool bHoverSelected ; 
 	bool bHover ; 
+
+
+private : 
+	ofColor debugColor ; 
 
 };

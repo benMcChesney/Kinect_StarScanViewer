@@ -9,7 +9,34 @@ void ImageCompareView::setup ( )
 	float marginWidth = ( ofGetWidth() - 1024 ) / 2 ; 
 	rightView.x = ofGetWidth() - marginWidth ; 
 
+	rightDropZone.data = new AtmosphericImageData() ; 
+	rightDropZone.data->image.loadImage( "ui/right_dropZone.png" , ofGetWidth() - 300 , ofGetHeight()/2 , ofPoint( 0.5 , 0.5 ) , 0.0f ) ; 
+	rightDropZone.data->label = "RIGHT DROP ZONE" ; 
+
+	leftDropZone.data = new AtmosphericImageData() ; 
+	leftDropZone.data->image.loadImage( "ui/left_dropZone.png" , 300 , ofGetHeight()/2 , ofPoint( 0.5 , 0.5 ) , 0.0f ) ; 
+	leftDropZone.data->label = "LEFT DROP ZONE" ;
+
+	cancelDropZone.data = new AtmosphericImageData() ;
+	cancelDropZone.data->image.loadImage( "ui/cancel_dropZone.png" , ofGetWidth()/2 , ofGetHeight()/2 , ofPoint( 0.5 , 0.5 ) , 0.0f ) ; 
+	cancelDropZone.data->label = "CANCEL DROP ZONE" ;
+
+	rightDropZone.setup( ) ;  
+	leftDropZone.setup( ) ; 
+	cancelDropZone.setup( ) ;
+
+	int thumbW = rightDropZone.data->image.getWidth() ; 
+	rightDropZone.thumbWidth = thumbW ; // rightDropZone.data->image.getWidth() ;   
+	leftDropZone.thumbWidth = thumbW ; //leftDropZone.data->image.getWidth() ;    
+	cancelDropZone.thumbWidth = thumbW ; //cancelDropZone.data->image.getWidth() ;   
+
+	rightDropZone.setHitAreaFromImage( &rightDropZone.data->image ) ;
+	leftDropZone.setHitAreaFromImage( &leftDropZone.data->image ) ;
+	cancelDropZone.setHitAreaFromImage( &cancelDropZone.data->image ) ;
+
 	ofAddListener( StarScanViewerEvents::getInstance().THUMBNAIL_SELECTED , this , &ImageCompareView::thumbnailSelectionEvent ) ; 
+	dim = ofFloatColor( 0.1f , 0.1f , 0.1f , 0.0f ) ; 	
+	lastData = NULL ; 
 }
 	
 void ImageCompareView::update( ) 
@@ -25,6 +52,14 @@ void ImageCompareView::update( )
 		(*thumbnail)->update() ; 
 		(*thumbnail)->alphaStackUpdate( 1.0f ) ; 
 	}
+
+	rightDropZone.update() ; 
+	leftDropZone.update() ; 
+	cancelDropZone.update( ); 
+
+	rightDropZone.data->image.alphaStackUpdate( 1.0f )  ; 
+	leftDropZone.data->image.alphaStackUpdate( 1.0f )  ; 
+	cancelDropZone.data->image.alphaStackUpdate( 1.0f )  ; 
 }
 	
 void ImageCompareView::draw( ) 
@@ -83,6 +118,14 @@ void ImageCompareView::draw( )
 		i++ ; 
 	}
 
+	ofSetColor( dim ) ; 
+	ofRect( 0 , 0 ,ofGetWidth(), ofGetHeight() ) ; 
+
+
+	rightDropZone.draw( ) ; 
+	leftDropZone.draw() ; 
+	cancelDropZone.draw( ) ; 
+
 }
 	
 void ImageCompareView::populateThumbnailsFromDataSync( )
@@ -117,13 +160,34 @@ void ImageCompareView::thumbnailSelectionEvent( string &args )
 	{
 		if ( thumbnails[ i ]->data->label.compare( args ) == 0 ) 
 		{
-			int evenOrOdd = ((int)ofRandom ( 0 , 100 ) )% 2 ; 
-			if ( evenOrOdd == 0 ) 
-				rightView.populateFromData( (*thumbnails[ i ]->data) ) ; 
-			else
-				leftView.populateFromData( (*thumbnails[ i ]->data) ) ; 
-			break ; 
+			// ! 
+			lastData = thumbnails[ i ]->data ; 
+			transitionInDropZones( ) ; 
 		}
+	}
+
+	if ( lastData == NULL ) 
+		return ;
+
+
+	if ( args.compare( cancelDropZone.data->label ) == 0 ) 
+	{
+		ofLogNotice() << " CANCELLED : " << lastData->label ; 
+		transitionOutDropZones( ) ; 
+	}
+
+	if ( args.compare( rightDropZone.data->label ) == 0 ) 
+	{
+		rightView.populateFromData( (*lastData) ) ; 
+		ofLogNotice() << " RIGHT ZONE should be : " << lastData->label ; 
+		transitionOutDropZones( ) ; 
+	}
+
+	if ( args.compare( leftDropZone.data->label ) == 0 ) 
+	{
+		leftView.populateFromData( (*lastData) ) ; 
+		ofLogNotice() << " LEFT ZONE should be : " << lastData->label ; 
+		transitionOutDropZones( ) ; 
 	}
 }
 
@@ -165,3 +229,34 @@ void ImageCompareView::transitionOut( )
 	rightView.transitionOut() ; 
 }
 
+void ImageCompareView::transitionInDropZones( ) 
+{
+	Tweenzor::add( &dim.a , 0.0f , 0.4f , 0.0f, 0.5f , EASE_OUT_QUAD ) ; 
+	Tweenzor::add( &rightDropZone.alpha , 0.0f , 1.0f , 0.25f, 0.5f , EASE_OUT_QUAD ) ; 
+	Tweenzor::add( &leftDropZone.alpha , 0.0f , 1.0f , 0.25f, 0.5f , EASE_OUT_QUAD ) ; 
+	Tweenzor::add( &cancelDropZone.alpha , 0.0f , 1.0f , 0.25f, 0.5f , EASE_OUT_QUAD ) ; 
+	Tweenzor::add( &rightDropZone.data->image.alpha , 0.0f , 1.0f , 0.25f, 0.5f , EASE_OUT_QUAD ) ; 
+	Tweenzor::add( &leftDropZone.data->image.alpha , 0.0f , 1.0f , 0.25f, 0.5f , EASE_OUT_QUAD ) ; 
+	Tweenzor::add( &cancelDropZone.data->image.alpha , 0.0f , 1.0f , 0.25f, 0.5f , EASE_OUT_QUAD ) ; 
+
+	for ( int i = 0 ; i < thumbnails.size() ; i++ )
+	{
+		Tweenzor::add ( &thumbnails[ i ]->alpha , thumbnails[ i ]->alpha , 0.6f , 0.0f , 0.5f , EASE_OUT_QUAD ); 
+	}
+}
+
+void ImageCompareView::transitionOutDropZones( ) 
+{
+	Tweenzor::add( &dim.a , 1.0f , 0.0f , 0.0f, 0.5f , EASE_OUT_QUAD ) ; 
+	Tweenzor::add( &rightDropZone.alpha , 1.0f , 0.0f , 0.25f, 0.5f , EASE_OUT_QUAD ) ; 
+	Tweenzor::add( &leftDropZone.alpha , 1.0f , 0.0f , 0.0f, 0.5f , EASE_OUT_QUAD ) ; 
+	Tweenzor::add( &cancelDropZone.alpha , 1.0f , 0.0f , 0.0f, 0.5f , EASE_OUT_QUAD ) ; 
+	Tweenzor::add( &rightDropZone.data->image.alpha , 1.0f , 0.0f , 0.25f, 0.5f , EASE_OUT_QUAD ) ; 
+	Tweenzor::add( &leftDropZone.data->image.alpha , 1.0f , 0.0f , 0.0f, 0.5f , EASE_OUT_QUAD ) ; 
+	Tweenzor::add( &cancelDropZone.data->image.alpha , 1.0f , 0.0f , 0.0f, 0.5f , EASE_OUT_QUAD ) ; 
+
+	for ( int i = 0 ; i < thumbnails.size() ; i++ )
+	{
+		Tweenzor::add ( &thumbnails[ i ]->alpha , thumbnails[ i ]->alpha , 1.0f , 0.0f , 0.5f , EASE_OUT_QUAD ); 
+	}
+}

@@ -40,4 +40,14 @@ public :
 
 	void thumbnailSelectionEvent( string &args ) ; 
 
+	ThumbnailWidget rightDropZone ; 
+	ThumbnailWidget leftDropZone ; 
+	ThumbnailWidget cancelDropZone ; 
+
+	ofFloatColor dim ; 
+	void transitionInDropZones( ) ; 
+	void transitionOutDropZones( ) ; 
+
+	AtmosphericImageData * lastData ; 
+
 };
