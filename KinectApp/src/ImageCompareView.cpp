@@ -12,14 +12,21 @@ void ImageCompareView::setup ( )
 	rightDropZone.data = new AtmosphericImageData() ; 
 	rightDropZone.data->image.loadImage( "ui/right_dropZone.png" , ofGetWidth() - 300 , ofGetHeight()/2 , ofPoint( 0.5 , 0.5 ) , 0.0f ) ; 
 	rightDropZone.data->label = "RIGHT DROP ZONE" ; 
+	rightDropZone.alpha = 0.0f; 
+	rightDropZone.bSelectedState = false ; 
 
 	leftDropZone.data = new AtmosphericImageData() ; 
 	leftDropZone.data->image.loadImage( "ui/left_dropZone.png" , 300 , ofGetHeight()/2 , ofPoint( 0.5 , 0.5 ) , 0.0f ) ; 
 	leftDropZone.data->label = "LEFT DROP ZONE" ;
+	leftDropZone.alpha = 0.0f; 
+	leftDropZone.bSelectedState = false ; 
 
 	cancelDropZone.data = new AtmosphericImageData() ;
 	cancelDropZone.data->image.loadImage( "ui/cancel_dropZone.png" , ofGetWidth()/2 , ofGetHeight()/2 , ofPoint( 0.5 , 0.5 ) , 0.0f ) ; 
 	cancelDropZone.data->label = "CANCEL DROP ZONE" ;
+	cancelDropZone.alpha = 0.0f; 
+	cancelDropZone.bSelectedState = false ; 
+
 
 	rightDropZone.setup( ) ;  
 	leftDropZone.setup( ) ; 
@@ -34,14 +41,22 @@ void ImageCompareView::setup ( )
 	leftDropZone.setHitAreaFromImage( &leftDropZone.data->image ) ;
 	cancelDropZone.setHitAreaFromImage( &cancelDropZone.data->image ) ;
 
+	float _w = 1024 ; 
+	float _h = 100 ; 
+	slider.hitArea = ofRectangle( ofGetWidth()/2 - _w/2 , 1024/2 - _h/2 , _w , _h ) ; 
+	slider.setup( ) ; 
+	slider.alpha = 0.0f ; 
+
 	ofAddListener( StarScanViewerEvents::getInstance().THUMBNAIL_SELECTED , this , &ImageCompareView::thumbnailSelectionEvent ) ; 
 	dim = ofFloatColor( 0.1f , 0.1f , 0.1f , 0.0f ) ; 	
 	lastData = NULL ; 
+
+	//normalizedAmount = 0.5f ; 
 }
 	
 void ImageCompareView::update( ) 
 {
-	normalizedAmount = ofMap(  sin( ofGetElapsedTimef() ) , -1.0f , 1.0f , 0.0f , 1.0f , true )  ; 
+	//normalizedAmount = ofMap(  sin( ofGetElapsedTimef() ) , -1.0f , 1.0f , 0.0f , 1.0f , true )  ; 
 	leftView.update() ; 
 	leftView.alphaStackUpdate( 1.0f ) ; 
 	rightView.update( ) ;
@@ -56,10 +71,12 @@ void ImageCompareView::update( )
 	rightDropZone.update() ; 
 	leftDropZone.update() ; 
 	cancelDropZone.update( ); 
+	slider.update() ; 
 
 	rightDropZone.data->image.alphaStackUpdate( 1.0f )  ; 
 	leftDropZone.data->image.alphaStackUpdate( 1.0f )  ; 
 	cancelDropZone.data->image.alphaStackUpdate( 1.0f )  ; 
+	slider.alphaStackUpdate( 1.0f ) ; 
 }
 	
 void ImageCompareView::draw( ) 
@@ -69,7 +86,7 @@ void ImageCompareView::draw( )
 		ofSetColor( ofColor::black ) ; 
 		ofRect( 0 , 0 , 1024.0f , ofGetHeight() ) ; 
 		ofSetColor( ofColor::white ) ; 
-		ofRect( 0 , 0 , 1024.0f * normalizedAmount , ofGetHeight() ) ; 
+		ofRect( 0 , 0 , 1024.0f * slider.smoothedNormalized , ofGetHeight() ) ; 
 	leftView.maskFbo.end() ; 
 
 	//Draw Right active area
@@ -78,16 +95,19 @@ void ImageCompareView::draw( )
 		ofSetColor( ofColor::black ) ; 
 		ofRect( 0 , 0 , 1024.0f , ofGetHeight() ) ; 
 		ofSetColor( ofColor::white ) ; 
-		ofRect( 1024.0f * normalizedAmount  , 0 , 1024.0f * ( 1.0f - normalizedAmount ) , ofGetHeight() ) ; 
+		ofRect( 1024.0f * slider.smoothedNormalized  , 0 , 1024.0f * ( 1.0f - slider.smoothedNormalized ) , ofGetHeight() ) ; 
 	rightView.maskFbo.end( ) ; 
 	
 	float marginWidth = ( ofGetWidth() - 1024 ) / 2 ; 
 	ofPushMatrix() ; 
 		float offsetX = marginWidth ;
-		ofTranslate( offsetX , 0  ) ; 
-		ofScale( 0.93, 0.93 ) ; 
+		float _x = ( ofGetWidth() - 1024 ) / 2 ; 
+		ofTranslate( _x , 0  ) ; 
+		//ofScale( 0.93, 0.93 ) ; 
 
+		
 		//Prevent spamming error messages
+
 		if ( rightView.detailImage->image.bAllocated() ) 
 			mask.drawMask( rightView.detailImage->image.getTextureReference() , rightView.maskFbo.getTextureReference() , 0 , 0 , rightView.maskAlpha ) ; 
 
@@ -116,7 +136,11 @@ void ImageCompareView::draw( )
 
 		(*thumbnail)->draw() ; 
 		i++ ; 
+	
 	}
+
+	slider.draw( ) ; 
+	//
 
 	ofSetColor( dim ) ; 
 	ofRect( 0 , 0 ,ofGetWidth(), ofGetHeight() ) ; 
@@ -150,7 +174,20 @@ void ImageCompareView::populateThumbnailsFromDataSync( )
 												thumbWidth + hoverPadding * 2 ) ; 
 		
 	}
-	
+
+	/*
+	//Set the current mask to Two unique Ids
+	int index1 = ofClamp ( ofRandom ( 0 , thumbnails.size() -1 ) , 0 , thumbnails.size() -1 ) ; 
+	int index2 = ofClamp ( ofRandom ( 0 , thumbnails.size() -1 ) , 0 , thumbnails.size() -1 ) ; 
+	while( index1 == index2 )
+	{
+		index2 =  ofClamp ( ofRandom ( 0 , thumbnails.size() -1 ) , 0 , thumbnails.size() -1 ) ; 
+	}
+
+	leftDropZone.data = thumbnails[ index1 ]->data ; 
+	thumbnails[ index1 ]->bHoverSelected = true ; 
+	leftDropZone.data = thumbnails[ index2 ]->data ;  
+	thumbnails[ index2 ]->bHoverSelected = true ;  */
 	ofLogNotice() << thumbnails.size() << " thumbnails created ! " ; 
 }
 
@@ -221,6 +258,8 @@ void ImageCompareView::transitionIn( )
 	{
 		Tweenzor::add ( &thumbnails[ i ]->alpha , 0.0f , 1.0f , 0.0f , 0.5f , EASE_OUT_QUAD ); 
 	}
+
+	Tweenzor::add( &slider.alpha , slider.alpha , 1.0f , 0.0f , 0.5f , EASE_OUT_QUAD ) ; 
 }
 
 void ImageCompareView::transitionOut( ) 
@@ -243,6 +282,12 @@ void ImageCompareView::transitionInDropZones( )
 	{
 		Tweenzor::add ( &thumbnails[ i ]->alpha , thumbnails[ i ]->alpha , 0.6f , 0.0f , 0.5f , EASE_OUT_QUAD ); 
 	}
+
+	Tweenzor::add( &slider.alpha , slider.alpha , 0.0f , 0.0f , 0.5f , EASE_OUT_QUAD ) ; 
+
+	rightDropZone.bInteractive = true ;
+	leftDropZone.bInteractive = true ;
+	cancelDropZone.bInteractive = true ;
 }
 
 void ImageCompareView::transitionOutDropZones( ) 
@@ -259,4 +304,9 @@ void ImageCompareView::transitionOutDropZones( )
 	{
 		Tweenzor::add ( &thumbnails[ i ]->alpha , thumbnails[ i ]->alpha , 1.0f , 0.0f , 0.5f , EASE_OUT_QUAD ); 
 	}
+
+	Tweenzor::add( &slider.alpha , slider.alpha , 1.0f , 0.0f , 0.5f , EASE_OUT_QUAD ) ; 
+	rightDropZone.bInteractive = false ;
+	leftDropZone.bInteractive = false ;
+	cancelDropZone.bInteractive = false ;
 }

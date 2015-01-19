@@ -58,6 +58,26 @@ void KinectNuiManager::setup( )
 	hero = NULL ;  
 
 	kinectCursor.setup() ;
+
+	heroLostTimer.setup( heroLostDuration , "hero lost timer" ) ; 
+	ofAddListener( heroLostTimer.TIMER_COMPLETE , this , &KinectNuiManager::heroLostTimerComplete ) ; 
+
+	initialHeroLostTimer.setup( 400 , "initial hero lost timer" ) ;  
+	ofAddListener( initialHeroLostTimer.TIMER_COMPLETE , this , &KinectNuiManager::initialHeroLostTimerComplete ) ; 
+
+}
+
+void KinectNuiManager::initialHeroLostTimerComplete ( int &args )
+{
+	heroLostTimer.start( false , true ) ;
+	hero = NULL ; 
+	changeState( SEARCHING_NO_HERO ) ; 
+}
+
+void KinectNuiManager::heroLostTimerComplete ( int & args ) 
+{
+	changeState( NO_USER ) ;
+	heroLostTimer.reset() ; 
 }
 
 void KinectNuiManager::setupGui( ofxPanel * gui ) 
@@ -69,6 +89,8 @@ void KinectNuiManager::setupGui( ofxPanel * gui )
 
 	gui->add( cursorRegionDims.set( "CURSOR REGION SIZE" , ofPoint( 50 ) , ofPoint( 0 ) , ofPoint ( 200 ) ) ) ; 
 	gui->add( interpolateTime.set( "INTERPOLATE TIME" , 0.2f , 0.01 , .5f ) ) ; 
+	gui->add( heroLostDuration.set ( "HERO LOST DURATION" , 5000.0f , 100.0f , 15000.0f ) ) ; 
+	gui->add( initialHeroTimeoutDuration.set( "INIT HERO LOST (MS)" , 500.0f , 100.0f ,8000.0f ) ) ; 
 	//nearClipping.addListener( this , &KinectNuiManager::nearClipingHandler ) ; 
 	//farClipping.addListener( this , &KinectNuiManager::farClippingHandler ) ; 
 	angle.addListener( this , &KinectNuiManager::angleHandler ) ; 
@@ -98,7 +120,10 @@ void KinectNuiManager::offsetHandler( ofPoint & position )
 void KinectNuiManager::update( ) 
 {
 	//kinect.update() ; 
-	
+	heroLostTimer.delayMillis = heroLostDuration ; 
+	heroLostTimer.update( ) ; 
+
+	initialHeroLostTimer.delayMillis = initialHeroTimeoutDuration ; 
 	calibrationWidget.update() ; 
 	kinectSource->update();
 	int id = 0 ; 
@@ -133,6 +158,11 @@ void KinectNuiManager::update( )
 			else
 			{
 				ofLogNotice() << "user lost @ id #" << id ; 
+				(*userData)->reset() ; 
+				//heroLostTimer.start( false , true ) ; 
+				heroLostTimer.start( false , true ) ;
+				hero = NULL ; 
+				changeState( SEARCHING_NO_HERO ) ; 
 			}
 		}
 		else
@@ -191,10 +221,15 @@ void KinectNuiManager::update( )
 	{
 		if ( numCalibrated > 0 ) 
 		{
-			changeState( HERO_CALIBRATED ) ; 
+			changeState( HERO_LOST ) ; 
 		}
 	}
 
+	if ( calibrationState == HERO_CALIBRATED && numCalibrated == 0 ) 
+	{
+		ofLogNotice() << "HERO CALIBRATED - but no users" ; 
+		//initialLostTimer.start( false, true ) ; 
+	}
 	if ( hero != NULL ) 
 	{
 		kinectCursor.normalizedScreenPosition = ofPoint ( ofMap(  hero->calibrationPoint.x , cursorRegionOrigin.x - cursorRegionDims.get().x/2 , cursorRegionOrigin.x + cursorRegionDims.get().x/2 , 0.0f , 1.0f , true ) ,

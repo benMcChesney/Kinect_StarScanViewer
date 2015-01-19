@@ -33,6 +33,7 @@ public :
 	int thumbWidth ; 
 
 	void hoverTimerComplete ( int &args ) ; 
+	bool bSelectedState ; 
 
 };
 

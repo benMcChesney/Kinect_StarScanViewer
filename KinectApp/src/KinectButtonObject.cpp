@@ -36,6 +36,7 @@ void KinectButtonObject::reset( )
 	hoverTimer.stop( ) ; 
 	bHover = false ; 
 	bHoverSelected = false ; 
+
 	//bInteractive = false ; 
 }
 

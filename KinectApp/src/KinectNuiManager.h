@@ -70,14 +70,19 @@ public :
 		HERO_LOST = 3
 	};
 
+	//general debug
+	string debugStream ; 
+
+	//Calibration
 	CALLIBRATION_STATE calibrationState ;
 	int getNumActiveUsers ( ) ; 
 	void changeState ( CALLIBRATION_STATE state ) ; 
 	vector < UserCalibrationData * > userDataPool ; 
 
+	ofxSimpleTimer heroLostTimer ; 
+	void heroLostTimerComplete ( int & args ) ; 
 	UserCalibrationData * hero ; 
-	string debugStream ; 
-
+	
 	KinectCalibrationWidget calibrationWidget ; 
 	void checkForCalibration() ;
 
@@ -91,5 +96,12 @@ public :
 
 	KinectCursor kinectCursor ; 
 	ofParameter< float > interpolateTime ; 
+	ofParameter< float > heroLostDuration ; 
+	ofParameter< float > initialHeroTimeoutDuration ; 
+
+	ofxSimpleTimer initialHeroLostTimer ; 
+	void initialHeroLostTimerComplete ( int &args ); 
+
+
 
 };

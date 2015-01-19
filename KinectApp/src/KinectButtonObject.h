@@ -24,6 +24,7 @@ public :
 
 	void onOver( ) ; 
 	void onOff( ) ; 
+	void onInput( ofPoint ) ; 
 
 	ofRectangle hitArea ; 
 	ofxSimpleTimer hoverTimer ;
@@ -32,8 +33,7 @@ public :
 	bool bHoverSelected ; 
 	bool bHover ; 
 
-
-private : 
 	ofColor debugColor ; 
+	
 
 };

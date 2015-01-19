@@ -262,6 +262,9 @@
     <ClCompile Include="src\KinectButtonObject.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="src\KinectSliderWidget.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -939,6 +942,9 @@
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="src\StarScanViewerEvents.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\KinectSliderWidget.h">
       <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>

@@ -99,6 +99,7 @@
     <ClCompile Include="src\KinectCalibrationWidget.cpp" />
     <ClCompile Include="src\KinectCursor.cpp" />
     <ClCompile Include="src\KinectNuiManager.cpp" />
+    <ClCompile Include="src\KinectSliderWidget.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\ofApp.cpp" />
     <ClCompile Include="..\..\..\addons\ofxGui\src\ofxBaseGui.cpp" />
@@ -191,6 +192,7 @@
     <ClInclude Include="src\KinectCalibrationWidget.h" />
     <ClInclude Include="src\KinectCursor.h" />
     <ClInclude Include="src\KinectNuiManager.h" />
+    <ClInclude Include="src\KinectSliderWidget.h" />
     <ClInclude Include="src\ofApp.h" />
     <ClInclude Include="..\..\..\addons\ofxGui\src\ofxBaseGui.h" />
     <ClInclude Include="..\..\..\addons\ofxGui\src\ofxButton.h" />

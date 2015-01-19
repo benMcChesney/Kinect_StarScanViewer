@@ -15,6 +15,7 @@
 #include "ofxJSONElement.h"
 #include "DataSyncManager.h"
 #include "StarScanViewerEvents.h"
+#include "KinectSliderWidget.h"
 
 class ImageCompareView
 {
@@ -32,7 +33,7 @@ public :
 	ImageDetailWidget leftView ; 
 	ImageDetailWidget rightView ; 
 	ofxSimpleMask mask ; 
-	float normalizedAmount ; 
+	//float normalizedAmount ; 
 
 
 	vector< ThumbnailWidget * > thumbnails ;
@@ -49,5 +50,7 @@ public :
 	void transitionOutDropZones( ) ; 
 
 	AtmosphericImageData * lastData ; 
+
+	KinectSliderWidget slider ;
 
 };

@@ -43,6 +43,8 @@ void ofApp::setup()
 	kinectManager.setup() ; 
 	kinectManager.setupGui( &gui ) ; 
 
+	gui.add( imageCompareView.slider.interpolateTime.set( "SLIDER INTERPOLATE TIME" , 0.2f , 0.01f , 0.4f ) ) ;  
+
 	gui.loadFromFile( "settings.xml" ) ; 
 	
 	//reset all transitions
@@ -79,6 +81,16 @@ void ofApp::update()
 		checkKinectInput( &imageCompareView.rightDropZone , screenPos ) ; 
 		checkKinectInput( &imageCompareView.leftDropZone , screenPos ) ; 
 		checkKinectInput( &imageCompareView.cancelDropZone , screenPos ) ; 
+
+		if ( imageCompareView.slider.bHover == false ) 
+			imageCompareView.slider.onOver( ) ; 
+		if ( imageCompareView.slider.hitArea.inside( screenPos )  ) 
+		{
+			 //imageCompareView.slider.onOver() ; 
+			//cout << " INSIDE THE SLIDER !!! " << endl ; 
+			 imageCompareView.slider.onInput( screenPos ) ;
+			
+		}
 	}
 }
 
@@ -113,6 +125,11 @@ void ofApp::draw()
 		imageCompareView.rightDropZone.hoverTimer.draw( 600 , 10 ) ;
 		imageCompareView.rightDropZone.hoverTimer.draw( 600 , 60 ) ;
 		imageCompareView.rightDropZone.hoverTimer.draw( 600 , 110 ) ;
+
+		imageCompareView.slider.drawDebug( ) ; 
+		stringstream ss ; 
+		ss << " SLIDER HIT AREA : " << imageCompareView.slider.hitArea << endl ; 
+		ofDrawBitmapStringHighlight( ss.str() , 1300 , 400 ) ; 
 	}
 
 	if ( bShowGui == true ) 
