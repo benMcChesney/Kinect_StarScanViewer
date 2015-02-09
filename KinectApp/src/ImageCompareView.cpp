@@ -77,6 +77,11 @@ void ImageCompareView::update( )
 	leftDropZone.data->image.alphaStackUpdate( 1.0f )  ; 
 	cancelDropZone.data->image.alphaStackUpdate( 1.0f )  ; 
 	slider.alphaStackUpdate( 1.0f ) ; 
+
+	float _w = 1024 ; 
+	float _h = sliderHeight ; 
+	
+	slider.hitArea = ofRectangle( ofGetWidth()/2 - _w/2 , 1024/2 - _h/2 , _w , _h ) ; 
 }
 	
 void ImageCompareView::draw( ) 
@@ -150,6 +155,8 @@ void ImageCompareView::draw( )
 	leftDropZone.draw() ; 
 	cancelDropZone.draw( ) ; 
 
+	
+
 }
 	
 void ImageCompareView::populateThumbnailsFromDataSync( )
@@ -157,7 +164,7 @@ void ImageCompareView::populateThumbnailsFromDataSync( )
 	float padding = 20 ; 
 
 	float thumbSpacing = 50 ; 
-	int thumbWidth = ( ofGetWidth() - ( ( padding + thumbSpacing ) * 2 )) / (dataSyncManager->atmosphericImageData.size()  + 2 ) ; 
+	int thumbWidth = ( ofGetWidth() - ( ( padding + thumbSpacing ) * 2 )) / (dataSyncManager->atmosphericImageData.size()  + 4 ) ; 
 	for ( int i = 0 ; i < dataSyncManager->atmosphericImageData.size() ; i++ )
 	{
 		thumbnails.push_back( new ThumbnailWidget() ) ; 
@@ -165,7 +172,7 @@ void ImageCompareView::populateThumbnailsFromDataSync( )
 		thumbnails[ i ]->setup( ) ;  
 		thumbnails[ i ]->thumbWidth = thumbWidth ; 
 		thumbnails[ i ]->x = padding + ( i + 0.5 ) * ( thumbWidth  + thumbSpacing ) ; 
-		thumbnails[ i ]->y = ofGetHeight() - 90 ; 
+		thumbnails[ i ]->y = 1080 - 50 ; 
 
 		float hoverPadding = 10 ; 
 		thumbnails[ i ]->hitArea = ofRectangle( thumbnails[ i ]->x -thumbWidth/2 - hoverPadding ,

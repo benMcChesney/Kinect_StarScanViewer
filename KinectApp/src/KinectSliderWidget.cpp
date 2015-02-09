@@ -23,7 +23,7 @@ void KinectSliderWidget::draw( )
 		ofSetLineWidth( 3 ) ; 
 		ofSetColor( 255 , getOFAlpha() ); 
 		float padding = hitArea.height * .4f ; 
-		ofRectRounded( hitArea.x , hitArea.y + padding , hitArea.getWidth() , hitArea.getHeight() + ( padding * 2 ) , 15 ) ; 
+		ofRectRounded( hitArea.x , hitArea.y + padding , hitArea.getWidth() , hitArea.getHeight() - ( padding * 2 ) , 15 ) ; 
 
 		ofFill( ) ; 
 		ofSetLineWidth( 0 ) ; 

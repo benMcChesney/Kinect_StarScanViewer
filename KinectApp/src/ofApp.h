@@ -31,6 +31,7 @@ class ofApp : public ofBaseApp{
 		ImageCompareView imageCompareView ; 
 
 		ofParameter<bool> bDrawDebug ;
+		ofParameter<float> thumbnailDragSize ; 
 		bool bShowGui ; 
 
 		//Gui things

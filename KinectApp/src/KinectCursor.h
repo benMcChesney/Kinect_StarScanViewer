@@ -14,4 +14,6 @@ public :
 	ofPoint normalizedScreenPosition ; 
 	ofPoint screenPosition ;
 
+	ofImage image ; 
+
 };

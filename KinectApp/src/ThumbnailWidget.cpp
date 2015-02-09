@@ -12,7 +12,7 @@ void ThumbnailWidget::setup( )
 	ofxAlphaStackItem::setup() ; 
 
 	thumbWidth = 50 ; 
-	labelBlock.setup( "type/OpenSans-Bold.ttf" , 1.1 ,  data->label  , 24 , 0  , 0 , ofColor::white  ) ;
+	labelBlock.setup( "type/OpenSans-Bold.ttf" , 1.1 ,  data->label  , 20 , 0  , 0 , ofColor::white  ) ;
 	labelBlock.alignment = ofxFontStashTextBlock::CENTER ; 
 	bSelectedState = false ; 
 

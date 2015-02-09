@@ -13,9 +13,9 @@
     },
     {
       "label": "AIA 0193",
-      "description":"This detector ( as well as AIA 131 is optimized to study solar flares. It has the capability to take images every 2 seonds ( instead of 10 ) in a reduced vield of view in order to look at specific flares in more detail.",
-      "location":"Corona and upper transition region",
-      "wavelength":"171 angstroms ( 0.000000171m) = Extreme UltraViolet",
+      "description":"This detector highlights the outer atmosphere of the Sun - called the corona - as well has hot flare plasma. Hot active regions, soloar flares, and coronal masss ejections will appear bright here. The dark area - called coronal holes - are places where very little radiation is emitted yet are the main source of solar wind parciles. ",
+      "location":"Corona and hot flare",
+      "wavelength":"193 angstroms ( 0.000000171m) = Extreme UltraViolet",
       "primaryIons":"Ionized iron ( Fe IX )",
       "temperatureKelvin":"1000000" ,
       "temperatureFahrenheight":"180000",
@@ -23,7 +23,7 @@
     },
      {
       "label": "AIA 0211",
-      "description":"This detector ( as well as AIA 131 is optimized to study solar flares. It has the capability to take images every 2 seonds ( instead of 10 ) in a reduced vield of view in order to look at specific flares in more detail.",
+      "description":"This detector ( as well as AIA 335 ) highlghts the active retion of the outer atmosphere of the Sun - called the corona. Active regions, soloar glares, and coronal mass ejections will apear bright here. The dark areas - called coronal hles - are places where very little raditation is emitted, yet are the main source of soloar wind particles.",
       "location":"Corona and upper transition region",
       "wavelength":"171 angstroms ( 0.000000171m) = Extreme UltraViolet",
       "primaryIons":"Ionized iron ( Fe IX )",
@@ -33,7 +33,7 @@
     },
      {
       "label": "AIA 0171",
-      "description":"This detector ( as well as AIA 131 is optimized to study solar flares. It has the capability to take images every 2 seonds ( instead of 10 ) in a reduced vield of view in order to look at specific flares in more detail.",
+      "description":"This detector is especially good at showing coronal loops - the magnetic arcs extending off of the sun where plasma is trapped reflecting and emitting soloar light. The brighest spots seen here are locations where the magnetic field near the surface is exceptionally strong.",
       "location":"Corona and upper transition region",
       "wavelength":"171 angstroms ( 0.000000171m) = Extreme UltraViolet",
       "primaryIons":"Ionized iron ( Fe IX )",
@@ -43,7 +43,7 @@
     },
      {
       "label": "AIA 0131",
-      "description":"This detector ( as well as AIA 131 is optimized to study solar flares. It has the capability to take images every 2 seonds ( instead of 10 ) in a reduced vield of view in order to look at specific flares in more detail.",
+      "description":"This detectr ( as well as AIA 094 ( is optimized to study solar flares. It has teh capability to take images every 2 seconds ( instead of 10 ) in a reduced field of view in order to look at the specific flares in more detail. It measures extremely hot temperatures as well as cool plasmas.",
       "location":"Corona and upper transition region",
       "wavelength":"171 angstroms ( 0.000000171m) = Extreme UltraViolet",
       "primaryIons":"Ionized iron ( Fe IX )",
@@ -53,7 +53,7 @@
     },
      {
       "label": "AIA 0304",
-      "description":"This detector ( as well as AIA 131 is optimized to study solar flares. It has the capability to take images every 2 seonds ( instead of 10 ) in a reduced vield of view in order to look at specific flares in more detail.",
+      "description":"This detector is especially godo at showing areas where cooler dense plumes of plasma ( filaments and prominences) are located above teh visible surface of the Sun. Many of these features either can't be seen or appear dark and dense in the other detectors. The bright areas show places where the plasma is highly concentrated.",
       "location":"Corona and upper transition region",
       "wavelength":"171 angstroms ( 0.000000171m) = Extreme UltraViolet",
       "primaryIons":"Ionized iron ( Fe IX )",
@@ -63,7 +63,7 @@
     },
      {
       "label": "AIA 0335",
-      "description":"This detector ( as well as AIA 131 is optimized to study solar flares. It has the capability to take images every 2 seonds ( instead of 10 ) in a reduced vield of view in order to look at specific flares in more detail.",
+      "description":"This detector ( as well as AIA 211) highlights the active region of the outer atmosphere of the Sun - called the corona. Active regions, soloar flares, and coronal mass ejections will appear bright here. The dark areas - alled coronal holes - are places where very little eadiation is emitted, yet are the main source of solar wind particles.",
       "location":"Corona and upper transition region",
       "wavelength":"171 angstroms ( 0.000000171m) = Extreme UltraViolet",
       "primaryIons":"Ionized iron ( Fe IX )",
@@ -73,7 +73,7 @@
     },
      {
       "label": "AIA 1600",
-      "description":"This detector ( as well as AIA 131 is optimized to study solar flares. It has the capability to take images every 2 seonds ( instead of 10 ) in a reduced vield of view in order to look at specific flares in more detail.",
+      "description":"This detector ( as well as AIA 1700 ) often shows a web-like pattern of bright areas that highlight places where bundles of magnetic fields lines are concentrated. However, extremely concentrated field lines will appear black, typically near sunspots and active regions.",
       "location":"Corona and upper transition region",
       "wavelength":"171 angstroms ( 0.000000171m) = Extreme UltraViolet",
       "primaryIons":"Ionized iron ( Fe IX )",
@@ -83,13 +83,33 @@
     },
      {
       "label": "AIA 1700",
-      "description":"This detector ( as well as AIA 131 is optimized to study solar flares. It has the capability to take images every 2 seonds ( instead of 10 ) in a reduced vield of view in order to look at specific flares in more detail.",
+      "description":"This detector ( as well as AIA 1600 ) often shows a web-like pattern of bright areas that highlight places where bundles of magnetic fileds lines are concentrated. However, extremely concentrated field lines will appear black, typically near sunspots and active regions.",
       "location":"Corona and upper transition region",
       "wavelength":"171 angstroms ( 0.000000171m) = Extreme UltraViolet",
       "primaryIons":"Ionized iron ( Fe IX )",
       "temperatureKelvin":"1000000" ,
       "temperatureFahrenheight":"180000",
       "assetUrl":"http://sdo.gsfc.nasa.gov/assets/img/latest/latest_1024_1700.jpg"
+    },
+     {
+      "label": "Intensitygram",
+      "description":"This image comes from a completely different instrument than all of the others. It shows the magnetic field directions near the surface of the Sun. White and black areas indicate opposite magnetic oolarities, with white showing north polarity and black showing south polarity.",
+      "location":"Corona and upper transition region",
+      "wavelength":"171 angstroms ( 0.000000171m) = Extreme UltraViolet",
+      "primaryIons":"Ionized iron ( Fe IX )",
+      "temperatureKelvin":"1000000" ,
+      "temperatureFahrenheight":"180000",
+      "assetUrl":"http://sdo.gsfc.nasa.gov/assets/img/latest/latest_1024_HMIIC.jpg"
+    },
+     {
+      "label": "Magnetogram",
+      "description":"This image comes from a completely different instrument than all of the others. It shows the magnetic field directions near the surface of the Sun. White and black areas indicate opposite magnetic oolarities, with white showing north polarity and black showing south polarity.",
+      "location":"Corona and upper transition region",
+      "wavelength":"171 angstroms ( 0.000000171m) = Extreme UltraViolet",
+      "primaryIons":"Ionized iron ( Fe IX )",
+      "temperatureKelvin":"1000000" ,
+      "temperatureFahrenheight":"180000",
+      "assetUrl":"http://sdo.gsfc.nasa.gov/assets/img/latest/latest_1024_HMIB.jpg"
     }
   ]
   

@@ -14,7 +14,7 @@ void ImageDetailWidget::setup ( )
 	title.setup( "type/OpenSans-Bold.ttf" , 1.2 , "TEST TITLE" , 64 , 15 , startY , ofColor::white ) ;
 	title.draw() ; 
 
-	description.setup( "type/OpenSans-Light.ttf" , 1.1 ,  "n/a"  , 24 , 15  , 0 , ofColor::white  ) ;
+	description.setup( "type/OpenSans-Light.ttf" , 1.1 ,  "n/a"  , 32 , 15  , 0 , ofColor( 215 , 215 , 215 )  ) ;
 	location.setup( "type/OpenSans-Regular.ttf" , 1.1 ,  "n/a"  , 28 , 15  , 0 , ofColor::white ) ;
 	wavelength.setup( "type/OpenSans-Regular.ttf" , 1.1 , "n/a" , 28 , 15  , 0 , ofColor::white )  ;
 	primaryIons.setup( "type/OpenSans-Regular.ttf" , 1.1 ,  "n/a"  , 28 , 15  , 0 , ofColor::white ) ;
@@ -58,11 +58,11 @@ void ImageDetailWidget::draw( )
 
 		title.draw( ) ; 
 		description.draw( ) ;
-		location.draw( ) ; 
-		wavelength.draw( ) ; 
-		primaryIons.draw( ) ;
-		temperatureKelvin.draw( ) ; 
-		temperatureFahrenheight.draw( ) ;
+		//location.draw( ) ; 
+		//wavelength.draw( ) ; 
+		//primaryIons.draw( ) ;
+		//temperatureKelvin.draw( ) ; 
+		//temperatureFahrenheight.draw( ) ;
 	
 	popMatrix() ; 
 }

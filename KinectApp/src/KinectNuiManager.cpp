@@ -28,6 +28,7 @@ void KinectNuiManager::setup( )
 	kinectSource = &kinect;
 	angle = kinect.getCurrentAngle();
 	bPlugged = kinect.isConnected();
+
 	nearClipping = kinect.getNearClippingDistance();
 	farClipping = kinect.getFarClippingDistance();
 	
@@ -65,6 +66,9 @@ void KinectNuiManager::setup( )
 	initialHeroLostTimer.setup( 400 , "initial hero lost timer" ) ;  
 	ofAddListener( initialHeroLostTimer.TIMER_COMPLETE , this , &KinectNuiManager::initialHeroLostTimerComplete ) ; 
 
+	instructionsBlock.setup( "type/OpenSans-Bold.ttf" , 1.1 ,  "WALK UP TO EXPLORE"  , 48 , ofGetWidth() / 2 , ofGetHeight() - 175   , ofColor::white  ) ;
+	instructionsBlock.alignment = ofxFontStashTextBlock::CENTER ; 
+
 }
 
 void KinectNuiManager::initialHeroLostTimerComplete ( int &args )
@@ -72,6 +76,8 @@ void KinectNuiManager::initialHeroLostTimerComplete ( int &args )
 	heroLostTimer.start( false , true ) ;
 	hero = NULL ; 
 	changeState( SEARCHING_NO_HERO ) ; 
+
+	instructionsBlock.text = "GUEST LOST - STEP BACK INTO THE ACTIVE AREA" ; 
 }
 
 void KinectNuiManager::heroLostTimerComplete ( int & args ) 
@@ -82,8 +88,8 @@ void KinectNuiManager::heroLostTimerComplete ( int & args )
 
 void KinectNuiManager::setupGui( ofxPanel * gui ) 
 {
-	gui->add( nearClipping.set( "NEAR CLIPPING" , 300 , 100 , 4000 ) ) ; 
-	gui->add( farClipping.set( "FAR CLIPPING" , 1000 , 100 , 4000 ) ) ; 
+	//gui->add( nearClipping.set( "NEAR CLIPPING" , 300 , 100 , 4000 ) ) ; 
+	//agui->add( farClipping.set( "FAR CLIPPING" , 1000 , 100 , 4000 ) ) ; 
 	gui->add( angle.set( "ANGLE" , 1 , -30 , 30 ) ) ; 
 	gui->add( offset.set( "OFFSET" , ofPoint( 500 , 500 ) , ofPoint( 1 , 1 ) , ofPoint ( ofGetWidth() , ofGetHeight() ) ) ); 
 
@@ -91,20 +97,25 @@ void KinectNuiManager::setupGui( ofxPanel * gui )
 	gui->add( interpolateTime.set( "INTERPOLATE TIME" , 0.2f , 0.01 , .5f ) ) ; 
 	gui->add( heroLostDuration.set ( "HERO LOST DURATION" , 5000.0f , 100.0f , 15000.0f ) ) ; 
 	gui->add( initialHeroTimeoutDuration.set( "INIT HERO LOST (MS)" , 500.0f , 100.0f ,8000.0f ) ) ; 
-	//nearClipping.addListener( this , &KinectNuiManager::nearClipingHandler ) ; 
-	//farClipping.addListener( this , &KinectNuiManager::farClippingHandler ) ; 
+	
 	angle.addListener( this , &KinectNuiManager::angleHandler ) ; 
 	offset.addListener( this , &KinectNuiManager::offsetHandler ) ; 
 }
 
 void KinectNuiManager::nearClipingHandler( int & nearClip ) 
 {
-	kinectSource->setNearClippingDistance( nearClip ) ; 
+	//
+
+
+	//kinectSource->setNearClippingDistance( nearClip ) ; 
 }
 
 void KinectNuiManager::farClippingHandler( int & farClip ) 
 {
-	kinectSource->setFarClippingDistance( farClip ) ; 
+	
+
+	//kinectSource->setFarClippingDistance( farClip ) ; 
+	//
 }
 
 void KinectNuiManager::angleHandler( int & angle) 
@@ -119,9 +130,19 @@ void KinectNuiManager::offsetHandler( ofPoint & position )
 	
 void KinectNuiManager::update( ) 
 {
+	
+		//kinectSource->setFarClippingDistance(farClipping);
+		//kinectSource->setNearClippingDistance(nearClipping);
+	
+
+
+	//kinect.setNearClippingDistance( nearClipping ) ; 
+	//kinect.setFarClippingDistance( farClipping ) ; 
 	//kinect.update() ; 
 	heroLostTimer.delayMillis = heroLostDuration ; 
 	heroLostTimer.update( ) ; 
+
+	instructionsBlock.alphaStackUpdate( 1.0f ); 
 
 	initialHeroLostTimer.delayMillis = initialHeroTimeoutDuration ; 
 	calibrationWidget.update() ; 
@@ -219,10 +240,14 @@ void KinectNuiManager::update( )
 
 	if ( calibrationState == SEARCHING_NO_HERO ) 
 	{
+		instructionsBlock.text = "STEP UP TO EXPLORE" ; 
 		if ( numCalibrated > 0 ) 
 		{
 			changeState( HERO_LOST ) ; 
+			instructionsBlock.text = "GUEST LOST... STEP UP TO CONTINUE" ; 
 		}
+
+		
 	}
 
 	if ( calibrationState == HERO_CALIBRATED && numCalibrated == 0 ) 
@@ -241,6 +266,8 @@ void KinectNuiManager::update( )
 		float screenY = ofMap( hero->calibrationPoint.y , cursorRegionOrigin.y - cursorRegionDims.get().y/2 , cursorRegionOrigin.y + cursorRegionDims.get().y/2 , 0 , ofGetHeight() , true  ) ; 
 		Tweenzor::add( &kinectCursor.screenPosition.x , kinectCursor.screenPosition.x , screenX, 0.0f, interpolateTime , EASE_OUT_QUAD ) ; 
 		Tweenzor::add( &kinectCursor.screenPosition.y , kinectCursor.screenPosition.y , screenY, 0.0f, interpolateTime , EASE_OUT_QUAD ) ; 
+
+		instructionsBlock.text = "EXPLORE DIFFERENT DATA SETS" ; 
 	}
 	
 }
@@ -272,6 +299,7 @@ void KinectNuiManager::checkForCalibration( )
 
 		if ( userDataPool[ i ]->bCalibrated == false ) 
 		{
+			instructionsBlock.text = "RAISE A HAND ABOVE YOUR HEAD TO CALIBRATE" ; 
 			ofPoint * pts = kinect.skeletonPoints[i] ; 
 
 			ofPoint leftCursor = pts[ NUI_SKELETON_POSITION_HAND_LEFT ] ; 
@@ -325,6 +353,7 @@ void KinectNuiManager::checkForCalibration( )
 
 			calibrateCursorRegion( hero ) ; 
 			changeState( HERO_CALIBRATED ) ; 
+			instructionsBlock.text = "MOVE YOUR CURSOR OVER THE CHANGE COMPARISON" ; 
 		}
 	}
 }
@@ -402,7 +431,7 @@ void KinectNuiManager::draw( )
 		float scale = 3.0; 
 		int w = 640 / scale ; 
 		int h = 480 / scale ; 
-		//kinect.drawVideo( 0, 0, w, h );
+		kinect.drawVideo( 0, 0, w, h );
 		
 		kinect.drawDepth( 0, 0, w, h );
 		ofSetColor( 255 , 128 ) ; 
@@ -440,11 +469,42 @@ void KinectNuiManager::draw( )
 
 	ofPopMatrix() ; 
 
+	ofSetColor( 15 , 200 ) ; 
+	 w = instructionsBlock.getWidth()  ; 
+	 h =  instructionsBlock.getHeight() * 1.5 ; //instructionsBlock.lineSpacing ;  
+	float padding = 0 ; //	 40 ; //1 ; //.25 ; 
+	ofRectangle r = ofRectangle( instructionsBlock.x - (padding/2), 
+							 	 instructionsBlock.y - (padding/2),
+								 w + padding, 
+								 h + padding ) ; 
+
+	
+	ofPushStyle( ) ; 
+		ofSetRectMode( OF_RECTMODE_CENTER ) ;
+		ofRect( r )  ; 
+
+	ofPopStyle() ; 
+	ofSetColor( 255 ) ; 
+	ofPushMatrix( ) ; 
+	ofTranslate( instructionsBlock.getWidth() / 2 , 0 ) ; 
+	instructionsBlock.draw( ) ; 
+
+	ofPopMatrix() ; 
 
 	if ( hero != NULL ) 
 	{
 		kinectCursor.draw() ;
 	}
+}
+
+void KinectNuiManager::clearAllUsers() 
+{
+	for ( auto user = userDataPool.begin() ; user != userDataPool.end() ; user++ ) 
+	{
+		(*user)->reset() ; 
+	}
+
+	changeState( SEARCHING_NO_HERO ) ; 
 }
 
 void KinectNuiManager::drawDebug( float x , float y) 
@@ -470,6 +530,9 @@ void KinectNuiManager::drawDebug( float x , float y)
 	ofDrawBitmapStringHighlight( ss.str() , x , y ) ; 
 
 	ofDrawBitmapStringHighlight( debugStream , x + 600 , y ) ; 
+
+	ofSetColor( 255 ) ; 
+	//kinect.drawDepth( 400 , 400 , 640, 480 ) ; 
 }
 
 void KinectNuiManager::kinectPlugged()

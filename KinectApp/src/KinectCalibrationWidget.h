@@ -27,5 +27,7 @@ public :
 
 	ofRectangle drawSize ; 
 	ofxKinectNui * kinect ; 
+
+	
 };
 

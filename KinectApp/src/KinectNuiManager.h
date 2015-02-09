@@ -18,6 +18,7 @@ this class is a holder for all kinect related functions including drawing the de
 #include "Tweenzor.h"
 #include "KinectCalibrationWidget.h"
 #include "KinectCursor.h"
+#include "ofxFontStashTextBlock.h"
 
 class ofxKinectNuiDrawTexture;
 class ofxKinectNuiDrawSkeleton;
@@ -102,6 +103,10 @@ public :
 	ofxSimpleTimer initialHeroLostTimer ; 
 	void initialHeroLostTimerComplete ( int &args ); 
 
+	ofxFontStashTextBlock instructionsBlock ; 
+
+
+	void clearAllUsers( ) ; 
 
 
 };

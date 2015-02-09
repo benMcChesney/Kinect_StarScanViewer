@@ -27,6 +27,8 @@ void ofApp::setup()
 	gui.setup() ; 
 	gui.add( bDrawDebug.set( "DRAW DEBUG" , false ) ) ; 
 
+	gui.add( thumbnailDragSize.set( "THUMBNAIL DRAG SIZE" , 125 , 50 , 300 ) ) ; 
+
 	gui.add( imageCompareView.leftView.delayIncrement.set( "LEFT DELAY INC" , 0.1f , 0.0f , 1.0f ) ) ; 
 	gui.add( imageCompareView.leftView.transitionDuration.set( "LEFT TRANSITION DURATION" , 0.1f , 0.0f , 1.0f ) ) ; 
 	gui.add( imageCompareView.leftView.transitionSlideY.set( "LEFT TRANSITION SLIDE Y" , -20.0f , -40.0f , 40.0f ) ) ; 
@@ -34,6 +36,8 @@ void ofApp::setup()
 	gui.add( imageCompareView.rightView.delayIncrement.set( "LEFT DELAY INC" , 0.1f , 0.0f , 1.0f ) ) ; 
 	gui.add( imageCompareView.rightView.transitionDuration.set( "LEFT TRANSITION DURATION" , 0.1f , 0.0f , 1.0f ) ) ; 
 	gui.add( imageCompareView.rightView.transitionSlideY.set( "LEFT TRANSITION SLIDE Y" , -20.f , -40.0f , 40.0f ) ) ; 
+
+
 
 	imageCompareView.rightView.transitionOut() ; 
 	imageCompareView.leftView.transitionOut() ; 
@@ -44,13 +48,16 @@ void ofApp::setup()
 	kinectManager.setupGui( &gui ) ; 
 
 	gui.add( imageCompareView.slider.interpolateTime.set( "SLIDER INTERPOLATE TIME" , 0.2f , 0.01f , 0.4f ) ) ;  
-
+	gui.add( imageCompareView.sliderHeight.set( "SLIDER HEIGHT" , 100.0f , 50.0f , 800.0f )) ; 
 	gui.loadFromFile( "settings.xml" ) ; 
 	
 	//reset all transitions
 	initialTweenDelay = 0 ;
 	Tweenzor::add( &initialTweenDelay , 0.0f , 1.0f , 0.0f , 2.0f ) ; 
 	Tweenzor::addCompleteListener( Tweenzor::getTween( &initialTweenDelay ) , this , &ofApp::initialTweenDelayComplete ) ; 
+
+	//kinectManager.nearClipping.addListener( &kinectManager , &KinectNuiManager::nearClipingHandler ) ; 
+	//kinectManager.farClipping.addListener( &kinectManager , &KinectNuiManager::farClippingHandler ) ; 
 }
 
 void ofApp::initialTweenDelayComplete ( float * args ) 
@@ -112,6 +119,14 @@ void ofApp::draw()
 	imageCompareView.draw( ) ; 
 	kinectManager.draw( ) ; 
 
+	if ( imageCompareView.dim.a > 0 ) 
+	{
+		ofPoint screenPos =  kinectManager.kinectCursor.screenPosition ; 
+		int size = thumbnailDragSize.get() ; 
+		ofSetColor( 255 ) ; 
+		imageCompareView.lastData->image.image.draw( screenPos.x - size/2 , screenPos.y - size/2 , size , size ) ; 
+	}
+
 	if ( bDrawDebug ) 
 	{
 		imageCompareView.drawDebug() ; 
@@ -129,6 +144,8 @@ void ofApp::draw()
 		imageCompareView.slider.drawDebug( ) ; 
 		stringstream ss ; 
 		ss << " SLIDER HIT AREA : " << imageCompareView.slider.hitArea << endl ; 
+
+		ss << " nearClip : " << kinectManager.nearClipping << " <-> far Clip : " << kinectManager.farClipping << endl ; 
 		ofDrawBitmapStringHighlight( ss.str() , 1300 , 400 ) ; 
 	}
 
@@ -145,10 +162,41 @@ void ofApp::draw()
 void ofApp::keyPressed(int key){
 	switch ( key ) 
 	{
-		case 's':
-		case 'S':
+
+	case 'c':
+	case 'C':
+		break; 
+
+		case 'g':
+		case 'G':
 			bShowGui = !bShowGui ; 
 			break ; 
+
+
+		case OF_KEY_LEFT: // increase the far clipping distance
+		if( kinectManager.farClipping > kinectManager.nearClipping + 10){
+			kinectManager.farClipping -= 10;
+			kinectManager.kinectSource->setFarClippingDistance(kinectManager.farClipping);
+		}
+		break;
+	case OF_KEY_RIGHT: // decrease the far clipping distance
+		if(kinectManager.farClipping < 4000){
+			kinectManager.farClipping += 10;
+			kinectManager.kinectSource->setFarClippingDistance(kinectManager.farClipping);
+		}
+		break;
+	case '+': // increase the near clipping distance
+		if(kinectManager.nearClipping < kinectManager.farClipping - 10){
+			kinectManager.nearClipping += 10;
+			kinectManager.kinectSource->setNearClippingDistance(kinectManager.nearClipping);
+		}
+		break;
+	case '-': // decrease the near clipping distance
+		if(kinectManager.nearClipping >= 10){
+			kinectManager.nearClipping -= 10;
+			kinectManager.kinectSource->setNearClippingDistance(kinectManager.nearClipping);
+		}
+		break ; 
 	}
 }
 

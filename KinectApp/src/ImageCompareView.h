@@ -41,6 +41,7 @@ public :
 
 	void thumbnailSelectionEvent( string &args ) ; 
 
+	ofParameter < float > sliderHeight ; 
 	ThumbnailWidget rightDropZone ; 
 	ThumbnailWidget leftDropZone ; 
 	ThumbnailWidget cancelDropZone ; 
