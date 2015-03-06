@@ -1,4 +1,6 @@
 {
+  "nearThreshold":300,
+  "farThreshold":1000,
   "spectrums":
   [
     {

@@ -20,16 +20,16 @@ void KinectSliderWidget::draw( )
 {
 	ofPushStyle( ) ; 
 		ofNoFill( ) ; 
-		ofSetLineWidth( 3 ) ; 
-		ofSetColor( 255 , getOFAlpha() ); 
+		ofSetLineWidth( 2 ) ; 
+		ofSetColor( 255 , getOFAlpha() * .75f ); 
 		float padding = hitArea.height * .4f ; 
 		ofRectRounded( hitArea.x , hitArea.y + padding , hitArea.getWidth() , hitArea.getHeight() - ( padding * 2 ) , 15 ) ; 
 
 		ofFill( ) ; 
 		ofSetLineWidth( 0 ) ; 
 		ofSetCircleResolution( 180 ); 
-		ofSetColor( 255 ) ; //, getOFAlpha() ); 
-		ofCircle( sliderPoint , hitArea.getHeight()/4 ) ; 
+		ofSetColor( 255 , getOFAlpha() ); 
+		ofCircle(sliderPoint, 20); // hitArea.getHeight() / 4 );
 	ofPopStyle( ) ; 
 }
 

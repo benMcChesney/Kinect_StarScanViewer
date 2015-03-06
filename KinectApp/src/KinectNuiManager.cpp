@@ -32,6 +32,8 @@ void KinectNuiManager::setup( )
 	nearClipping = kinect.getNearClippingDistance();
 	farClipping = kinect.getFarClippingDistance();
 	
+	ofLogNotice() << "near Clipping : " << nearClipping << " <-> far Clip  " << farClipping ;
+
 	//Setup Textures
 	videoDraw_ = ofxKinectNuiDrawTexture::createTextureForVideo( kinect.getVideoResolution() );
 	depthDraw_ = ofxKinectNuiDrawTexture::createTextureForDepth( kinect.getDepthResolution() );
@@ -52,7 +54,7 @@ void KinectNuiManager::setup( )
 		userDataPool.push_back( data ) ; 
 	}
 
-	calibrationState = NO_USER ;
+	//calibrationState = NO_USER ;
 
 	calibrationWidget.setup() ; 
 	calibrationWidget.kinect = &kinect ; 
@@ -60,61 +62,75 @@ void KinectNuiManager::setup( )
 
 	kinectCursor.setup() ;
 
-	heroLostTimer.setup( heroLostDuration , "hero lost timer" ) ; 
-	ofAddListener( heroLostTimer.TIMER_COMPLETE , this , &KinectNuiManager::heroLostTimerComplete ) ; 
+	//heroLostTimer.setup( heroLostDuration , "hero lost timer" ) ; 
+	//ofAddListener( heroLostTimer.TIMER_COMPLETE , this , &KinectNuiManager::heroLostTimerComplete ) ; 
 
-	initialHeroLostTimer.setup( 400 , "initial hero lost timer" ) ;  
-	ofAddListener( initialHeroLostTimer.TIMER_COMPLETE , this , &KinectNuiManager::initialHeroLostTimerComplete ) ; 
+	//initialHeroLostTimer.setup( 400 , "initial hero lost timer" ) ;  
+	//ofAddListener( initialHeroLostTimer.TIMER_COMPLETE , this , &KinectNuiManager::initialHeroLostTimerComplete ) ; 
 
 	instructionsBlock.setup( "type/OpenSans-Bold.ttf" , 1.1 ,  "WALK UP TO EXPLORE"  , 48 , ofGetWidth() / 2 , ofGetHeight() - 175   , ofColor::white  ) ;
 	instructionsBlock.alignment = ofxFontStashTextBlock::CENTER ; 
 
 }
-
+/*
 void KinectNuiManager::initialHeroLostTimerComplete ( int &args )
 {
 	heroLostTimer.start( false , true ) ;
 	hero = NULL ; 
-	changeState( SEARCHING_NO_HERO ) ; 
+	//changeState( NO_USER ) ; 
 
 	instructionsBlock.text = "GUEST LOST - STEP BACK INTO THE ACTIVE AREA" ; 
 }
 
 void KinectNuiManager::heroLostTimerComplete ( int & args ) 
 {
-	changeState( NO_USER ) ;
+	hero = NULL ; 
+	//changeState( NO_USER ) ; 
 	heroLostTimer.reset() ; 
-}
+
+}*/
 
 void KinectNuiManager::setupGui( ofxPanel * gui ) 
 {
-	//gui->add( nearClipping.set( "NEAR CLIPPING" , 300 , 100 , 4000 ) ) ; 
-	//agui->add( farClipping.set( "FAR CLIPPING" , 1000 , 100 , 4000 ) ) ; 
+	gui->add( nearClipping.set( "NEAR CLIPPING" , 300 , 100 , 4000 ) ) ; 
+	gui->add( farClipping.set( "FAR CLIPPING" , 1000 , 100 , 4000 ) ) ; 
+	gui->add( setClippingButton.setup("SET CLIPPING"));
+	
+	setClippingButton.addListener( this , &KinectNuiManager::clippingButtonHit );
+
+
 	gui->add( angle.set( "ANGLE" , 1 , -30 , 30 ) ) ; 
 	gui->add( offset.set( "OFFSET" , ofPoint( 500 , 500 ) , ofPoint( 1 , 1 ) , ofPoint ( ofGetWidth() , ofGetHeight() ) ) ); 
 
 	gui->add( cursorRegionDims.set( "CURSOR REGION SIZE" , ofPoint( 50 ) , ofPoint( 0 ) , ofPoint ( 200 ) ) ) ; 
 	gui->add( interpolateTime.set( "INTERPOLATE TIME" , 0.2f , 0.01 , .5f ) ) ; 
-	gui->add( heroLostDuration.set ( "HERO LOST DURATION" , 5000.0f , 100.0f , 15000.0f ) ) ; 
-	gui->add( initialHeroTimeoutDuration.set( "INIT HERO LOST (MS)" , 500.0f , 100.0f ,8000.0f ) ) ; 
+	//gui->add( heroLostDuration.set ( "HERO LOST DURATION" , 5000.0f , 100.0f , 15000.0f ) ) ; 
+	//gui->add( initialHeroTimeoutDuration.set( "INIT HERO LOST (MS)" , 500.0f , 100.0f ,8000.0f ) ) ; 
 	
 	angle.addListener( this , &KinectNuiManager::angleHandler ) ; 
 	offset.addListener( this , &KinectNuiManager::offsetHandler ) ; 
 }
 
+void KinectNuiManager::clippingButtonHit( ) 
+{
+	ofLogNotice() << " near to : " << nearClipping << " to far : " << farClipping ; 
+	kinect.setNearClippingDistance( nearClipping ) ;
+	kinect.setFarClippingDistance( farClipping ) ;
+}
+
 void KinectNuiManager::nearClipingHandler( int & nearClip ) 
 {
 	//
+	//clippingButtonHit() ; 
 
-
-	//kinectSource->setNearClippingDistance( nearClip ) ; 
+	kinectSource->setNearClippingDistance( nearClip ) ; 
 }
 
 void KinectNuiManager::farClippingHandler( int & farClip ) 
 {
-	
+	//clippingButtonHit() ; 
 
-	//kinectSource->setFarClippingDistance( farClip ) ; 
+	kinectSource->setFarClippingDistance( farClip ) ; 
 	//
 }
 
@@ -130,135 +146,78 @@ void KinectNuiManager::offsetHandler( ofPoint & position )
 	
 void KinectNuiManager::update( ) 
 {
-	
-		//kinectSource->setFarClippingDistance(farClipping);
-		//kinectSource->setNearClippingDistance(nearClipping);
-	
-
-
-	//kinect.setNearClippingDistance( nearClipping ) ; 
-	//kinect.setFarClippingDistance( farClipping ) ; 
-	//kinect.update() ; 
-	heroLostTimer.delayMillis = heroLostDuration ; 
-	heroLostTimer.update( ) ; 
+	//heroLostTimer.delayMillis = heroLostDuration ; 
+	//heroLostTimer.update( ) ; 
 
 	instructionsBlock.alphaStackUpdate( 1.0f ); 
 
-	initialHeroLostTimer.delayMillis = initialHeroTimeoutDuration ; 
+	//initialHeroLostTimer.delayMillis = initialHeroTimeoutDuration ; 
 	calibrationWidget.update() ; 
 	kinectSource->update();
 	int id = 0 ; 
 	int numCalibrated = 0 ; 
 
+	float closestZ = 100000 ; 
+	int closestZIndex = -1; 
+	float farthestZ = 0; 
+	int farthestZIndex = -1;
+
 	stringstream debug ; 
 	for ( auto userData = userDataPool.begin() ;  userData != userDataPool.end() ; userData++ ) 
 	{
-		debug << " id # " << id << " - isActive" << kinect.isTrackedSkeleton( id ) << endl ; 
-		bool bActiveStatus = (*userData)->bSkeletonActive ; 
-		bool bNewActiveStatus = kinect.isTrackedSkeleton( id ) ; 
-
-		if ( (*userData)->bCalibrated == true ) 
-			numCalibrated++ ; 
-
-		if ( bNewActiveStatus != bActiveStatus ) 
-		{
-			ofLogNotice() << " id # " << id << " status is differnet " ; 
-			(*userData)->bSkeletonActive = bNewActiveStatus ; 
-			if ( bNewActiveStatus == true ) 
-			{
-				ofLogNotice() << "new user found @ id #" << id ; 
-				switch ( calibrationState ) 
-				{
-					case NO_USER : 
-						changeState( SEARCHING_NO_HERO ) ; 
-						break ; 
-
-					//case NO_ISER
-				}
-			}
-			else
-			{
-				ofLogNotice() << "user lost @ id #" << id ; 
-				(*userData)->reset() ; 
-				//heroLostTimer.start( false , true ) ; 
-				heroLostTimer.start( false , true ) ;
-				hero = NULL ; 
-				changeState( SEARCHING_NO_HERO ) ; 
-			}
-		}
-		else
-		{
-			(*userData)->bSkeletonActive = bNewActiveStatus ; 
-			if ( (*userData)->bSkeletonActive == true  ) 
-			{
-				switch ( calibrationState ) 
-				{
-					case NO_USER : 
-						//nothing
-						break ; 
-
-					case SEARCHING_NO_HERO : 
-						checkForCalibration( ) ; 
-						break ; 
-
-					//Update calibrated point ( current cursor ) 
-					case HERO_CALIBRATED:
-						userDataPool[ id ]->calibrationPoint = kinect.skeletonPoints[ id ][ userDataPool[ id ]->calibratedJointIndex ] ; 
-						break ; 
-
-					//case NO_ISER
-				}
-			}
-			else
-			{
-				switch ( calibrationState ) 
-				{
-					case NO_USER : 
-						//nothing
-						break ; 
-
-					case SEARCHING_NO_HERO : 
-						checkForCalibration( ) ; 
-						break ; 
-
-					//Update calibrated point ( current cursor ) 
-					case HERO_CALIBRATED:
-						//cout << " calib ID : " << userDataPool[ id ]->calibratedJointIndex << endl ; 
-						//cout << " id: " << id << endl ;
-						//cout << " - " << userDataPool[ id ]->calibrationPoint << endl ; 
-						userDataPool[ id ]->calibrationPoint = kinect.skeletonPoints[ id ][ userDataPool[ id ]->calibratedJointIndex ] ; 
-						break ; 
-
-					//case NO_ISER
-				}
-			}
-		}
 		
+		bool bTracked = kinect.isTrackedSkeleton( id ) ; 
+		(*userData)->bSkeletonActive = bTracked; 
+		debug << " id # " << id << " - isActive" << bTracked << endl;
+		if ( bTracked == true )
+		{
+			debug << " id # " << id << " is tracked ! " << endl; 
+			//if ((*userData)->)
+			ofPoint * pts = kinect.skeletonPoints[ (*userData)->userId ] ;
+			ofPoint spine = pts[ NUI_SKELETON_POSITION_SPINE ];
+
+			if (spine.z < closestZ)
+			{
+				closestZ = spine.z;
+				closestZIndex = id; 
+			}
+			if (spine.z > farthestZ)
+			{
+				farthestZ = spine.z;
+				farthestZIndex = id; 
+			}
+		}
+			
 		(*userData)->update() ; 
 		id++ ; 
 	}
 
-	if ( calibrationState == SEARCHING_NO_HERO ) 
+	if ( getNumActiveUsers() == 0 ) 
 	{
 		instructionsBlock.text = "STEP UP TO EXPLORE" ; 
-		if ( numCalibrated > 0 ) 
-		{
-			changeState( HERO_LOST ) ; 
-			instructionsBlock.text = "GUEST LOST... STEP UP TO CONTINUE" ; 
-		}
-
-		
 	}
-
-	if ( calibrationState == HERO_CALIBRATED && numCalibrated == 0 ) 
+	else
 	{
-		ofLogNotice() << "HERO CALIBRATED - but no users" ; 
-		//initialLostTimer.start( false, true ) ; 
+		if (closestZIndex >= 0)
+		{
+			hero = userDataPool[ closestZIndex ]  ; 
+			calibrateCursorRegion( hero );
+
+			ofPoint left = kinect.skeletonPoints[hero->userId][NUI_SKELETON_POSITION_HAND_LEFT];
+			ofPoint right = kinect.skeletonPoints[hero->userId][NUI_SKELETON_POSITION_HAND_RIGHT];
+
+			if (right.z < left.z)
+				userDataPool[hero->userId]->calibratedJointIndex = NUI_SKELETON_POSITION_HAND_RIGHT;
+			else
+				userDataPool[hero->userId]->calibratedJointIndex = NUI_SKELETON_POSITION_HAND_LEFT; 
+
+			hero->calibrationPoint = kinect.skeletonPoints[ hero->userId ][ userDataPool[ hero->userId ]->calibratedJointIndex ];
+		}
 	}
 	if ( hero != NULL ) 
 	{
 		kinectCursor.normalizedScreenPosition = ofPoint ( ofMap(  hero->calibrationPoint.x , cursorRegionOrigin.x - cursorRegionDims.get().x/2 , cursorRegionOrigin.x + cursorRegionDims.get().x/2 , 0.0f , 1.0f , true ) ,
-												   ofMap( hero->calibrationPoint.y , cursorRegionOrigin.y - cursorRegionDims.get().y/2 , cursorRegionOrigin.y + cursorRegionDims.get().y/2 , 0.0f , 1.0f , true ) ) ; 			
+														   ofMap( hero->calibrationPoint.y , cursorRegionOrigin.y - cursorRegionDims.get().y/2 , cursorRegionOrigin.y + cursorRegionDims.get().y/2 , 0.0f , 1.0f , true ) ) ; 			
 
 		kinectCursor.worldPosition = hero->calibrationPoint ; 
 		
@@ -280,15 +239,25 @@ void KinectNuiManager::calibrateCursorRegion ( UserCalibrationData * data )
 		return ; 
 	}
 
-	ofPoint * pts = kinect.skeletonPoints[ data->userId ] ; 
+	//int lowestY = 640 ; 
+	//for (auto user = userDataPool.begin(); user != userDataPool.end(); user++)
+	//{
+		ofPoint * pts = kinect.skeletonPoints[ data->userId ];
+
+		ofPoint leftCursor = pts[NUI_SKELETON_POSITION_HAND_LEFT];
+		ofPoint rightCursor = pts[NUI_SKELETON_POSITION_HAND_RIGHT];
+		ofPoint chest = pts[NUI_SKELETON_POSITION_SPINE];
+
+		//if (chest.y < lowestY && lowestY != 0)
+		//{
+		//	lowestY = chest.y; 
+		//}
+	//}
 	
-	ofPoint leftCursor = pts[ NUI_SKELETON_POSITION_HAND_LEFT ] ; 
-	ofPoint rightCursor = pts[ NUI_SKELETON_POSITION_HAND_RIGHT ] ; 
-	ofPoint chest = pts[ NUI_SKELETON_POSITION_SPINE ] ;
 
-	cursorRegionOrigin = ofPoint ( hero->calibrationPoint.x , chest.y ) ; 
+	cursorRegionOrigin = ofPoint( chest.x , chest.y ); // chest.y);
 
-	ofLogNotice() << "cursor region origin calibrated @ " << cursorRegionOrigin ; 
+	//ofLogNotice() << "cursor region origin calibrated @ " << cursorRegionOrigin ; 
 }
 
 void KinectNuiManager::checkForCalibration( ) 
@@ -352,12 +321,12 @@ void KinectNuiManager::checkForCalibration( )
 			hero = userDataPool[ i ] ; 
 
 			calibrateCursorRegion( hero ) ; 
-			changeState( HERO_CALIBRATED ) ; 
-			instructionsBlock.text = "MOVE YOUR CURSOR OVER THE CHANGE COMPARISON" ; 
+			//changeState( HERO_CALIBRATED ) ; 
+			instructionsBlock.text = "EXPLORE THE VARIOUS DATA SETS" ; 
 		}
 	}
 }
-
+/*
 void KinectNuiManager::changeState ( CALLIBRATION_STATE state ) 
 {
 	if ( state == calibrationState ) 
@@ -403,7 +372,7 @@ void KinectNuiManager::changeState ( CALLIBRATION_STATE state )
 
 	calibrationState = state ; 
 }
-
+*/
 int KinectNuiManager::getNumActiveUsers ( ) 
 {
 	int numActive = 0 ; 
@@ -440,9 +409,8 @@ void KinectNuiManager::draw( )
 		kinect.drawSkeleton(0 ,0, w, h);
 
 		float iScale = 1.0f / scale ; 
-		if ( calibrationState == HERO_CALIBRATED ) 
+		if ( getNumActiveUsers() > 0 )
 		{
-			
 			ofPushMatrix() ; 
 				ofSetColor( ofColor::yellow ) ; 
 				ofCircle( kinectCursor.worldPosition.x * iScale , kinectCursor.worldPosition.y * iScale , 14 ); 
@@ -471,7 +439,7 @@ void KinectNuiManager::draw( )
 
 	ofSetColor( 15 , 200 ) ; 
 	 w = instructionsBlock.getWidth()  ; 
-	 h =  instructionsBlock.getHeight() * 1.5 ; //instructionsBlock.lineSpacing ;  
+	 h =  instructionsBlock.getHeight() ; //* 1.5 ; //instructionsBlock.lineSpacing ;  
 	float padding = 0 ; //	 40 ; //1 ; //.25 ; 
 	ofRectangle r = ofRectangle( instructionsBlock.x - (padding/2), 
 							 	 instructionsBlock.y - (padding/2),
@@ -481,7 +449,7 @@ void KinectNuiManager::draw( )
 	
 	ofPushStyle( ) ; 
 		ofSetRectMode( OF_RECTMODE_CENTER ) ;
-		ofRect( r )  ; 
+		//ofRect( r )  ; 
 
 	ofPopStyle() ; 
 	ofSetColor( 255 ) ; 
@@ -503,8 +471,10 @@ void KinectNuiManager::clearAllUsers()
 	{
 		(*user)->reset() ; 
 	}
+	
+	hero = NULL; 
 
-	changeState( SEARCHING_NO_HERO ) ; 
+	//changeState( NO_USER ) ; 
 }
 
 void KinectNuiManager::drawDebug( float x , float y) 
@@ -516,7 +486,7 @@ void KinectNuiManager::drawDebug( float x , float y)
 		ss << "user[ " << i << " ] - bSkeletonActive ? " << userDataPool[ i ]->bSkeletonActive << " - bCalibrating ?" << userDataPool[ i ]->bCalibrated << endl ; 
 	}
 
-	ss << "CALIBRATION STATE " << getStringFromCalibrationState( calibrationState ) << endl ; 
+	//ss << "CALIBRATION STATE " << getStringFromCalibrationState( calibrationState ) << endl ; 
 
 	string heroString = "HERO IS NULL" ; 
 
@@ -532,7 +502,7 @@ void KinectNuiManager::drawDebug( float x , float y)
 	ofDrawBitmapStringHighlight( debugStream , x + 600 , y ) ; 
 
 	ofSetColor( 255 ) ; 
-	//kinect.drawDepth( 400 , 400 , 640, 480 ) ; 
+	kinect.drawDepth( 400 , 400 , 640, 480 ) ; 
 }
 
 void KinectNuiManager::kinectPlugged()
@@ -565,7 +535,7 @@ void KinectNuiManager::exit( )
 	kinect.close();
 	kinect.removeKinectListener(this);
 }
-
+/*
 string KinectNuiManager::getStringFromCalibrationState ( CALLIBRATION_STATE state ) 
 {
 	switch ( state ) 
@@ -590,5 +560,5 @@ string KinectNuiManager::getStringFromCalibrationState ( CALLIBRATION_STATE stat
 			return "DEFAULT" ; 
 			break ;
 	}
-}
+}*/
 	

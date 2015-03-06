@@ -20,7 +20,7 @@ void UserCalibrationData::reset( )
 	bCalibrated = false ;
 	calibrationTimer.reset() ; 
 	userLostTimer.reset() ; 
-	userId = -1 ; 
+	//userId = -1 ; 
 	bSkeletonActive = false ; 
 	calibrationPoint = ofPoint( 0 , 0 ) ; 
 	calibratedJointIndex = 0 ; 

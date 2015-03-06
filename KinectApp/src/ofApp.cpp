@@ -5,10 +5,15 @@ void ofApp::setup()
 {
 	Tweenzor::init() ; 
 	bool bOpenResult = spectrumJson.open ( "Spectrum_Data.json" ) ; 
+
+	int nearThreshold = 300; 
+	int farThreshold = 1000; 
 	if ( bOpenResult ) 
 	{
 		dataSyncManager.setup( ofToDataPath( "atmospheric_images" ) ) ; 
 		dataSyncManager.loadFromJsonRef( spectrumJson ) ; 
+		nearThreshold = spectrumJson["nearThreshold"].asInt();
+		farThreshold = spectrumJson["farThreshold"].asInt();
 	}
 	else
 	{
@@ -49,15 +54,18 @@ void ofApp::setup()
 
 	gui.add( imageCompareView.slider.interpolateTime.set( "SLIDER INTERPOLATE TIME" , 0.2f , 0.01f , 0.4f ) ) ;  
 	gui.add( imageCompareView.sliderHeight.set( "SLIDER HEIGHT" , 100.0f , 50.0f , 800.0f )) ; 
+	
+	kinectManager.nearClipping.addListener( &kinectManager , &KinectNuiManager::nearClipingHandler ) ; 
+	kinectManager.farClipping.addListener( &kinectManager , &KinectNuiManager::farClippingHandler ) ; 	
 	gui.loadFromFile( "settings.xml" ) ; 
 	
+	kinectManager.clippingButtonHit() ; 
 	//reset all transitions
 	initialTweenDelay = 0 ;
 	Tweenzor::add( &initialTweenDelay , 0.0f , 1.0f , 0.0f , 2.0f ) ; 
 	Tweenzor::addCompleteListener( Tweenzor::getTween( &initialTweenDelay ) , this , &ofApp::initialTweenDelayComplete ) ; 
 
-	//kinectManager.nearClipping.addListener( &kinectManager , &KinectNuiManager::nearClipingHandler ) ; 
-	//kinectManager.farClipping.addListener( &kinectManager , &KinectNuiManager::farClippingHandler ) ; 
+	ofHideCursor();
 }
 
 void ofApp::initialTweenDelayComplete ( float * args ) 
@@ -116,6 +124,9 @@ void ofApp::checkKinectInput( ThumbnailWidget * thumbnail , ofPoint screenPos )
 //--------------------------------------------------------------
 void ofApp::draw()
 {
+
+	ofPushMatrix(); 
+	//ofScale(0.71145833333333333333333333333333, 0.71145833333333333333333333333333); 
 	imageCompareView.draw( ) ; 
 	kinectManager.draw( ) ; 
 
@@ -155,7 +166,7 @@ void ofApp::draw()
 	}
 
 
-
+	ofPopMatrix(); 
 }
 
 //--------------------------------------------------------------
@@ -163,15 +174,24 @@ void ofApp::keyPressed(int key){
 	switch ( key ) 
 	{
 
-	case 'c':
-	case 'C':
-		break; 
+		case 'c':
+		case 'C':
+			kinectManager.clearAllUsers(); 
+			break; 
 
 		case 'g':
 		case 'G':
-			bShowGui = !bShowGui ; 
+			bShowGui = !bShowGui ;
+			if (bShowGui)
+				ofShowCursor();
+			else
+				ofHideCursor(); 
 			break ; 
 
+		case 'f':
+		case 'F':
+			ofToggleFullscreen(); 
+			break; 
 
 		case OF_KEY_LEFT: // increase the far clipping distance
 		if( kinectManager.farClipping > kinectManager.nearClipping + 10){

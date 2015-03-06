@@ -63,25 +63,26 @@ public :
 	//void drawCalibratedTexture();
 	void exit( ) ; 
 
+	/*
 	static enum CALLIBRATION_STATE
 	{
 		NO_USER = 0 , 
 		SEARCHING_NO_HERO = 1 , 
 		HERO_CALIBRATED = 2 , 
 		HERO_LOST = 3
-	};
+	};*/
 
 	//general debug
 	string debugStream ; 
 
 	//Calibration
-	CALLIBRATION_STATE calibrationState ;
+	//CALLIBRATION_STATE calibrationState ;
 	int getNumActiveUsers ( ) ; 
-	void changeState ( CALLIBRATION_STATE state ) ; 
+	//void changeState ( CALLIBRATION_STATE state ) ; 
 	vector < UserCalibrationData * > userDataPool ; 
 
-	ofxSimpleTimer heroLostTimer ; 
-	void heroLostTimerComplete ( int & args ) ; 
+	//ofxSimpleTimer heroLostTimer ; 
+	//void heroLostTimerComplete ( int & args ) ; 
 	UserCalibrationData * hero ; 
 	
 	KinectCalibrationWidget calibrationWidget ; 
@@ -90,23 +91,28 @@ public :
 	//Cursor detection
 	ofPoint cursorRegionOrigin ; 
 	ofParameter< ofPoint > cursorRegionDims ; 
-	void calibrateCursorRegion ( UserCalibrationData * data ) ; 
+	
 
 	//Utils
-	string getStringFromCalibrationState ( CALLIBRATION_STATE state ) ;
+	//string getStringFromCalibrationState ( CALLIBRATION_STATE state ) ;
 
 	KinectCursor kinectCursor ; 
 	ofParameter< float > interpolateTime ; 
-	ofParameter< float > heroLostDuration ; 
-	ofParameter< float > initialHeroTimeoutDuration ; 
+	//ofParameter< float > heroLostDuration ; 
+	//ofParameter< float > initialHeroTimeoutDuration ; 
 
-	ofxSimpleTimer initialHeroLostTimer ; 
-	void initialHeroLostTimerComplete ( int &args ); 
+	//ofxSimpleTimer initialHeroLostTimer ; 
+	//void initialHeroLostTimerComplete ( int &args ); 
 
 	ofxFontStashTextBlock instructionsBlock ; 
 
+	ofxButton setClippingButton;
+	void clippingButtonHit( ) ; 
 
 	void clearAllUsers( ) ; 
+
+	void setClosestSkeletonToHero(); 
+	void calibrateCursorRegion(UserCalibrationData * data);
 
 
 };
